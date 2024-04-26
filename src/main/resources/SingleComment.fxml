@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="118.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SingleComment">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="300.0" spacing="5.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/3135715.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="idUsername" text="Wassef Ammar">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="idUpdate" mnemonicParsing="false" onAction="#updateComment" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: #3b5d50; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="idDelete" mnemonicParsing="false" onAction="#deleteComment" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: red; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox>
+         <children>
+            <Text fx:id="idComment" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment" wrappingWidth="276.5366954803467" />
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Label fx:id="idCommentID" visible="false" />
+            <Label fx:id="idServiceID" visible="false" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
