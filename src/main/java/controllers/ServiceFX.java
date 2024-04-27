@@ -95,12 +95,31 @@ public class ServiceFX implements Initializable {
 
               }
               else {
+                  List<Service> services= gs.Afficher();
+                  boolean test= false;
                   Service service = new Service(id, 3, titreService, descriptionService, photo, address, exchange ? 1 : 0,0);
-                  gs.ajouter(service);
-                  System.out.println("Service added successfully");
-                  FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
-                  Parent root = loader.load();
-                  IdDescription.getScene().setRoot(root);
+                  for (Service service1 : services){
+                      if(service.getTitreService().equals(service1.getTitreService())
+                      && service.getDescriptionService().equals(service1.getDescriptionService())
+                      && service.getIdCategorie() == service1.getIdCategorie()
+                      && service.getVille().equals(service1.getVille())){
+                          test=true;
+                      }
+                  }
+                  if(test){
+                      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                      alert.setTitle("Duplicated");
+                      alert.setContentText("This Service already exists");
+                      alert.showAndWait();
+
+                  }
+                  else {
+                      gs.ajouter(service);
+                      System.out.println("Service added successfully");
+                      FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
+                      Parent root = loader.load();
+                      IdDescription.getScene().setRoot(root);
+                  }
               }
 
 

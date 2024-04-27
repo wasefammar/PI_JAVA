@@ -8,16 +8,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="idService" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showService" prefHeight="275.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SingleService">
+<VBox fx:id="idService" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showService" prefHeight="275.0" prefWidth="300.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SingleService">
    <children>
       <HBox alignment="CENTER">
          <children>
-            <ImageView fx:id="idPhoto" fitHeight="169.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+            <ImageView fx:id="idPhoto" fitHeight="168.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
                <image>
                   <Image url="@img/52921962_l-990x558.jpg" />
                </image>
             </ImageView>
          </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="113.0" prefWidth="50.0" spacing="10.0">
          <children>
@@ -88,4 +91,7 @@
          </padding>
       </HBox>
    </children>
+   <padding>
+      <Insets top="5.0" />
+   </padding>
 </VBox>

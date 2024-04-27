@@ -84,6 +84,8 @@ public class UpdateService implements Initializable {
         this.idCategory.setValue(gs.getCategoryById(service.getIdCategorie()));
         this.idCategory.setPromptText(gs.getCategoryById(service.getIdCategorie()));
         this.idID.setText(""+service.getId());
+        File imageFile= new File(service.getPhoto());
+        idUpload.setImage(new Image(imageFile.toURI().toString()));
 
     }
 
@@ -125,12 +127,34 @@ public class UpdateService implements Initializable {
                     idRequiredCategory.setVisible(false);
                 }
                 else {
+                    List<Service> services= gs.Afficher();
+                    boolean test= false;
                     Service service = new Service(idService, id,3, titreService, descriptionService, photo, address, exchange ? 1 : 0,0);
+                    for (Service service1 : services){
+                        if( service.getId()!=service1.getId()
+                                && service.getTitreService().equals(service1.getTitreService())
+                                && service.getDescriptionService().equals(service1.getDescriptionService())
+                                && service.getIdCategorie() == service1.getIdCategorie()
+                                && service.getVille().equals(service1.getVille())){
+                            test=true;
+                        }
+                    }
+                    if(test){
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Duplicated");
+                        alert.setContentText("This Service already exists");
+                        alert.showAndWait();
+
+                    }
+                    else {
                     gs.modifier(service);
                     System.out.println("Service updated successfully");
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowService.fxml"));
                     Parent root = loader.load();
+                    ShowService singleService= loader.getController();
+                    singleService.setFields(service);
                     IdDescription.getScene().setRoot(root);
+                    }
                 }
             }
             else{

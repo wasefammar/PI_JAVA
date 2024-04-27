@@ -130,43 +130,45 @@ public class Services implements Initializable {
             try {
                 if(!category.equals("All")){
                     list = gs.rechercherParCategory(gs.getCategoryByName(category));
-                    for (int i=0; i<list.size(); i++){
-                        FXMLLoader fxmlLoader= new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
-                        VBox box= fxmlLoader.load();
-                        SingleService singleService= fxmlLoader.getController();
-                        singleService.setData(list.get(i));
-                        if(columns== 3)
-                        {
-                            columns = 0;
-                            row++;
-                        }
-                        serviceGrid.add(box, ++columns, row);
-
                     }
-                }else {
+                else {
                     list = gs.Afficher();
-                    for (int i=0; i<list.size(); i++){
-                        FXMLLoader fxmlLoader= new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
-                        VBox box= fxmlLoader.load();
-                        SingleService singleService= fxmlLoader.getController();
-                        singleService.setData(list.get(i));
-                        if(columns== 3)
-                        {
-                            columns = 0;
-                            row++;
-                        }
-                        serviceGrid.add(box, ++columns, row);
-
-                    }
                 }
+                if(idExchange.getText().equals("Both") || idExchange.getText().equals("Filter By Exchange")){
+                    idExchange.setText("Both");
+                }
+                if (idExchange.getText().equals("Exchangeable")){
+                    idExchange.setText("Exchangeable");
+                    list = list.stream().filter(s->s.isChoixEchange()==1).toList();
+
+                }
+                if (idExchange.getText().equals("Non exchangeable")){
+                    idExchange.setText("Non exchangeable");
+                    list = list.stream().filter(s->s.isChoixEchange()==0).toList();
+
+                }
+                for (int i=0; i<list.size(); i++){
+                    FXMLLoader fxmlLoader= new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
+                    VBox box= fxmlLoader.load();
+                    SingleService singleService= fxmlLoader.getController();
+                    singleService.setData(list.get(i));
+                    if(columns== 3)
+                    {
+                        columns = 0;
+                        row++;
+                    }
+                    serviceGrid.add(box, ++columns, row);
+
+                }
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+
 
     }
 
@@ -179,36 +181,35 @@ public class Services implements Initializable {
             try {
                 if(!exchange.equals("Both")){
                     list = gs.filterByEchange(exchange);
-                    for (int i=0; i<list.size(); i++){
-                        FXMLLoader fxmlLoader= new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
-                        VBox box= fxmlLoader.load();
-                        SingleService singleService= fxmlLoader.getController();
-                        singleService.setData(list.get(i));
-                        if(columns== 3)
-                        {
-                            columns = 0;
-                            row++;
-                        }
-                        serviceGrid.add(box, ++columns, row);
-
-                    }
                 }else {
                     list = gs.Afficher();
-                    for (int i=0; i<list.size(); i++){
-                        FXMLLoader fxmlLoader= new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
-                        VBox box= fxmlLoader.load();
-                        SingleService singleService= fxmlLoader.getController();
-                        singleService.setData(list.get(i));
-                        if(columns== 3)
-                        {
-                            columns = 0;
-                            row++;
+                }
+                if(idCategories.getText().equals("All") || idCategories.getText().equals("Filter By Category")){
+                    idCategories.setText("All");
+                }
+                else {
+                    list = list.stream().filter(s-> {
+                        try {
+                            return s.getIdCategorie()==gs.getCategoryByName(idCategories.getText());
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
                         }
-                        serviceGrid.add(box, ++columns, row);
+                    }).toList();
 
+                }
+                for (int i=0; i<list.size(); i++){
+                    FXMLLoader fxmlLoader= new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
+                    VBox box= fxmlLoader.load();
+                    SingleService singleService= fxmlLoader.getController();
+                    singleService.setData(list.get(i));
+                    if(columns== 3)
+                    {
+                        columns = 0;
+                        row++;
                     }
+                    serviceGrid.add(box, ++columns, row);
+
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -242,8 +243,7 @@ public class Services implements Initializable {
                 });
             });
 
-            /*final SortedList<Customer> customers = new SortedList<>(filterData);
-            customers.comparatorProperty().bind(tblCustomer.comparatorProperty());*/
+
             System.out.println(filteredList);
             List<Service> filtered= new ArrayList<>();
             for (Service service : filteredList) {
