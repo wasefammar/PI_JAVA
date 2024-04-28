@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="809.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DarkDev.controllers.UpdateProduitController">
+    <children>
+        <HBox prefHeight="809.0" prefWidth="1315.0">
+            <children>
+                <VBox prefHeight="0.0" prefWidth="657.0" style="-fx-background-color: #FAEBEF;">
+                    <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                    </padding>
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="597.0">
+                                    <children>
+                                        <Label layoutX="60.0" prefHeight="100.0" prefWidth="477.0" text="Update Your Product Informations !" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </Pane>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="71.0" layoutY="39.0" prefHeight="22.0" prefWidth="75.0" text="Title" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="title" alignment="CENTER" layoutX="231.0" layoutY="27.0" prefHeight="39.0" prefWidth="186.0" promptText="ProductTitle" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+                                            <font>
+                                                <Font name="Corbel Light" size="15.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label fx:id="reqtitle" layoutX="248.0" layoutY="66.0" text="This Field is Required !" textFill="RED" visible="false">
+                                            <padding>
+                                                <Insets top="3.0" />
+                                            </padding>
+                                        </Label>
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="40.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="120.0" prefWidth="597.0">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="81.0" layoutY="28.0" prefHeight="22.0" prefWidth="108.0" text="Description" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="reqdescription" layoutX="251.0" layoutY="74.0" text="This Field is Required !" textFill="RED" visible="false">
+                                            <padding>
+                                                <Insets top="3.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextArea fx:id="description" layoutX="232.0" layoutY="2.0" prefHeight="74.0" prefWidth="186.0" promptText="ProductDescription" style="-fx-border-radius: 200; -fx-background-radius: 200;">
+                                            <font>
+                                                <Font name="Corbel Light" size="15.0" />
+                                            </font>
+                                        </TextArea>
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="78.0" layoutY="39.0" prefHeight="22.0" prefWidth="75.0" text="Price" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="price" alignment="CENTER" layoutX="231.0" layoutY="27.0" prefHeight="39.0" prefWidth="186.0" promptText="ProductPrice" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+                                            <font>
+                                                <Font name="Corbel Light" size="15.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label fx:id="reqprice" layoutX="248.0" layoutY="66.0" text="This Field is Required !" textFill="RED" visible="false">
+                                            <padding>
+                                                <Insets top="3.0" />
+                                            </padding>
+                                        </Label>
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="72.0" layoutY="39.0" prefHeight="22.0" prefWidth="75.0" text="City" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="city" alignment="CENTER" layoutX="231.0" layoutY="27.0" prefHeight="39.0" prefWidth="186.0" promptText="ProductCity" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+                                            <font>
+                                                <Font name="Corbel Light" size="15.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label fx:id="reqcity" layoutX="248.0" layoutY="66.0" text="This Field is Required !" textFill="RED" visible="false">
+                                            <padding>
+                                                <Insets top="3.0" />
+                                            </padding>
+                                        </Label>
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox prefHeight="0.0" prefWidth="656.0" style="-fx-background-color: #ebf7fa;" styleClass="comboBox" stylesheets="@style/style.css">
+                    <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                    </padding>
+                    <children>
+                        <HBox prefHeight="104.0" prefWidth="596.0">
+                            <children>
+                                <Pane prefHeight="82.0" prefWidth="597.0">
+                                    <children>
+                                        <ImageView fitHeight="100.0" fitWidth="186.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@style/405016714_420402227003283_7339055550875056215_n.png" />
+                                            </image>
+                                        </ImageView>
+                              <Button layoutX="440.0" layoutY="37.0" mnemonicParsing="false" onAction="#backtoproductlist" stylesheets="@style/stylebutton.css" text="Back to Product List" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass></Button>
+                                    </children>
+                                </Pane>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="87.0" layoutY="30.0" prefHeight="22.0" prefWidth="75.0" text="Category" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="reqcategory" layoutX="267.0" layoutY="56.0" text="This Field is Required !" textFill="RED" visible="false">
+                                            <padding>
+                                                <Insets top="3.0" />
+                                            </padding>
+                                        </Label>
+                                        <ChoiceBox fx:id="category" layoutX="247.0" layoutY="25.0" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 50; -fx-background-color: #D3D3D3;" stylesheets="@style/style.css" />
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="40.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="75.0" layoutY="39.0" prefHeight="22.0" prefWidth="75.0" text="State" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="reqstate" layoutX="268.0" layoutY="62.0" text="This Field is Required !" textFill="RED" visible="false">
+                                            <padding>
+                                                <Insets top="3.0" />
+                                            </padding>
+                                        </Label>
+                                        <ChoiceBox fx:id="state" layoutX="248.0" layoutY="35.0" prefHeight="31.0" prefWidth="187.0" style="-fx-background-radius: 50; -fx-background-color: #D3D3D3;" />
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="99.0" prefWidth="596.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="89.0" layoutY="40.0" prefHeight="22.0" prefWidth="83.0" text="Exchange" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <CheckBox fx:id="exchange" layoutX="254.0" layoutY="41.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="187.0" text="Exchange Choice">
+                                            <font>
+                                                <Font name="Cambria" size="15.0" />
+                                            </font>
+                                        </CheckBox>
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="129.0" prefWidth="596.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="82.0" layoutY="54.0" prefHeight="22.0" prefWidth="75.0" text="Image" textFill="#3b5d50">
+                                            <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Circle fill="#ebf7fa" layoutX="323.0" layoutY="65.0" radius="37.0" stroke="#faebef" strokeType="INSIDE" strokeWidth="4.0" />
+                                        <Label fx:id="reqimage" layoutX="262.0" layoutY="87.0" text="This Field is Required !" textFill="RED" visible="false">
+                                            <padding>
+                                                <Insets top="3.0" />
+                                            </padding>
+                                        </Label>
+                                        <ImageView fx:id="image" fitHeight="56.0" fitWidth="49.0" layoutX="298.0" layoutY="40.0" onMouseClicked="#parcourir" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@style/jj.jpg" />
+                                            </image>
+                                        </ImageView>
+                              <Label fx:id="idPhoto" layoutX="410.0" layoutY="55.0" prefHeight="21.0" prefWidth="175.0" text="Upload image" visible="false" />
+                                    </children>
+                                </Pane>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="99.0" prefWidth="596.0">
+                            <children>
+                                <Pane prefHeight="100.0" prefWidth="600.0">
+                                    <children>
+                                        <Button layoutX="460.0" layoutY="33.0" mnemonicParsing="false" onAction="#updateproduct" prefHeight="39.0" prefWidth="130.0" stylesheets="@style/stylebutton.css" text="Update Product" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass></Button>
+                              <Label fx:id="idID" layoutX="198.0" layoutY="41.0" text="Label" visible="false" />
+                                    </children>
+                                </Pane>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

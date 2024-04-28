@@ -1,0 +1,45 @@
+.hover-button {
+    -fx-background-color: #3b5d50; /* Couleur de fond normale */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-background-radius: 100;
+    -fx-border-radius:100;
+    -fx-cursor: hand;
+}
+
+.hover-button:hover {
+    -fx-background-color: white; /* Couleur de fond lors du survol */
+    -fx-text-fill:#3b5d50;
+    -fx-border-color: #3b5d50;
+
+}
+
+
+.hover-button-update {
+    -fx-background-color: white; /* Couleur de fond normale */
+    -fx-text-fill: #3b5d50; /* Couleur du texte */
+    -fx-background-radius: 100;
+    -fx-border-radius:100;
+    -fx-border-color: #3b5d50;
+}
+
+.hover-button-update:hover {
+    -fx-background-color:#3b5d50; /* Couleur de fond lors du survol */
+    -fx-text-fill:white;
+    -fx-border-color: white;
+}
+
+.hover-button-delete {
+    -fx-background-color: red; /* Couleur de fond normale */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-background-radius: 100;
+    -fx-border-radius:100;
+}
+
+.hover-button-delete:hover {
+    -fx-background-color: white; /* Couleur de fond lors du survol */
+    -fx-text-fill:red;
+    -fx-border-color: red;
+}
+
+
+

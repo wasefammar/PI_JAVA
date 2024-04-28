@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DarkDev.controllers.AfficherProduitsFX">
+   <children>
+      <TableView fx:id="tableView" layoutX="28.0" layoutY="89.0" prefHeight="200.0" prefWidth="558.0">
+        <columns>
+          <TableColumn fx:id="image1" prefWidth="75.0" text="Image" />
+          <TableColumn fx:id="titre1" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="description1" prefWidth="100.0" text="Description" />
+            <TableColumn fx:id="state1" prefWidth="81.0" text="State" />
+            <TableColumn fx:id="city1" prefWidth="59.0" text="City" />
+            <TableColumn fx:id="exchange1" prefWidth="87.0" text="Exchange" />
+            <TableColumn fx:id="price1" prefWidth="87.0" text="Price" />
+        </columns>
+      </TableView>
+      <Button layoutX="467.0" layoutY="342.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="104.0" text="Delete " />
+      <Button fx:id="idAddProduct" layoutX="467.0" layoutY="14.0" mnemonicParsing="false" onAction="#addProduct" text="Add Product" />
+      <Button fx:id="idUpdateProduct" layoutX="467.0" layoutY="300.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="31.0" prefWidth="104.0" text="Update " />
+      <Button layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#addtocard" text="Add To Card" />
+   </children>
+</AnchorPane>
