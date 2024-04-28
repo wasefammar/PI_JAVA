@@ -142,19 +142,16 @@ public class ServiceReclamation implements IReclamation<Reclamation> {
         }
         System.out.println("Affichage executé");
         return null;
+    }
 
 
-
-      /*  public void modifier_reclamation(int id,String titre_r,String description_r,Date date,String status,String urgence) {
+        public void modifier_reclamation(Reclamation reclamation){
         try {
-            String requete4 = " UPDATE reclamation SET " + " titre_r = ?,description_r = ? ,date = ? , status = ?, urgence = ?WHERE id= "+ id;
+            String requete4 = " UPDATE reclamation SET status = ? WHERE id= "+ reclamation.getId();
             PreparedStatement pst =cnx.prepareStatement(requete4);
 
-            pst.setString(1, titre_r);
-            pst.setString(2, description_r);
-            pst.setDate(3, date);
-            pst.setString(4, status);
-            pst.setString(5, urgence);
+            pst.setString(1, reclamation.getStatus());
+
             pst.executeUpdate();
             System.out.println("Reclamation modifié !");
 
@@ -162,7 +159,7 @@ public class ServiceReclamation implements IReclamation<Reclamation> {
             System.err.println(ex.getMessage());
         }
     }
-*/
 
-    }
+
+
 }

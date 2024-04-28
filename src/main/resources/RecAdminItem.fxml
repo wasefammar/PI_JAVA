@@ -24,6 +24,7 @@
                         <Insets right="5.0" />
                     </HBox.margin>
                 </Label>
+            <Label fx:id="idComplaint" text="Label" visible="false" />
                 <Button fx:id="idDelete" mnemonicParsing="false" onAction="#Delete" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: red; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Delete" textFill="WHITE">
                     <font>
                         <Font name="Calibri" size="12.0" />

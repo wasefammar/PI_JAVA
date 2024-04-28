@@ -53,6 +53,8 @@ public class RecAdminItem {
         idEmail.setText(personne.getEmail());
         idUsername.setText(personne.getNom()+" "+personne.getPrenom());
         idPhone.setText(""+personne.getTelephone());
+        idComplaint.setText(""+reclamation.getId());
+        idRespond.setDisable(reclamation.getStatus().equals("Treated"));
 
 
     }
@@ -94,13 +96,15 @@ public class RecAdminItem {
         try {
             Reclamation reclamation = rs.getReclamationById(Integer.parseInt(idComplaint.getText()));
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Response.fxml"));
-            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/ReclamationItem.fxml"));
+            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/RecAdminItem.fxml"));
             VBox box = loader2.load();
             BorderPane borderPane = loader.load();
-            ReclamationItem  reclamationItem= loader2.getController();
+            Response respone= loader.getController();
+            respone.setData(reclamation);
+            RecAdminItem  reclamationItem= loader2.getController();
             reclamationItem.setData(reclamation);
             System.out.println("oui2");
-            VBox box1= (VBox) borderPane.getChildren().get(1);
+            VBox box1= (VBox) borderPane.getCenter();
             VBox box2= (VBox) box1.getChildren().get(0);
             box2.getChildren().add(box);
             idDelete.getScene().setRoot(borderPane);

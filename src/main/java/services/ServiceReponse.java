@@ -22,7 +22,7 @@ public class ServiceReponse implements IReponse<Reponse> {
         try {
             String requete1 = "INSERT INTO reponse(reponse_id,titre_r,description_r,date) VALUES(?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete1);
-            pst.setInt(1, 8);
+            pst.setInt(1, e.getReponse_id());
 
             pst.setString(2, e.getTitre_r());
             pst.setString(3, e.getDescription_id());
@@ -67,10 +67,9 @@ public class ServiceReponse implements IReponse<Reponse> {
 
     }
 
-    public Reponse getEventById(int id) {
-        Reponse rec = null;
+    public Reponse getRepByIdRec(int id) {
 
-        String requete5 = "SELECT id, reponse_id, titre_r, description_r, date FROM reponse WHERE id = ?";
+        String requete5 = "SELECT *  FROM reponse WHERE reponse_id = ?";
 
         try {
             PreparedStatement ps = cnx.prepareStatement(requete5);
@@ -78,7 +77,7 @@ public class ServiceReponse implements IReponse<Reponse> {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                rec = new Reponse();
+                Reponse rec = new Reponse();
 
                 rec.setId(rs.getInt("id"));
                 rec.setReponse_id(rs.getInt("reponse_id"));
@@ -86,13 +85,14 @@ public class ServiceReponse implements IReponse<Reponse> {
                 rec.setDescription_id(rs.getString("description_r"));
                 rec.setDate(rs.getDate("date"));
 
-            }
+                return rec;
 
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return null;
 
-        return rec;
     }
 
 }

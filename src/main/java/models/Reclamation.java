@@ -92,4 +92,17 @@ public class Reclamation {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Reclamation{" +
+                "id=" + id +
+                ", utilisateur_id=" + utilisateur_id +
+                ", titre_r='" + titre_r + '\'' +
+                ", description_r='" + description_r + '\'' +
+                ", status='" + status + '\'' +
+                ", urgence='" + urgence + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

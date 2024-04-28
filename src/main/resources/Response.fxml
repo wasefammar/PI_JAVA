@@ -1,110 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1290.0" style="-fx-background-color: #F4F4FC;" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Response">
     <left>
-        <VBox prefHeight="670.0" prefWidth="254.0">
-            <children>
-                <AnchorPane fx:id="side_bar" prefHeight="666.0" prefWidth="267.0" styleClass="side_bar" stylesheets="@CSS/style.css">
-                    <children>
-                        <Pane fx:id="inner_side" layoutX="5.0" layoutY="45.0" prefHeight="70.0" prefWidth="242.0" styleClass="inner_side" stylesheets="@CSS/style.css">
-                            <children>
-                                <ImageView fitHeight="70.0" fitWidth="69.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/12737128.png" />
-                                    </image>
-                                </ImageView>
-                                <Pane layoutX="162.0" layoutY="4.0" prefHeight="63.0" prefWidth="45.0" styleClass="inner_side2" stylesheets="@CSS/style.css">
-                                    <children>
-                                        <ImageView fitHeight="63.0" fitWidth="59.0" layoutX="-7.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@img/7066144.png" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </Pane>
-                            </children>
-                        </Pane>
-                        <JFXButton fx:id="btn_home" layoutX="12.0" layoutY="146.0" prefHeight="62.0" prefWidth="230.0" styleClass="btn_home" stylesheets="@CSS/style.css" text="Home">
-                            <graphic>
-                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/images.jpg" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btn_product" layoutX="11.0" layoutY="219.0" prefHeight="62.0" prefWidth="230.0" styleClass="btn_home" stylesheets="@CSS/style.css" text="Products">
-                            <graphic>
-                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/solid-shopping-cart-icon-free-vector.jpg" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btn_events" layoutX="11.0" layoutY="437.0" prefHeight="62.0" prefWidth="230.0" styleClass="btn_home" stylesheets="@CSS/style.css" text="Events">
-                            <graphic>
-                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/956865.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btn_rec" layoutX="11.0" layoutY="513.0" prefHeight="62.0" prefWidth="230.0" styleClass="btn_home" stylesheets="@CSS/style.css" text="Complaints">
-                            <graphic>
-                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/Screenshot2024-04-20133223.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btn_logout" layoutX="12.0" layoutY="590.0" prefHeight="62.0" prefWidth="230.0" styleClass="btn_home" stylesheets="@CSS/style.css" text="Logout">
-                            <graphic>
-                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/126467.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btn_exchange" layoutX="11.0" layoutY="366.0" prefHeight="62.0" prefWidth="230.0" styleClass="btn_home" stylesheets="@CSS/style.css" text="Transactions">
-                            <graphic>
-                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/9cd88a079820b6debf81ef0dddd74c4d.jpg" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btn_service" layoutX="11.0" layoutY="293.0" prefHeight="62.0" prefWidth="230.0" styleClass="btn_home" stylesheets="@CSS/style.css" text="Services">
-                            <graphic>
-                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/106422346-wrench-and-hammer-vector-icon-filled-flat-sign-for-mobile-concept-and-web-design-construction-tool.jpg" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </JFXButton>
-                    </children></AnchorPane>
-            </children>
-        </VBox>
+
     </left>
 
     <center>
@@ -131,6 +39,7 @@
                         <Button fx:id="btnSend" layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#ajouter_reclamation1" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #3b5d50; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Send" textFill="WHITE" />
                     </buttons>
                 </ButtonBar>
+            <Label fx:id="idcomplaint" text="Label" visible="false" />
 
             </children>
          <BorderPane.margin>

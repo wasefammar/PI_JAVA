@@ -19,8 +19,7 @@ public class Reponse {
         }
 
     public Reponse(int id,  String titre_r, String description_id, Date date) {
-        this.id = id;
-
+        this.reponse_id = id;
         this.titre_r = titre_r;
         this.description_id = description_id;
         this.date = date;
@@ -69,5 +68,16 @@ public class Reponse {
         public void setDate(Date date) {
             this.date = date;
         }
+
+    @Override
+    public String toString() {
+        return "Reponse{" +
+                "id=" + id +
+                ", reponse_id=" + reponse_id +
+                ", titre_r='" + titre_r + '\'' +
+                ", description_id='" + description_id + '\'' +
+                ", date=" + date +
+                '}';
     }
+}
 

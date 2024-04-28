@@ -8,11 +8,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Reclamation;
+import models.Reponse;
 import services.ServiceReclamation;
+import services.ServiceReponse;
 
 import java.io.IOException;
 
@@ -30,6 +33,7 @@ public class ReclamationItem {
     public Button idRespond;
 
     ServiceReclamation rs = new ServiceReclamation();
+    ServiceReponse rp = new ServiceReponse();
     public void setData(Reclamation reclamation){
         reasonTitre.setText(reclamation.getTitre_r());
         idUrgence.setText(reclamation.getUrgence());
@@ -73,17 +77,26 @@ public class ReclamationItem {
 
         try {
             Reclamation reclamation = rs.getReclamationById(Integer.parseInt(idComplaint.getText()));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Response.fxml"));
-            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/ReclamationItem.fxml"));
-            VBox box = loader2.load();
-            BorderPane borderPane = loader.load();
-            ReclamationItem  reclamationItem= loader2.getController();
-            reclamationItem.setData(reclamation);
-            System.out.println("oui2");
-            VBox box1= (VBox) borderPane.getChildren().get(1);
-            VBox box2= (VBox) box1.getChildren().get(0);
-            box2.getChildren().add(box);
-            idDelete.getScene().setRoot(borderPane);
+            System.out.println(reclamation);
+            Reponse reponse = rp.getRepByIdRec(reclamation.getId());
+            if(reponse == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ALERT !!");
+                alert.setContentText("There is no response ");
+                alert.showAndWait();
+            }else {
+                System.out.println(reponse);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/reponseClient.fxml"));
+                AnchorPane hihi = loader.load();
+                ReponseClient reponseClient = loader.getController();
+                reponseClient.setData(reponse);
+
+
+                System.out.println("oui2");
+
+                idDelete.getScene().setRoot(hihi);
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
