@@ -1,0 +1,46 @@
+package utils;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class MyDatabase {
+
+    private final String URL="jdbc:mysql://localhost:3306/pidev_swapnshare";
+    private final String USER="root";
+    private final String PASS="";
+
+    private Connection connection;
+
+    static  MyDatabase instance;
+
+    private MyDatabase(){
+
+        try {
+            connection = DriverManager.getConnection(URL, USER, PASS);
+
+            System.out.println("connected");
+
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+
+
+
+    }
+
+
+    public static MyDatabase getInstance() {
+
+        if (instance == null)
+            instance= new MyDatabase();
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+}
