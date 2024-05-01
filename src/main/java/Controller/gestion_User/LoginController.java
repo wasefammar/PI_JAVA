@@ -26,13 +26,14 @@ public class LoginController {
     @FXML
     private Button LoginFT;
 
-
     @FXML
-    private TextField passwordFT;
+    private PasswordField passwordFT;
 
 
     @FXML
     private TextField emailFT;
+
+    private int incorrectAttempts = 0;
 
 
 
@@ -83,6 +84,29 @@ public class LoginController {
         System.out.println(doHashing(mot_passe));
         System.out.println(adresse_mail);
         //System.out.println(authenticated);
+
+
+        boolean VerifPassword = serviceuser.VerifPwd(doHashing(mot_passe));
+
+
+
+        if (VerifPassword) {
+            System.out.println("Connexion réussie!");
+        } else {
+            incorrectAttempts++;
+            if (incorrectAttempts >= 3) {
+                // Désactiver les labels après trois tentatives incorrectes
+                passwordFT.setDisable(true);
+                emailFT.setDisable(true);
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Trop de tentatives incorrectes. Veuillez contacter l'assistance");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Mot de passe incorrect. Tentatives restantes : " + (3 - incorrectAttempts));
+            }
+        }
+
+
+
+
 
         // Vérifier si l'authentification a réussi
         if (authenticated) {

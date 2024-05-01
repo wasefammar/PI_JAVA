@@ -156,9 +156,34 @@ public class ServicePersonne implements IService<Personne,SessionTempo> {
 
            if (rs.next()) {
 
-                // Si l'utilisateur n'est pas banni et est actif, retourner true pour indiquer une connexion réussie
+
                 return true;
            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+
+        }
+
+        // Si aucune ligne n'est retournée, cela signifie que la connexion a échoué
+        return false;
+    }
+
+
+
+    public boolean VerifPwd(String mot_passe) {
+        try {
+            String req = "SELECT * FROM user WHERE  `password` = ?";
+            PreparedStatement pstmt = cnx.prepareStatement(req);
+            pstmt.setString(1, mot_passe);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+
+
+                return true;
+            }
 
         } catch (SQLException ex) {
             ex.printStackTrace();

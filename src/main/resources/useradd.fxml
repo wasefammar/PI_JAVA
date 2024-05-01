@@ -40,11 +40,11 @@
       <PasswordField fx:id="password" layoutX="275.0" layoutY="288.0" promptText="Password" />
       <TextField fx:id="firstnamefield" layoutX="274.0" layoutY="139.0" promptText="Fisrt Name" />
       <TextField fx:id="lastNmafield" layoutX="439.0" layoutY="139.0" promptText="Last Name" />
-      <Button layoutX="349.0" layoutY="336.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="40.0" prefWidth="136.0" text="Sign In" />
+      <Button layoutX="373.0" layoutY="337.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="40.0" prefWidth="136.0" text="Sign In" />
       <TextField fx:id="adressfield" layoutX="275.0" layoutY="188.0" promptText="Adress" />
       <TextField fx:id="phonenumber" layoutX="439.0" layoutY="188.0" promptText="Phone" />
       <TextField fx:id="email" layoutX="281.0" layoutY="243.0" prefHeight="25.0" prefWidth="304.0" promptText="AdressEmail" />
-      <HBox alignment="CENTER_LEFT" layoutX="261.0" layoutY="1.0" prefHeight="89.0" prefWidth="349.0" style="-fx-background-color: #ffe8fb;">
+      <HBox alignment="CENTER_LEFT" layoutX="261.0" layoutY="1.0" prefHeight="89.0" prefWidth="349.0" style="-fx-background-color: FAEBEF;">
          <children>
             <Label prefHeight="89.0" prefWidth="270.0" text="Sign up:" textFill="WHITE">
                <font>

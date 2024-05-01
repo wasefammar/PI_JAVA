@@ -12,27 +12,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="466.0" prefWidth="650.0" stylesheets="@Dashh.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gestion_User.DashUser">
    <children>
       <VBox prefHeight="466.0" prefWidth="172.0" style="-fx-background-color: #3b5d50;">
          <children>
-            <VBox alignment="CENTER" prefHeight="89.0" prefWidth="155.0">
-               <children>
-                  <ImageView fitHeight="89.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Capture_d_écran_2024-04-21_001118-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </VBox>
+            <VBox alignment="CENTER" prefHeight="89.0" prefWidth="155.0" />
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <HBox prefHeight="50.0" prefWidth="172.0">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@5253047-middle-removebg-preview%20(1).png" />
+
                            </image>
                            <HBox.margin>
                               <Insets left="10.0" top="15.0" />
