@@ -13,12 +13,18 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.Service;
 import services.GestionService;
+import services.SendEmail;
 
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class ServiceFX implements Initializable {
@@ -114,8 +120,11 @@ public class ServiceFX implements Initializable {
 
                   }
                   else {
+
                       gs.ajouter(service);
                       System.out.println("Service added successfully");
+                      //sending email for the admin
+                      SendEmail.sendEmail("wassefammar17@gmail.com","A new service is waiting for approval","A new service titled "+service.getTitreService()+" posted By "+gs.getUserById(service.getIdUtilisateur()));
                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
                       Parent root = loader.load();
                       IdDescription.getScene().setRoot(root);

@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -8,10 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -30,7 +28,8 @@ import java.util.function.Predicate;
 public class Services implements Initializable {
 
 
-
+    public ScrollPane idScrollPane;
+    public VBox idVbox;
     GestionService gs = new GestionService();
     public TextField idSearchField;
 
@@ -46,9 +45,12 @@ public class Services implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Service> list = new ArrayList<>();
-        int columns=3, row=0;
+        Pagination pagination = new Pagination();
+        //int columns =3, row = 0;
         try {
             list = gs.Afficher();
+            pagination.setPageCount((int) Math.ceil((double) list.size() /3));
+
             List<String> categories= gs.ListeCategories();
             idCategories.getItems().get(0).addEventHandler(
                     ActionEvent.ACTION, e->{
@@ -81,7 +83,7 @@ public class Services implements Initializable {
                 });
 
             }
-            for (int i=0; i<list.size(); i++){
+            /*for (int i=0; i<list.size(); i++){
                 FXMLLoader fxmlLoader= new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
                 VBox box= fxmlLoader.load();
@@ -94,10 +96,56 @@ public class Services implements Initializable {
                 }
                 serviceGrid.add(box, ++columns, row);
 
-            }
+            }*/
+
+            List<Service> finalList = list;
+            pagination.setPageFactory(pageIndex -> {
+                final int[] columns = {3};
+                final int[] row = { 0 };
+                int startIndex = pageIndex * 3;
+                int endIndex = Math.min(startIndex + 3, finalList.size());
+
+                GridPane services = new GridPane();
+                services.setHgap(30);
+                services.setVgap(10);
+
+
+                for (int i = startIndex; i < endIndex; i++) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
+                    VBox box = null;
+                    try {
+                        box = fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    SingleService singleService = fxmlLoader.getController();
+                    try {
+                        singleService.setData(finalList.get(i));
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    VBox finalBox1 = box;
+                    Platform.runLater(() -> { // Run UI updates on the JavaFX thread
+                        if(columns[0] == 3)
+                        {
+                            columns[0] = 0;
+                            row[0]++;
+                        }
+                        services.add(finalBox1, ++columns[0], row[0]);
+
+                    });
+                }
+
+                return services; // Pagination control doesn't need a Node for the page
+            });
+             //serviceGrid.getChildren().add(pagination);
+             idScrollPane.setContent(pagination);
+
+
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -122,7 +170,7 @@ public class Services implements Initializable {
     }
 
     public void filtreByCategory(String category){
-        int columns=3, row=0;
+        Pagination pagination = new Pagination();
         if(!idCategories.getText().equals(category)){
             serviceGrid.getChildren().clear();
             idCategories.setText(category);
@@ -130,7 +178,7 @@ public class Services implements Initializable {
             try {
                 if(!category.equals("All")){
                     list = gs.rechercherParCategory(gs.getCategoryByName(category));
-                    }
+                }
                 else {
                     list = gs.Afficher();
                 }
@@ -147,7 +195,8 @@ public class Services implements Initializable {
                     list = list.stream().filter(s->s.isChoixEchange()==0).toList();
 
                 }
-                for (int i=0; i<list.size(); i++){
+                pagination.setPageCount((int) Math.ceil((double) list.size() /3));
+/*                for (int i=0; i<list.size(); i++){
                     FXMLLoader fxmlLoader= new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
                     VBox box= fxmlLoader.load();
@@ -160,11 +209,53 @@ public class Services implements Initializable {
                     }
                     serviceGrid.add(box, ++columns, row);
 
-                }
+                }*/
+                List<Service> finalList = list;
+                pagination.setPageFactory(pageIndex -> {
+                    final int[] columns = {3};
+                    final int[] row = { 0 };
+                    int startIndex = pageIndex * 3;
+                    int endIndex = Math.min(startIndex + 3, finalList.size());
+
+                    GridPane services = new GridPane();
+                    services.setHgap(30);
+                    services.setVgap(10);
+
+
+                    for (int i = startIndex; i < endIndex; i++) {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
+                        VBox box = null;
+                        try {
+                            box = fxmlLoader.load();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        SingleService singleService = fxmlLoader.getController();
+                        try {
+                            singleService.setData(finalList.get(i));
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        VBox finalBox1 = box;
+                        Platform.runLater(() -> { // Run UI updates on the JavaFX thread
+                            if(columns[0] == 3)
+                            {
+                                columns[0] = 0;
+                                row[0]++;
+                            }
+                            services.add(finalBox1, ++columns[0], row[0]);
+
+                        });
+                    }
+
+                    return services; // Pagination control doesn't need a Node for the page
+                });
+                //serviceGrid.getChildren().add(pagination);
+                idScrollPane.setContent(pagination);
 
             } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -173,7 +264,7 @@ public class Services implements Initializable {
     }
 
     public void filterByExchangeChoice(String exchange){
-        int columns=3, row=0;
+        Pagination pagination = new Pagination();
         if(!idExchange.getText().equals(exchange)){
             serviceGrid.getChildren().clear();
             idExchange.setText(exchange);
@@ -197,7 +288,9 @@ public class Services implements Initializable {
                     }).toList();
 
                 }
-                for (int i=0; i<list.size(); i++){
+                pagination.setPageCount((int) Math.ceil((double) list.size() /3));
+
+                /*for (int i=0; i<list.size(); i++){
                     FXMLLoader fxmlLoader= new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
                     VBox box= fxmlLoader.load();
@@ -210,10 +303,52 @@ public class Services implements Initializable {
                     }
                     serviceGrid.add(box, ++columns, row);
 
-                }
+                }*/
+                List<Service> finalList = list;
+                pagination.setPageFactory(pageIndex -> {
+                    final int[] columns = {3};
+                    final int[] row = { 0 };
+                    int startIndex = pageIndex * 3;
+                    int endIndex = Math.min(startIndex + 3, finalList.size());
+
+                    GridPane services = new GridPane();
+                    services.setHgap(30);
+                    services.setVgap(10);
+
+
+                    for (int i = startIndex; i < endIndex; i++) {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
+                        VBox box = null;
+                        try {
+                            box = fxmlLoader.load();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        SingleService singleService = fxmlLoader.getController();
+                        try {
+                            singleService.setData(finalList.get(i));
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        VBox finalBox1 = box;
+                        Platform.runLater(() -> { // Run UI updates on the JavaFX thread
+                            if(columns[0] == 3)
+                            {
+                                columns[0] = 0;
+                                row[0]++;
+                            }
+                            services.add(finalBox1, ++columns[0], row[0]);
+
+                        });
+                    }
+
+                    return services; // Pagination control doesn't need a Node for the page
+                });
+                //serviceGrid.getChildren().add(pagination);
+                idScrollPane.setContent(pagination);
             } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -224,12 +359,13 @@ public class Services implements Initializable {
     private void searchFilter() throws SQLException {
         List<Service> list = gs.Afficher();
 
+        Pagination pagination = new Pagination();
 
         ObservableList<Service> observableList = FXCollections.observableList(list);
         FilteredList<Service> filteredList= new FilteredList<>(observableList, e->true);
         idSearchField.setOnKeyReleased(e->{
 
-            int columns=3, row=0;
+            pagination.setPageCount((int) Math.ceil((double) list.size() /3));
             idSearchField.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredList.setPredicate((Predicate<? super Service >) cust->{
                     if(newValue==null){
@@ -252,7 +388,7 @@ public class Services implements Initializable {
             System.out.println(filtered);
             serviceGrid.getChildren().clear();
 
-            for (int i=0; i<filtered.size(); i++){
+           /* for (int i=0; i<filtered.size(); i++){
                 System.out.println("n5dm");
                 FXMLLoader fxmlLoader= new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
@@ -275,7 +411,52 @@ public class Services implements Initializable {
 
 
 
-            }
+            }*/
+            List<Service> finalList = filtered;
+            pagination.setPageFactory(pageIndex -> {
+                final int[] columns = {3};
+                final int[] row = { 0 };
+                int startIndex = pageIndex * 3;
+                int endIndex = Math.min(startIndex + 3, finalList.size());
+
+                GridPane services = new GridPane();
+                services.setHgap(30);
+                services.setVgap(10);
+
+
+                for (int i = startIndex; i < endIndex; i++) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/SingleService.fxml"));
+                    VBox box = null;
+                    try {
+                        box = fxmlLoader.load();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                    SingleService singleService = fxmlLoader.getController();
+                    try {
+                        singleService.setData(finalList.get(i));
+                    } catch (SQLException exx) {
+                        throw new RuntimeException(exx);
+                    }
+
+                    VBox finalBox1 = box;
+                    Platform.runLater(() -> { // Run UI updates on the JavaFX thread
+                        if(columns[0] == 3)
+                        {
+                            columns[0] = 0;
+                            row[0]++;
+                        }
+                        services.add(finalBox1, ++columns[0], row[0]);
+
+                    });
+                }
+
+                return services; // Pagination control doesn't need a Node for the page
+            });
+            //serviceGrid.getChildren().add(pagination);
+            idScrollPane.setContent(pagination);
 
             //ok let's check it
         });
