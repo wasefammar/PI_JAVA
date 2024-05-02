@@ -26,16 +26,17 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PanierController implements Initializable {
+public class PanierController{
 
     public Label total;
+    public Label idShipping;
     G_ligneCommande glc = new G_ligneCommande();
     public Button back;
     public Button payerb;
     public Label somme;
     public VBox idlignec;
 
-    public void setFields() {
+    public void setFields(String currency) {
         try {
             Label empty = new Label();
             empty.setText("No items found !!");
@@ -46,17 +47,34 @@ public class PanierController implements Initializable {
             idlignec.getChildren().add(empty);
             List<Produit> produits = glc.ListeProduits();
             if (!produits.isEmpty()) {
+                double total1 = 0;
 
                 idlignec.getChildren().remove(empty);
                 double sum = produits.stream().mapToDouble(p -> p.getPrix()).sum();
-                somme.setText(sum + " " + MainFX.CURRENCY);
-                total.setText(sum + 10 + " " + MainFX.CURRENCY);
+                if(currency.equals("DT") || currency.equals("currency")){
+                    sum = sum ;
+                    total1 = sum + 10;
+
+                }else if (currency.equals("Dollar $")){
+                    sum = sum *0.32;
+                    total1 = sum + 10*0.32;
+                    idShipping.setText(10*0.32+" Dollar $");
+
+
+                }else if (currency.equals("Euro €")){
+                    sum = sum *0.3;
+                    total1 = sum + 10*0.3;
+                    idShipping.setText(10*0.3+" Euro €");
+
+                }
+                somme.setText(String.format("%.2f",sum) + " " + currency);
+                total.setText(String.format("%.2f",total1)+ " " + currency);
                 for (int i = 0; i < produits.size(); i++) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("/Lcitem.fxml"));
                     HBox box = fxmlLoader.load();
                     LcItemController lcItemController = fxmlLoader.getController();
-                    lcItemController.setData(produits.get(i));
+                    lcItemController.setData(produits.get(i), currency);
                     idlignec.getChildren().add(box);
                 }
             }
@@ -72,10 +90,7 @@ public class PanierController implements Initializable {
     public void payer(ActionEvent actionEvent) {
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        setFields();
-    }
+
 
     public void continueshopping(ActionEvent actionEvent) {
         try {
@@ -101,7 +116,14 @@ public class PanierController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Payment.fxml"));
                 Parent root = loader.load();
                 Payment payment= loader.getController();
-                payment.setFields(total.getText());
+                String currency = somme.getText().split("\\s+")[1];
+                if(currency.equals("DT")){
+                    payment.setFields(total.getText(), currency);
+                }else if (currency.equals("Dollar")){
+                    payment.setFields(total.getText(), currency+" $");
+                } else if (currency.equals("Euro")) {
+                    payment.setFields(total.getText(), currency+" €");
+                }
                 total.getScene().setRoot(root);
             }
 

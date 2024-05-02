@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="809.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DarkDev.controllers.Payment">
    <children>
       <VBox alignment="CENTER" layoutY="-1.0" prefHeight="809.0" prefWidth="1315.0" styleClass="free-My-card" stylesheets="@style/style.css">
@@ -35,7 +34,7 @@
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="total" alignment="CENTER" layoutX="691.0" layoutY="325.0" prefHeight="21.0" prefWidth="136.0" text="Label">
+                  <Label fx:id="total" alignment="CENTER" layoutX="609.0" layoutY="325.0" prefHeight="30.0" prefWidth="301.0" text="Label">
                      <font>
                         <Font name="Cambria Bold" size="24.0" />
                      </font>
@@ -50,7 +49,13 @@
                         <Image url="@style/405016714_420402227003283_7339055550875056215_n.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="1150.0" layoutY="708.0" mnemonicParsing="false" onAction="#backtoproductlist" stylesheets="@style/stylebutton.css" text="Back to Product List" textFill="WHITE">
+                  <Button layoutX="14.0" layoutY="708.0" mnemonicParsing="false" onAction="#backtoproductlist" stylesheets="@style/stylebutton.css" text="Back to Product List" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="hover-button" />
+                        <String fx:value="hover-button:hover" />
+                     </styleClass>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="1165.0" layoutY="708.0" mnemonicParsing="false" onAction="#imprimerPDFButtonClicked" prefHeight="31.0" prefWidth="136.0" stylesheets="@style/stylebutton.css" text="PDF" textAlignment="CENTER" textFill="WHITE">
                      <styleClass>
                         <String fx:value="hover-button" />
                         <String fx:value="hover-button:hover" />

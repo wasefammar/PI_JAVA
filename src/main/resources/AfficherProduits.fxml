@@ -320,6 +320,17 @@
                                     <String fx:value="hover-button:hover" />
                                  </styleClass>
                               </MenuButton>
+                              <MenuButton fx:id="idcurrency" contentDisplay="CENTER" layoutX="557.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" stylesheets="@style/stylebutton.css" text="currency">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="DT" />
+                                    <MenuItem mnemonicParsing="false" text="Dollar $" />
+                                    <MenuItem mnemonicParsing="false" text="Euro €" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </MenuButton>
                            </children>
                            <HBox.margin>
                               <Insets />

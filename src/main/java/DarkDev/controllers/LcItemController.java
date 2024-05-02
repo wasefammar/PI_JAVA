@@ -54,9 +54,15 @@ public class LcItemController {
 
     }
 
-    public void setData(Produit produit){
+    public void setData(Produit produit, String currency){
         titrelc.setText(produit.getTitreProduit());
-        pricelc.setText(produit.getPrix()+" "+ MainFX.CURRENCY);
+        if(currency.equals("DT")){
+            pricelc.setText( produit.getPrix()+" "+currency );
+        } else if (currency.equals("Euro €")) {
+            pricelc.setText( String.format("%.2f",produit.getPrix()*0.3)+" "+"€" );
+        }else if (currency.equals("Dollar $")){
+            pricelc.setText( String.format("%.2f",produit.getPrix()*0.32)+" "+"$" );
+        }
         idProduitID.setText(""+produit.getId());
         File imageFile= new File(produit.getPhoto());
         imagelc.setImage(new Image(imageFile.toURI().toString()));

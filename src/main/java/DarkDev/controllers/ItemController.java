@@ -31,11 +31,18 @@ public class ItemController {
         myListener.onClickListener(produit);
     }
 
-    public void setData(Produit produit, MyListener myListener) {
+    public void setData(Produit produit, MyListener myListener, String currency) {
         this.produit = produit;
         this.myListener = myListener;
         namepr.setText(produit.getTitreProduit());
-        pricepr.setText( produit.getPrix()+" "+MainFX.CURRENCY );
+        if(currency.equals("DT")){
+            pricepr.setText( produit.getPrix()+" "+currency );
+        } else if (currency.equals("Euro €")) {
+            pricepr.setText( String.format("%.2f",produit.getPrix()*0.3)+" "+"€" );
+        }else if (currency.equals("Dollar $")){
+            pricepr.setText( String.format("%.2f",produit.getPrix()*0.32)+" "+"$" );
+        }
+
         File imageFile= new File(produit.getPhoto());
         imagepr.setImage(new Image(imageFile.toURI().toString()));
 

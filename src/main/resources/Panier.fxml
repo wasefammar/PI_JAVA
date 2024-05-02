@@ -97,7 +97,7 @@
                               <Insets left="120.0" />
                            </HBox.margin>
                            <children>
-                              <Label layoutX="74.0" layoutY="27.0" text="10 DT">
+                              <Label fx:id="idShipping" layoutX="74.0" layoutY="27.0" text="10 DT">
                                  <font>
                                     <Font name="Corbel Light" size="24.0" />
                                  </font>

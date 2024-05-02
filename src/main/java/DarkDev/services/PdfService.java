@@ -1,7 +1,14 @@
+/*
+
+
 package DarkDev.services;
 
 
-/*import com.itextpdf.io.image.ImageData;
+import DarkDev.controllers.LcItemController;
+import DarkDev.controllers.PanierController;
+import DarkDev.models.Produit;
+import DarkDev.test.MainFX;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.PageSize;
@@ -16,12 +23,19 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfDocument;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.sun.scenario.effect.ImageData;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+
+
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 
 
 import java.io.FileNotFoundException;
@@ -32,17 +46,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PdfService {
+public class ServicePDF {
 
 
-    public static void generateCommandePDF(String path, Livraison livraison) throws FileNotFoundException, MalformedURLException {
+
+
+    public static void generateCommandePDF(String path, PanierController livraison) throws FileNotFoundException, MalformedURLException, SQLException {
         PdfWriter pdfWriter = new PdfWriter(path);
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
-        pdfDocument.setPageSize(PageSize.A4);
-        Document document = new Document(pdfDocument.getPageSize());
+        pdfDocument.setDefaultPageSize(PageSize.A4);
+        Document document = new Document(pdfDocument);
 
-        String imagePath = "src/main/resources/com/example/demo3/images/output-onlinepngtools.png";
-        ImageData imagedata = ImageDataFactory.
+        String imagePath = "src/main/resources/style/405016714_420402227003283_7339055550875056215_n";
+        ImageData imagedata = ImageDataFactory.create(imagePath);
         Image image = new Image(imagedata);
 
         float x = pdfDocument.getDefaultPageSize().getWidth()/2;
@@ -59,11 +75,9 @@ public class PdfService {
         Paragraph onesp = new Paragraph("\n");
         float twoColumnWidth1[] = {twocol, twocol};
 
-//        String name = livraison.getNom();
-        String address = livraison.getAdresseLiv();
-        String description = livraison.getDescription();
-        String dateLiv = String.valueOf(livraison.getDateLiv());
 
+
+        String address = String.valueOf(livraison.total);
 
 
         Table table = new Table(twocolumnWidth);
@@ -131,8 +145,8 @@ public class PdfService {
         Table twoColTable2 = new Table(twoColumnWidth1);
         twoColTable2.setBackgroundColor(Color.GRAY, 0.25f);
 
-        twoColTable2.addCell(new Cell().add(description).setFontColor(Color.BLACK).setBorder(Border.NO_BORDER));
-        twoColTable2.addCell(new Cell().add(dateLiv).setFontColor(Color.BLACK).setTextAlignment(TextAlignment.CENTER).setBorder(Border.NO_BORDER));
+        //twoColTable2.addCell(new Cell().add(description).setFontColor(Color.BLACK).setBorder(Border.NO_BORDER));
+        //twoColTable2.addCell(new Cell().add(dateLiv).setFontColor(Color.BLACK).setTextAlignment(TextAlignment.CENTER).setBorder(Border.NO_BORDER));
 
         document.add(twoColTable2.setMarginBottom(20f));
         document.add(tableDivider2);
@@ -177,5 +191,6 @@ public class PdfService {
         return isBold ?myCell.setBold():myCell;
 
     }
+}
 
-}*/
+*/

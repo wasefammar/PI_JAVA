@@ -8,6 +8,10 @@
       </list>
     </option>
   </component>
+  <component name="PWA">
+    <option name="enabled" value="true" />
+    <option name="wasEnabledAtLeastOnce" value="true" />
+  </component>
   <component name="ProjectResources">
     <resource url="http://javafx.com/fxml/1" location="$PROJECT_DIR$" />
     <resource url="http://javafx.com/javafx/21" location="$PROJECT_DIR$" />
