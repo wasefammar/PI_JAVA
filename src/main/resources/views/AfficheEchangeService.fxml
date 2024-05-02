@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AfficheEchangeService">
+    <children>
+        <TableView fx:id="exchangeTableView" layoutX="23.0" layoutY="55.0" prefHeight="290.0" prefWidth="554.0">
+            <columns>
+                <TableColumn fx:id="serviceIn" prefWidth="200.0" text="Service In" />
+                <TableColumn fx:id="serviceOut" prefWidth="200.0" text="Service Out" />
+                <TableColumn fx:id="dateEchange" prefWidth="160.0" text="Date Echange" />
+                <TableColumn fx:id="valide" prefWidth="80.0" text="Valide" />
+            </columns>
+        </TableView>d
+        <Button fx:id="idDeleteExchange" layoutX="525.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteExchange" text="Delete" />
+        <Button fx:id="idAddExchange" layoutX="512.0" layoutY="14.0" mnemonicParsing="false" onAction="#addExchange" text="Add Exchange" />
+        <Button fx:id="idUpdateExchange" layoutX="445.0" layoutY="360.0" mnemonicParsing="false" onAction="#updateExchange" text="Update" />
+    </children>
+</AnchorPane>

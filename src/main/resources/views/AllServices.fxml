@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AllServices">
+   <children>
+      <TableView fx:id="servicesTable" layoutX="23.0" layoutY="55.0" prefHeight="290.0" prefWidth="554.0">
+        <columns>
+          <TableColumn fx:id="Id" prefWidth="75.0" text="id" />
+            <TableColumn fx:id="photo" prefWidth="75.0" text="photo" />
+          <TableColumn fx:id="title" prefWidth="75.0" text="titre service" />
+            <TableColumn fx:id="description" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="ville" prefWidth="75.0" text="ville" />
+            <TableColumn fx:id="exchange" prefWidth="75.0" text="Exchange" />
+        </columns>
+      </TableView>
+      <Button fx:id="idDeleteService" layoutX="525.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteService" text="Delete" />
+      <Button fx:id="idAddService" layoutX="512.0" layoutY="14.0" mnemonicParsing="false" onAction="#addService" text="Add Service" />
+      <Button fx:id="idUpdateService" layoutX="445.0" layoutY="360.0" mnemonicParsing="false" onAction="#updateService" text="Update" />
+      <Button fx:id="idShowComments" layoutX="322.0" layoutY="360.0" mnemonicParsing="false" onAction="#showComments" text="Show comments" />
+   </children>
+</AnchorPane>

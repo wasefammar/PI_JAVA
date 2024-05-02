@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1290.0" style="-fx-background-color: #F4F4FC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ShowService">
+    <left>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="175.0" spacing="10.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+            <children>
+                <HBox fx:id="idRertour" alignment="CENTER_LEFT" onMouseClicked="#retour" prefHeight="55.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #F4F4FC; -fx-background-radius: 50 0 0 50;">
+                    <children>
+                        <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/icons8-services-80.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Services" textFill="#5a5a5a">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/icons8-cart-50.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Products" textFill="#5a5a5a">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/icons8-event-24.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Events" textFill="#5a5a5a">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="7.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/icons8-complaint-50.png" />
+                            </image></ImageView>
+                        <Label text="Complaints" textFill="#5a5a5a">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/126467.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Logout" textFill="#5a5a5a">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <VBox prefHeight="750.0" prefWidth="1115.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="1115.0" spacing="20.0" style="-fx-background-color: #F4F4FC;">
+                    <children>
+                        <HBox fx:id="idBACK" alignment="CENTER_LEFT" onMouseClicked="#back1" prefHeight="54.0" prefWidth="107.0">
+                            <children>
+                                <Button mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);">
+                                    <graphic>
+                                        <ImageView fx:id="idBack" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/63d9a0f0ca26a6a3da699c91132aa03d.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="254.0" style="-fx-background-color: #fff; bord: C2C2C2;">
+                            <children>
+                                <TextField prefHeight="26.0" prefWidth="228.0" promptText="Search" style="-fx-background-color: 7;" />
+                                <Button mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/images.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="54.0" prefWidth="406.0" />
+                        <Button mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);">
+                            <graphic>
+                                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/notification-19.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <HBox alignment="CENTER_RIGHT">
+                            <children>
+                                <Button mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);">
+                                    <graphic>
+                                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/3135715.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Label text="Wassef Ammar">
+                                    <font>
+                                        <Font name="Calibri Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="675.0" prefWidth="1094.0" spacing="20.0">
+                    <children>
+                        <VBox prefHeight="675.0" prefWidth="581.0" spacing="20.0">
+                            <padding>
+                                <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
+                            </padding>
+                            <children>
+                                <ImageView fx:id="idImage" fitHeight="211.0" fitWidth="341.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/52921962_l-990x558.jpg" />
+                                    </image>
+                                    <VBox.margin>
+                                        <Insets left="77.0" />
+                                    </VBox.margin>
+                                </ImageView>
+                                <Label fx:id="idServiceId" visible="false" />
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <ImageView fitHeight="42.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/3135715.png" />
+                                            </image>
+                                        </ImageView>
+                                        <HBox prefHeight="42.0" prefWidth="32.0" />
+                                        <Label fx:id="idServiceUsername" prefHeight="28.0" prefWidth="188.0" text="Wassef Ammar">
+                                            <font>
+                                                <Font name="Calibri" size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <ImageView fitHeight="34.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/icons8-location-50.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label fx:id="idCity" prefHeight="28.0" prefWidth="188.0" text="City">
+                                            <font>
+                                                <Font name="Calibri" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label prefHeight="42.0" prefWidth="70.0" text="Title :">
+                                            <font>
+                                                <Font name="Calibri Bold" size="28.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox prefHeight="42.0" prefWidth="38.0" />
+                                        <Label fx:id="idTitle" prefHeight="28.0" prefWidth="395.0" text="Wassef Ammar">
+                                            <font>
+                                                <Font name="Calibri" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label prefHeight="42.0" prefWidth="122.0" text="Category :">
+                                            <font>
+                                                <Font name="Calibri Bold" size="28.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox prefHeight="42.0" prefWidth="38.0" />
+                                        <Label fx:id="idCategory" prefHeight="28.0" prefWidth="326.0" text="Wassef Ammar">
+                                            <font>
+                                                <Font name="Calibri" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <VBox prefHeight="73.0" prefWidth="511.0">
+                                    <children>
+                                        <Label prefHeight="42.0" prefWidth="155.0" text="Description :">
+                                            <font>
+                                                <Font name="Calibri Bold" size="28.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Text fx:id="idDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="Desc" wrappingWidth="507.1998748779297">
+                                            <font>
+                                                <Font name="Calibri" size="20.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </VBox>
+                                <HBox alignment="CENTER" prefHeight="69.0" prefWidth="511.0" spacing="20.0">
+                                    <children>
+                                        <Button fx:id="idUpdate" mnemonicParsing="false" onAction="#updateService" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #3b5d50; -fx-border-radius: 50; -fx-background-radius: 50; -fx-cursor: pointer;" text="Update" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <HBox prefHeight="35.0" prefWidth="202.0" />
+                                        <Button fx:id="idDelete" mnemonicParsing="false" onAction="#deleteService" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: red; -fx-border-radius: 50; -fx-background-radius: 50; -fx-cursor: pointer;" text="Delete" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="511.0">
+                                    <children>
+                                        <Button fx:id="idExchange" mnemonicParsing="false" onAction="#exchangeService" prefHeight="50.0" prefWidth="202.0" style="-fx-background-color: #008CBA; -fx-border-radius: 50; -fx-background-radius: 50; -fx-cursor: pointer;" text="Exchange" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="675.0" prefWidth="512.0" spacing="10.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                            <children>
+                                <ScrollPane prefHeight="388.0" prefWidth="452.0">
+                                    <content>
+                                        <VBox fx:id="idListComment" alignment="TOP_CENTER" prefHeight="384.0" prefWidth="450.0" spacing="10.0">
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </ScrollPane>
+                                <HBox alignment="CENTER">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                    <children>
+                                        <Label prefHeight="28.0" prefWidth="315.0" text="Feel free to add your comment">
+                                            <font>
+                                                <Font name="Calibri Bold" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER">
+                                    <VBox.margin>
+                                        <Insets left="70.0" right="70.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <TextArea fx:id="idCommentDescription" prefHeight="116.0" prefWidth="311.0" style="-fx-border-radius: 20; -fx-background-color: #F4F4FC; -fx-background-radius: 20;" wrapText="true" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="idRequiredDescription" text="This field is required" textFill="RED" visible="false">
+                                    <font>
+                                        <Font name="Calibri Bold" size="14.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets left="70.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <HBox alignment="CENTER">
+                                    <children>
+                                        <Button fx:id="idSubmitComment" mnemonicParsing="false" onAction="#addComment" prefHeight="46.0" prefWidth="100.0" style="-fx-background-color: #3b5d50; -fx-border-radius: 20; -fx-background-radius: 20; -fx-cursor: pointer;" text="Submit" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </center>
+</BorderPane>

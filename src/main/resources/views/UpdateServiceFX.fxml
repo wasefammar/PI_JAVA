@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.UpdateService">
+    <children>
+        <TextField fx:id="idTitre" layoutX="199.0" layoutY="48.0" />
+        <TextField fx:id="IdPhoto" layoutX="202.0" layoutY="169.0" />
+        <TextArea fx:id="IdDescription" layoutX="199.0" layoutY="91.0" prefHeight="56.0" prefWidth="150.0" />
+        <Label layoutX="61.0" layoutY="52.0" text="Titre service" />
+        <Label layoutX="62.0" layoutY="119.0" text="Description" />
+        <Label layoutX="61.0" layoutY="173.0" text="Photo" />
+        <Label layoutX="61.0" layoutY="225.0" text="Category" />
+        <Label layoutX="60.0" layoutY="265.0" text="Exchange" />
+        <CheckBox fx:id="IdExchange" layoutX="201.0" layoutY="265.0" mnemonicParsing="false" text="CheckBox" />
+        <TextField fx:id="IdAddress" layoutX="202.0" layoutY="295.0" />
+        <Label layoutX="64.0" layoutY="299.0" text="address" />
+        <Text layoutX="201.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update a service">
+            <font>
+                <Font name="System Bold" size="25.0" />
+            </font>
+        </Text>
+        <Button fx:id="IdUpdate" layoutX="247.0" layoutY="354.0" mnemonicParsing="false" onAction="#updateService" text="Confirm" textAlignment="CENTER" textFill="#47965c" />
+        <ComboBox fx:id="idCategory" layoutX="200.0" layoutY="221.0" prefWidth="150.0" />
+        <Button fx:id="idBack" layoutX="25.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <TextField fx:id="idID" layoutX="203.0" layoutY="295.0" visible="false" />
+      <Text fx:id="idRequiredTitle" fill="#dc1f1f" layoutX="203.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this field is required" visible="false" wrappingWidth="121.60001220703134">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Text fx:id="idRequiredDesc" fill="#dc1f1f" layoutX="203.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this field is required" visible="false" wrappingWidth="121.60001220703134">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Text fx:id="idRequiredPhoto" fill="#dc1f1f" layoutX="203.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this field is required" visible="false" wrappingWidth="121.60001220703134">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Text fx:id="idRequiredCategory" fill="#dc1f1f" layoutX="203.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this field is required" visible="false" wrappingWidth="121.60001220703134">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Text fx:id="idRequiredAddress" fill="#dc1f1f" layoutX="203.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this field is required" visible="false" wrappingWidth="121.60001220703134">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>
