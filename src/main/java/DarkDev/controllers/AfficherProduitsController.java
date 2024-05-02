@@ -1278,6 +1278,162 @@ public class AfficherProduitsController implements Initializable {
     }
 
 
+    public void changeCurrency(String currency) {
+
+        try {
+            produits=gp.recuperer();
+            if (idCategories.getText().equals("All")|| idCategories.getText().equals("FilterByCategory")){
+                idCategories.setText("All");
+            }
+            if(!idCategories.getText().equals("All") && !idCategories.getText().equals("FilterByCategory"))
+            {
+                produits = produits.stream().filter(e-> {
+                    try {
+                        return e.getIdCategorie()==gp.getCategoryByName(String.valueOf(idCategories.getText()));
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }).toList();
+
+
+            }
+            if (idFilterByState1.getText().equals("All")|| idFilterByState1.getText().equals("FilterByState")){
+                idFilterByState1.setText("All");
+            }
+
+            if (idFilterByState1.getText().equals("New")){
+                idFilterByState1.setText("New");
+                produits= produits.stream().filter(produit1 -> produit1.getEtat().equals("New")).toList();
+            }
+            if (idFilterByState1.getText().equals("Hardly_Used")){
+                idFilterByState1.setText("Hardly_Used");
+
+                produits= produits.stream().filter(produit1 -> produit1.getEtat().equals("Hardly_Used")).toList();
+            }
+            if (idFilterByState1.getText().equals("Used")){
+                idFilterByState1.setText("Used");
+                produits= produits.stream().filter(produit1 -> produit1.getEtat().equals("Used")).toList();
+            }
+            if (idFilterByPrice.getText().equals("All")|| idFilterByPrice.getText().equals("FilterByPrice")){
+                idFilterByPrice.setText("All");
+            }
+
+            if (idFilterByPrice.getText().equals("All")){
+                idFilterByPrice.setText("All");
+            }
+            if ((idFilterByPrice.getText().equals("0-100 DT"))){
+                idFilterByPrice.setText("0-100 DT");
+                produits= produits.stream().filter(produit1 -> produit1.getPrix()>0 && produit1.getPrix()<= 100).toList();
+            }
+            if ((idFilterByPrice.getText().equals("100-200 DT"))){
+                idFilterByPrice.setText("All");idFilterByPrice.setText("100-200 DT");
+                produits= produits.stream().filter(produit1 -> produit1.getPrix()>100 && produit1.getPrix()<= 200).toList();
+            }
+            if ((idFilterByPrice.getText().equals("200-300 DT"))){
+                idFilterByPrice.setText("200-300 DT");
+                produits= produits.stream().filter(produit1 -> produit1.getPrix()>200 && produit1.getPrix()<= 300).toList();
+            }
+            if ((idFilterByPrice.getText().equals("300-400 DT"))){
+                idFilterByPrice.setText("300-400 DT");
+                produits= produits.stream().filter(produit1 -> produit1.getPrix()>300 && produit1.getPrix()<= 400).toList();
+            }
+            if ((idFilterByPrice.getText().equals(">400 DT"))){
+                idFilterByPrice.setText(">400 DT");
+                produits= produits.stream().filter(produit1 -> produit1.getPrix()>400).toList();
+            }
+
+            if(idOrderByPrice.equals("All")){
+                idOrderByPrice.setText("All");
+            }
+            if( idOrderByPrice.equals("ASC")){
+                idOrderByPrice.setText("ASC");
+                produits= produits.stream().sorted((p1,p2)-> (int) (p1.getPrix()-p2.getPrix())).toList();
+
+            }
+            if( idOrderByPrice.equals("DESC")){
+                idOrderByPrice.setText("DESC");
+                produits= produits.stream().sorted((p1,p2)-> (int) (p1.getPrix()-p2.getPrix())).toList().reversed();
+
+            }
+
+            if(idFilterByExchange.getText().equals("Both") || idFilterByExchange.getText().equals("FilterByExchange")){
+                idFilterByExchange.setText("Both");
+            }
+            if(idFilterByExchange.getText().equals("Exchangeable")){
+                idFilterByExchange.setText("Exchangeable");
+                produits= produits.stream().filter(e->e.getChoixEchange()==1).toList();
+
+            }
+            if(idFilterByExchange.getText().equals("Non exchangeable")){
+                idFilterByExchange.setText("Non exchangeable");
+                produits= produits.stream().filter(e->e.getChoixEchange()==0).toList();
+
+            }
+
+
+            if(currency.equals("DT")){
+                idcurrency.setText("DT");
+            }
+            if(currency.equals("Dollar $")){
+                idcurrency.setText("Dollar $");
+            }
+            if(currency.equals("Euro €")){
+                idcurrency.setText("Euro €");
+            }
+
+
+
+
+
+
+            if (!produits.isEmpty()) {
+                setChosenFruit(produits.get(0));
+                myListener = this::setChosenFruit;
+            }else {
+
+                setChosenFruit(null);
+            }
+            int column=3, row=0;
+            grid.getChildren().clear();
+
+            for (int i = 0; i < produits.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/ItemController.fxml"));
+                AnchorPane anchorPane = null;
+                try {
+                    anchorPane = fxmlLoader.load();
+                    //                VBox box = fxmlLoader.load();
+
+                    ItemController itemController = fxmlLoader.getController();
+                    itemController.setData(produits.get(i), myListener, idcurrency.getText());
+
+                    if (column == 3) {
+                        column = 0;
+                        row++;
+                    }
+
+                    grid.add(anchorPane, ++column, row); //(child,column,row)
+                    //set grid width
+                    grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                    //set grid height
+                    grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    grid.setMaxHeight(Region.USE_PREF_SIZE);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 
 }
