@@ -4,6 +4,7 @@ import Esprit.models.Personne;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -28,7 +29,7 @@ public class NewPassword {
     private Button confirmBT;
 
     @FXML
-    private TextField PasswdTX;
+    private PasswordField PasswdTX;
 
 
     private final ServicePersonne serviceUtilisateur = new ServicePersonne();
@@ -112,5 +113,12 @@ public class NewPassword {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
+
+
+
+
+
 
 }

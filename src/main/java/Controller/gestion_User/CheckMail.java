@@ -32,26 +32,29 @@ public class CheckMail {
 
     @FXML
     void ForgotPWD(ActionEvent event) throws IOException {
-        String email = mailTF.getText();
-        // Vérifie si l'adresse e-mail existe dans la base de données
-        if (ServiceUtilisateur.emailExists(email)) {
-            // Génère un nombre aléatoire à 8 chiffres
-            int randomnumber = generateRandomNumber(6);
-            // Envoie l'e-mail de confirmation
-            EmailSender emailSender = new EmailSender();
 
-            emailSender.sendEmail(email, "Code De confirmation", "WElcom to SwapNshare,\n Merci D'Ecrire Ce Code Pour Confirmer  : " + randomnumber + ".");
-            // Charge l'interface pour saisir le code
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VerifCodeInterface.fxml"));
-            Parent root = loader.load();
-            VerifCode putCodeController = loader.getController();
-            putCodeController.initCode(randomnumber, email);
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-        } else {
-            showAlert(Alert.AlertType.ERROR, "Error", "Email address not found.");
-        }
+
+            String email = mailTF.getText();
+            // Vérifie si l'adresse e-mail existe dans la base de données
+            if (ServiceUtilisateur.emailExists(email)) {
+                // Génère un nombre aléatoire à 8 chiffres
+                int randomnumber = generateRandomNumber(6);
+                // Envoie l'e-mail de confirmation
+                EmailSender emailSender = new EmailSender();
+
+                emailSender.sendEmail(email, "Code De confirmation", "WElcom to SwapNshare,\n Merci D'Ecrire Ce Code Pour Confirmer  : " + randomnumber + ".");
+                // Charge l'interface pour saisir le code
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/VerifCodeInterface.fxml"));
+                Parent root = loader.load();
+                VerifCode putCodeController = loader.getController();
+                putCodeController.initCode(randomnumber, email);
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Error", "Email address not found.");
+            }
+
     }
 
     private int generateRandomNumber(int maxDigits) {
