@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import models.Service;
 import services.GestionService;
+import services.SendSMS;
 
 import java.io.IOException;
 import java.net.URL;
@@ -161,9 +162,10 @@ public class Services implements Initializable {
 
     public void addService(ActionEvent event) {
         try {
+            SendSMS.sendSMS();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddService.fxml"));
             Parent root = loader.load();
-            serviceGrid.getScene().setRoot(root);
+            idScrollPane.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -286,6 +288,8 @@ public class Services implements Initializable {
                             throw new RuntimeException(e);
                         }
                     }).toList();
+
+
 
                 }
                 pagination.setPageCount((int) Math.ceil((double) list.size() /3));

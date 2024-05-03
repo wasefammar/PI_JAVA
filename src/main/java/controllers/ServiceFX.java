@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import models.Service;
 import services.GestionService;
 import services.SendEmail;
+import services.SendSMS;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -124,7 +125,7 @@ public class ServiceFX implements Initializable {
                       gs.ajouter(service);
                       System.out.println("Service added successfully");
                       //sending email for the admin
-                      SendEmail.sendEmail("wassefammar17@gmail.com","A new service is waiting for approval","A new service titled "+service.getTitreService()+" posted By "+gs.getUserById(service.getIdUtilisateur()));
+                      //SendEmail.sendEmail("wassefammar17@gmail.com","A new service is waiting for approval","A new service titled "+service.getTitreService()+" posted By "+gs.getUserById(service.getIdUtilisateur()));
                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
                       Parent root = loader.load();
                       IdDescription.getScene().setRoot(root);
