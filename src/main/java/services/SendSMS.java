@@ -7,8 +7,7 @@ import com.twilio.type.PhoneNumber;
 public class SendSMS {
 
     public  static  void sendSMS(){
-        final String ACCOUNT_SID = "AC57b6c9c2d70f8a78ef646b91f01cb073";
-        final String AUTH_TOKEN = "179c06aa778f05a6b0752a9c57829d91";
+
 
         // Sender's phone number (a Twilio phone number)
         final String fromNumber = "+16125644425";
