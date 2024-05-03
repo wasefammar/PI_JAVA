@@ -28,6 +28,9 @@ import java.time.LocalDate;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import org.mindrot.jbcrypt.BCrypt;
+
+
 
 
 
@@ -140,9 +143,10 @@ public class UserAddController  {
 
 
 
+
     public static String doHashing(String password) {
         try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(password.getBytes());
             byte[] resultByteArray = messageDigest.digest();
             StringBuilder sb = new StringBuilder();
@@ -155,6 +159,8 @@ public class UserAddController  {
         }
         return "";
     }
+
+
 
 
 

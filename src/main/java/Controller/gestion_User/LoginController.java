@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginController {
 
@@ -219,7 +220,7 @@ public class LoginController {
 
     public static String doHashing(String password) {
         try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(password.getBytes());
             byte[] resultByteArray = messageDigest.digest();
             StringBuilder sb = new StringBuilder();
