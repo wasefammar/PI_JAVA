@@ -2,11 +2,19 @@ package services;
 
 import Controller.gestion_User.SessionTempo;
 import Esprit.models.Personne;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import utils.MyDatabase;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class ServicePersonne implements IService<Personne,SessionTempo> {
 
@@ -291,6 +299,33 @@ public class ServicePersonne implements IService<Personne,SessionTempo> {
 
 
 
+    public static ByteArrayInputStream exportConventionExcel(List<Personne> personnes) {
+        try (Workbook workbook = new XSSFWorkbook();
+             ByteArrayOutputStream out = new ByteArrayOutputStream();) {
+            Sheet sheet = workbook.createSheet("Conventions");
+
+            // Création des titres des colonnes
+            Row headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("Nom");
+            headerRow.createCell(1).setCellValue("Prénom");
+            headerRow.createCell(2).setCellValue("Reduction");
+
+
+            // Remplissage des données des conventions
+            int rowNum = 1; // Commencer à partir de la deuxième ligne après les titres
+            for (Personne personne : personnes) {
+                Row row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(personne.getNom());
+                row.createCell(1).setCellValue(personne.getPrenom());
+            }
+
+            workbook.write(out);
+            return new ByteArrayInputStream(out.toByteArray());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
 

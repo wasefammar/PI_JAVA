@@ -21,7 +21,7 @@ public class Main  extends Application {
         stage.setScene(scene);
         stage.show();*/
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DashUser.fxml"));
 
         Parent root = loader.load();
         Scene scene = new Scene(root);

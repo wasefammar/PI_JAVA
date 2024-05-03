@@ -30,10 +30,10 @@
             </ImageView>
          </children>
       </HBox>
-      <AnchorPane layoutX="76.0" layoutY="129.0" prefHeight="229.0" prefWidth="364.0" style="-fx-background-color: FAEBEF;">
+      <AnchorPane layoutX="66.0" layoutY="122.0" prefHeight="229.0" prefWidth="364.0" style="-fx-background-color: FAEBEF;">
          <children>
-            <TextField fx:id="mailTF" layoutX="42.0" layoutY="84.0" prefHeight="44.0" prefWidth="249.0" promptText="PLease Entre your Email" style="-fx-border-color: #3b5d50;" />
-            <Button fx:id="resetBT" layoutX="107.0" layoutY="151.0" mnemonicParsing="false" onAction="#ForgotPWD" prefHeight="35.0" prefWidth="137.0" text="Envoyer le code " />
+            <TextField fx:id="mailTF" layoutX="53.0" layoutY="80.0" prefHeight="49.0" prefWidth="259.0" promptText="PLease Entre your Email" style="-fx-border-color: #3b5d50;" />
+            <Button fx:id="resetBT" layoutX="122.0" layoutY="149.0" mnemonicParsing="false" onAction="#ForgotPWD" prefHeight="35.0" prefWidth="127.0" text="Envoyer le code " />
             <Label layoutX="23.0" layoutY="31.0" prefHeight="35.0" prefWidth="211.0" text="Please Entre Your mail: ">
                <font>
                   <Font name="System Bold" size="18.0" />
