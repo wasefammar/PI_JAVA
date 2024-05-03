@@ -129,7 +129,7 @@ public void initialize(URL url, ResourceBundle rb) {
                         Reclamation service = new Reclamation(5,titre_r,descriptionService, "pending", urgence ,currentDate);
                         rs.ajouter_Reclamation(service);
                         System.out.println("Complaint added successfully");
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherReclamation.fxml"));
                         Parent root = loader.load();
                         description_id.getScene().setRoot(root);
                     }

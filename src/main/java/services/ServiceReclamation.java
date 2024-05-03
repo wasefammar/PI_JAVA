@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ServiceReclamation implements IReclamation<Reclamation> {
@@ -158,6 +160,28 @@ public class ServiceReclamation implements IReclamation<Reclamation> {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+    }
+
+    public Map<String, Long> getUrgenceDistribution() {
+        Map<String, Long> urgenceDistribution = new HashMap<>();
+        String query = "SELECT urgence, COUNT(*) as count FROM reclamation GROUP BY urgence";
+
+        try {
+            Statement statement = cnx.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String gender = resultSet.getString("urgence");
+                long count = resultSet.getLong("count");
+                urgenceDistribution.put(gender, count);
+            }
+
+            System.out.println("Urgence distribution retrieved!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return urgenceDistribution;
     }
 
 

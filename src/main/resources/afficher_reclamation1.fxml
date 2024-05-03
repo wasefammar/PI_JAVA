@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -22,7 +23,8 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="683.0" spacing="20.0">
                <children>
-                  <MenuButton fx:id="idUrgency" mnemonicParsing="false" text="Filter By Urgency">
+                  <Button fx:id="stat" mnemonicParsing="false" onAction="#stat" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #3b5d50; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Statistics" textFill="WHITE" />
+                  <MenuButton fx:id="idUrgency" mnemonicParsing="false" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #3b5d50; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Filter By Urgency" textFill="WHITE">
                      <items>
                         <MenuItem mnemonicParsing="false" text="All" />
                         <MenuItem mnemonicParsing="false" text="High" />
@@ -31,7 +33,7 @@
                         <MenuItem mnemonicParsing="false" text="Low" />
                      </items>
                   </MenuButton>
-                  <MenuButton fx:id="idStatus" mnemonicParsing="false" text="Filter By Status" />
+                  <MenuButton fx:id="idStatus" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" style="-fx-background-color: #3b5d50; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Filter By Status" textFill="WHITE" />
                </children>
             </HBox>
          </children>

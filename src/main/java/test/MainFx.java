@@ -20,12 +20,13 @@ public class MainFx extends Application{
         // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherFront.fxml"));
 
        //Parent root = FXMLLoader.load(getClass().getResource("/afficherReclamation.fxml"));
-          Parent root = FXMLLoader.load(getClass().getResource("/afficher_reclamation1.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/ajouter_reclamation.fxml"));
+          //Parent root = FXMLLoader.load(getClass().getResource("/afficher_reclamation1.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/StatReclamation.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("/dash_admin.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/CSS/style.css").toExternalForm());
         primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 

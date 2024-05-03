@@ -3,9 +3,12 @@ package controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import models.Personne;
 import models.Reclamation;
 import services.ServicePersonne;
@@ -219,5 +222,24 @@ public class AfficherREC_ADMIN implements Initializable {
             System.out.println("javafx.version: " + System.getProperty("javafx.version"));
 
         }
+    }
+
+    public void stat(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/statReclamation.fxml"));
+            Parent root = loader.load();
+            // Access the controller of the new interface
+            StatReclamation statistique = loader.getController();
+            // Pass any necessary data to the new interface
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            // Close the current window
+            idStatus.getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception as needed
+        }
+
     }
 }
