@@ -1,6 +1,7 @@
 package controllers;
 
 import com.sun.javafx.scene.SpotLightHelper;
+import iservices.SendWhatsappMsg;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -126,8 +127,10 @@ public void initialize(URL url, ResourceBundle rb) {
                     }else {
                         String titre_r = reason_combo.getValue();
                         String urgence = urgency_combo.getValue();
+
                         Reclamation service = new Reclamation(5,titre_r,descriptionService, "pending", urgence ,currentDate);
                         rs.ajouter_Reclamation(service);
+                        SendWhatsappMsg.sendWhatsappMsg(rs.getUserById(5));
                         System.out.println("Complaint added successfully");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherReclamation.fxml"));
                         Parent root = loader.load();

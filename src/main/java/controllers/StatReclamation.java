@@ -15,7 +15,6 @@ public class StatReclamation {
 
     @FXML
     private PieChart piechart;
-    ServiceReponse sr= new ServiceReponse();
     ServiceReclamation serviceReclamation = new ServiceReclamation();
 
 

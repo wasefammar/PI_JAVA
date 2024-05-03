@@ -233,6 +233,7 @@ public class AfficherREC_ADMIN implements Initializable {
             StatReclamation statistique = loader.getController();
             // Pass any necessary data to the new interface
             Stage stage = new Stage();
+
             stage.setScene(new Scene(root));
             stage.show();
             // Close the current window
