@@ -209,6 +209,28 @@ public class GestionService implements IService<Service>{
         return services;
     }
 
+    public List<Service> getServiceByUserId(int utilisateur_id) throws SQLException {
+        List<Service> services = new ArrayList<>();
+        String sql = "SELECT * FROM service WHERE utilisateur_id = ?";
+        PreparedStatement pst = cnx.prepareStatement(sql);
+        pst.setInt(1, utilisateur_id);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            Service service = new Service();
+            service.setId(rs.getInt("id"));
+            service.setIdCategorie(rs.getInt("categorie_id"));
+            service.setIdUtilisateur(rs.getInt("utilisateur_id"));
+            service.setTitreService(rs.getString("titre_service"));
+            service.setDescriptionService(rs.getString("description_service"));
+            service.setVille(rs.getString("ville"));
+            service.setPhoto(rs.getString("photo"));
+            service.setChoixEchange(rs.getInt("choix_echange"));
+            service.setValid(rs.getInt("valid"));
+            services.add(service);
+        }
+        return services;
+    }
+
     public Service getServiceById(int id) throws SQLException {
         String sql= "SELECT * FROM service WHERE id="+id;
         Statement st= cnx.createStatement();
@@ -237,6 +259,7 @@ public class GestionService implements IService<Service>{
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()){
             categories.add(rs.getString("nom_categorie"));
+
         }
         return categories;
     }

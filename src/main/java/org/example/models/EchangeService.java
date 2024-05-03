@@ -3,7 +3,6 @@ package org.example.models;
 import java.time.LocalDateTime;
 
 public class EchangeService {
-    private static int nextId = 1;
 
     private int id;
     private Service serviceIn;
@@ -11,8 +10,8 @@ public class EchangeService {
     private LocalDateTime dateEchange;
     private Boolean valide;
 
+
     public EchangeService(Service serviceIn, Service serviceOut, LocalDateTime dateEchange, Boolean valide) {
-        this.id = nextId++;
         this.serviceIn = serviceIn;
         this.serviceOut = serviceOut;
         this.dateEchange = dateEchange;

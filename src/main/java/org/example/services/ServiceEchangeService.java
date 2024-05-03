@@ -75,6 +75,8 @@ public class ServiceEchangeService {
         return null;
     }
 
+
+
     public void updateExchange(EchangeService exchange) throws SQLException {
         String sql = "UPDATE echange_service SET service_in = ?, service_out = ?, date_echange = ?, valide = ? WHERE id = ?";
         PreparedStatement ps = cnx.prepareStatement(sql);
@@ -105,6 +107,48 @@ public class ServiceEchangeService {
     private Service getService(int id) {
         // Implement service CRUD here
         return null;
+    }
+
+    public List<EchangeService> getExchangeByServicesIn(List<Service> services) throws SQLException {
+        List<EchangeService> echangeServices = new ArrayList<>();
+        for (Service service : services) {
+            String sql = "SELECT * FROM echange_service WHERE service_in_id = ?";
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setInt(1, service.getId());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int serviceInId = rs.getInt("service_in_id");
+                int serviceOutId = rs.getInt("service_out_id");
+                LocalDateTime dateEchange = rs.getTimestamp("date_echange").toLocalDateTime();
+                Boolean valide = rs.getBoolean("valide");
+                Service serviceIn = new GestionService().getServiceById(serviceInId);
+                Service serviceOut = new GestionService().getServiceById(serviceOutId);
+                EchangeService echangeService = new EchangeService(serviceIn, serviceOut, dateEchange, valide);
+                echangeServices.add(echangeService);
+            }
+        }
+        return echangeServices;
+    }
+    public List<EchangeService> getExchangeByServicesOut(List<Service> services) throws SQLException {
+        List<EchangeService> echangeServices = new ArrayList<>();
+        for (Service service : services) {
+            String sql = "SELECT * FROM echange_service WHERE service_out_id = ?";
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setInt(1, service.getId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int serviceInId = rs.getInt("service_in_id");
+                int serviceOutId = rs.getInt("service_out_id");
+                LocalDateTime dateEchange = rs.getTimestamp("date_echange").toLocalDateTime();
+                Boolean valide = rs.getBoolean("valide");
+                Service serviceIn = new GestionService().getServiceById(serviceInId);
+                Service serviceOut = new GestionService().getServiceById(serviceOutId);
+                EchangeService echangeService = new EchangeService(serviceIn, serviceOut, dateEchange, valide);
+                echangeServices.add(echangeService);
+            }
+        }
+        return echangeServices;
     }
 
 
