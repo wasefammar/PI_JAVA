@@ -21,21 +21,17 @@ import org.example.services.ServiceCategorie;
 import org.example.services.ServiceCommentaire;
 
 public class CategorieController {
-    @FXML
-    private TextField NomCat;
+    public Button AddBtn;
+    public TextField NomCat;
     @FXML
     private ChoiceBox<String> choicefx;
-    @FXML
-    private Button AddBtn;
-
-    public HBox idBACK;
-    GestionService gs= new GestionService();
-    ServiceCommentaire sc=new ServiceCommentaire();
-
-
-
 
     private ServiceCategorie serviceCategorie = new ServiceCategorie();
+
+
+    @FXML
+    void initialize() {
+    }
 
     @FXML
     public void AddCategorie(ActionEvent event) {
@@ -56,7 +52,7 @@ public class CategorieController {
     @FXML
     private void Retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CategorieFX.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CategorieFX.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -66,7 +62,4 @@ public class CategorieController {
             e.printStackTrace();
         }
     }
-
-
-
 }

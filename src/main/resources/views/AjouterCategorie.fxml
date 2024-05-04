@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane id="AnchorPane" prefHeight="697.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.CategorieController">
     <children>
         <ImageView fitHeight="698.0" fitWidth="1123.0" layoutX="-1.0" pickOnBounds="true" />
@@ -22,9 +19,17 @@
                 <Font name="Book Antiqua" size="36.0" />
             </font>
         </Text>
-        <TextField fx:id="NomCat" layoutX="604.0" layoutY="249.0" opacity="0.6" />
-        <ChoiceBox fx:id="choicefx" layoutX="604.0" layoutY="334.0" opacity="0.6" prefHeight="31.0" prefWidth="187.0" />
-        <Button fx:id="AddBtn" layoutX="484.0" layoutY="410.0" mnemonicParsing="false" onAction="#AddCategorie" onMouseClicked="#AddCategorie" prefHeight="31.0" prefWidth="148.0" styleClass="btn1" stylesheets="@../style/style.css" text="Add" />
+        <TextField fx:id="NomCat" layoutX="604.0" layoutY="249.0" opacity="0.6" prefHeight="31.0" prefWidth="187.0" />
+        <ChoiceBox fx:id="choicefx" layoutX="604.0" layoutY="334.0" opacity="0.6" prefHeight="31.0" prefWidth="187.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:id="service">Service</String>
+                    <String fx:id="product">Product</String>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+
+        <Button fx:id="AddBtn" layoutX="484.0" layoutY="410.0" mnemonicParsing="false" onAction="#AddCategorie" prefHeight="31.0" prefWidth="148.0" styleClass="btn1" stylesheets="@../style/style.css" text="Add" />
 
         <Text fill="#463f3f" layoutX="334.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category Name" wrappingWidth="270.125">
             <font>

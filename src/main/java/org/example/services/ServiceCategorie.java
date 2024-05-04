@@ -19,7 +19,7 @@ public class ServiceCategorie implements IService<Categorie>{
 
     @Override
     public void ajouter(Categorie categorie) throws SQLException {
-        String sql = "INSERT INTO Categorie (nomCategorie, type) VALUES (?, ?)";
+        String sql = "INSERT INTO Categorie (nom_categorie, type) VALUES (?, ?)";
         PreparedStatement ps = cnx.prepareStatement(sql);
         ps.setString(1, categorie.getNomCategorie());
         ps.setString(2, categorie.getType());
@@ -28,7 +28,7 @@ public class ServiceCategorie implements IService<Categorie>{
 
     @Override
     public void modifier(Categorie Categorie) throws SQLException {
-        String sql = "UPDATE Categorie set nomCategorie = ? , type = ? where id = ?";
+        String sql = "UPDATE Categorie set nom_categorie = ? , type = ? where id = ?";
         PreparedStatement ps = cnx.prepareStatement(sql);
         ps.setString(1,Categorie.getNomCategorie());
         ps.setString(2,Categorie.getType());
