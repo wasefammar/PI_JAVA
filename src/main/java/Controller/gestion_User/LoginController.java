@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import org.mindrot.jbcrypt.BCrypt;
+
 
 public class LoginController {
 

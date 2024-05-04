@@ -65,12 +65,12 @@ public class DashUser {
                                 setText(null);
                             } else {
                                 // Set the text of the cell to display only the desired fields
-                                setText("First Name: " + utilisateur.getNom() + "\n" +
-                                        "Last Name: " + utilisateur.getPrenom() + "\n" +
-                                        "AdressEmail:" + utilisateur.getAdresse() + "\n" +
-                                        "Adress:" + utilisateur.getAdresse() + "\n" +
-                                        "PhoneNumber:" + utilisateur.getTelephone() + "\n" +
-                                        "Role: " + utilisateur.getRole());
+                                setText("First Name: "+"\n" + utilisateur.getNom() + "\n" +
+                                        "Last Name: "+"\n" + utilisateur.getPrenom() + "\n" +
+                                        "AdressEmail:"+"\n" + utilisateur.getAdresse() + "\n" +
+                                        "Adress:"+"\n" + utilisateur.getAdresse() + "\n" +
+                                        "PhoneNumber:"+"\n" + utilisateur.getTelephone() + "\n" +
+                                        "Role: " +"\n" + utilisateur.getRole());
                             }
 
 

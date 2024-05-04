@@ -2,22 +2,38 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gestion_User.Home">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: fff;" stylesheets="@register.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.gestion_User.Home">
    <children>
-      <Label fx:id="mailU" layoutX="142.0" layoutY="153.0" text="Label" />
-      <Label fx:id="AdressU" layoutX="142.0" layoutY="192.0" text="Label" />
-      <Label fx:id="prenomU" layoutX="142.0" layoutY="122.0" text="Label" />
-      <Label fx:id="phoneU" layoutX="142.0" layoutY="232.0" text="Label" />
-      <Label fx:id="nomU" layoutX="142.0" layoutY="97.0" text="Label" />
-      <Label alignment="CENTER" layoutX="99.0" layoutY="37.0" prefHeight="17.0" prefWidth="200.0" text="Profile">
+      <Label alignment="CENTER" layoutX="114.0" layoutY="37.0" prefHeight="27.0" prefWidth="453.0" style="-fx-background-color: #3b5d50;" text="Profil" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="173.0" layoutY="287.0" mnemonicParsing="false" onAction="#EditProfil" text="Edit Profil" />
-      <Label fx:id="Idu" layoutX="255.0" layoutY="37.0" text="Label" />
+      <Button layoutX="447.0" layoutY="359.0" mnemonicParsing="false" onAction="#EditProfil" text="Edit Profil" />
+      <AnchorPane layoutX="114.0" layoutY="72.0" prefHeight="280.0" prefWidth="453.0" style="-fx-background-color: FAEBEF;">
+         <children>
+            <AnchorPane layoutX="29.0" layoutY="25.0" prefHeight="225.0" prefWidth="390.0" style="-fx-background-color: FAEBEF;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="nomU" layoutX="54.0" layoutY="35.0" text="Label" />
+                  <Label fx:id="prenomU" layoutX="54.0" layoutY="71.0" text="Label" />
+                  <Label fx:id="mailU" layoutX="170.0" layoutY="163.0" text="Label" />
+                  <Label fx:id="AdressU" layoutX="170.0" layoutY="79.0" text="Label" />
+                  <Label fx:id="phoneU" layoutX="170.0" layoutY="121.0" text="Label" />
+               </children>
+            </AnchorPane>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <ImageView fx:id="avatarImage" fitHeight="100" fitWidth="100" layoutX="14.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
