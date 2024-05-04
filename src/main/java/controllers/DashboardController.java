@@ -19,4 +19,25 @@ public class DashboardController {
         btn_rec.getScene().setRoot(anchorPane);
 
     }
+
+    public void users(ActionEvent actionEvent) {
+    }
+
+    public void service(ActionEvent actionEvent) {
+    }
+
+    public void product(ActionEvent actionEvent) {
+    }
+
+    public void transaction(ActionEvent actionEvent) {
+    }
+
+    public void events(ActionEvent actionEvent) {
+    }
+
+    public void complaints(ActionEvent actionEvent) {
+    }
+
+    public void logout(ActionEvent actionEvent) {
+    }
 }

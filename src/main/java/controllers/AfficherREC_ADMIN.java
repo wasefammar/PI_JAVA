@@ -2,7 +2,6 @@ package controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
@@ -16,12 +15,16 @@ import services.ServiceReclamation;
 
 
 import javafx.event.ActionEvent;
+//import tray.*;
+//import tray.animations.AnimationType;
+//import tray.notification.NotificationType;
+//import tray.notification.TrayNotification;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static java.awt.event.ActionEvent.*;
 
 public class AfficherREC_ADMIN implements Initializable {
 
@@ -227,6 +230,15 @@ public class AfficherREC_ADMIN implements Initializable {
     public void stat(ActionEvent actionEvent) {
 
         try {
+            String title = "Congratulations sir";
+            String message = "You've successfully created your first Tray Notification";
+
+            /*TrayNotification tray = new TrayNotification();
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.setAnimationType(AnimationType.SLIDE);
+            tray.showAndWait();*/
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/statReclamation.fxml"));
             Parent root = loader.load();
             // Access the controller of the new interface
@@ -242,5 +254,26 @@ public class AfficherREC_ADMIN implements Initializable {
             e.printStackTrace(); // Handle the exception as needed
         }
 
+    }
+
+    public void product(ActionEvent actionEvent) {
+    }
+
+    public void service(ActionEvent actionEvent) {
+    }
+
+    public void users(ActionEvent actionEvent) {
+    }
+
+    public void transaction(ActionEvent actionEvent) {
+    }
+
+    public void events(ActionEvent actionEvent) {
+    }
+
+    public void complaints(ActionEvent actionEvent) {
+    }
+
+    public void logout(ActionEvent actionEvent) {
     }
 }

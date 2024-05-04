@@ -7,15 +7,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import models.Personne;
 import models.Reclamation;
 import models.Reponse;
-import services.BadWordsFilter;
-import services.ServiceReclamation;
-import services.ServiceReponse;
+import services.*;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Response {
 
@@ -23,7 +23,7 @@ public class Response {
     String[] badWordsArray = {"5ra", "le", "non","fuck","putin","yezi","edara","esprit","asshole"};
 
     BadWordsFilter filter=new BadWordsFilter(badWordsArray);
-
+    //ServicePersonne pr = new ServicePersonne();
     ServiceReponse sr= new ServiceReponse();
     ServiceReclamation serviceReclamation = new ServiceReclamation();
     public Button btnSend;
@@ -69,6 +69,8 @@ public class Response {
                     Reponse response = new Reponse(reclamation.getId(), reclamation.getTitre_r(), descriptionService,currentDate);
 
                     sr.ajouter_Reponse(response);
+                    //List<Personne> personne = pr.listerPersonne();
+                    //SendMailrec.SendMailrec("ines.jendoubi@esprit.tn","Your response has been sent successfully","A new response to a   "+response.getTitre_r());
                     System.out.println("Complaint added successfully");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
                     Parent root = loader.load();
