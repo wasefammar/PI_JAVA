@@ -41,6 +41,30 @@ public class SessionUser {
 
 
 
+    public static void resetSession() {
+        if (instance != null) {
+            instance.setAdresseEmail("");
+            instance.setNom("");
+            instance.setPrenom("");
+            instance.setAdress("");
+            instance.setTelphone("");
+            instance.setId(0);
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static  SessionUser getUser (){return  instance;}
 
@@ -83,6 +107,15 @@ public class SessionUser {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        return "SessionUser{" +
+                "adresseEmail='" + adresseEmail + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", adress='" + adress + '\'' +
+                ", telphone='" + telphone + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

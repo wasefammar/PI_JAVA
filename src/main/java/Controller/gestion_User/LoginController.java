@@ -128,7 +128,7 @@ public class LoginController {
                         fxmlFile = "/Dashuser.fxml";
                         break;
 
-                    case "{\"roles\": \"User\"}":
+                    case "[\"ROLE_USER\"]":
                         fxmlFile = "/Home.fxml";
                         break;
                     default:

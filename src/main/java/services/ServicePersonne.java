@@ -37,7 +37,7 @@ public class ServicePersonne implements IService<Personne,SessionTempo> {
         PreparedStatement ps = cnx.prepareStatement(sql);
 
         ps.setString(1,  personne.getAdresseEmail());
-        String roleuser = "{\"roles\": \"User\"}";
+        String roleuser = "[\"ROLE_USER\"]";
         ps.setString(2, roleuser);
         ps.setString(3, personne.getPassword());
         ps.setString(4, personne.getNom());

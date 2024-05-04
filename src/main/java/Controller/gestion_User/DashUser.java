@@ -5,10 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import org.apache.commons.csv.CSVFormat;
@@ -24,8 +24,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import services.ServicePersonne;
 
-import java.awt.*;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
@@ -34,8 +32,12 @@ import java.util.Optional;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import java.io.File;
+import javafx.geometry.Orientation;
+import javafx.scene.shape.SVGPath;
+import javafx.geometry.Insets;
 
 public class DashUser {
+
 
 
     @FXML
@@ -46,6 +48,7 @@ public class DashUser {
 
     @FXML
     void initialize() {
+
         try {
             List<Personne> userList = serviceuser.recuperer();
 
@@ -57,6 +60,8 @@ public class DashUser {
                 public ListCell<Personne> call(ListView<Personne> personneListView) {
                     return new ListCell<>() {
 
+
+
                         @Override
                         protected void updateItem(Personne utilisateur, boolean empty) {
                             super.updateItem(utilisateur, empty);
@@ -65,12 +70,16 @@ public class DashUser {
                                 setText(null);
                             } else {
                                 // Set the text of the cell to display only the desired fields
-                                setText("First Name: "+"\n" + utilisateur.getNom() + "\n" +
-                                        "Last Name: "+"\n" + utilisateur.getPrenom() + "\n" +
-                                        "AdressEmail:"+"\n" + utilisateur.getAdresse() + "\n" +
-                                        "Adress:"+"\n" + utilisateur.getAdresse() + "\n" +
-                                        "PhoneNumber:"+"\n" + utilisateur.getTelephone() + "\n" +
-                                        "Role: " +"\n" + utilisateur.getRole());
+                               setText("First Name:                       "+ utilisateur.getNom() + "\n" +
+                                        "Last Name:                       " + utilisateur.getPrenom() + "\n" +
+                                        "AdressEmail:                     " + utilisateur.getEmail() + "\n" +
+                                        "Adress:                          "+ utilisateur.getAdresse() + "\n" +
+                                        "PhoneNumber:               " + utilisateur.getTelephone() + "\n" +
+                                        "Role:                            "  + utilisateur.getRole());
+
+
+
+
                             }
 
 
@@ -88,7 +97,17 @@ public class DashUser {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
+
+
+
     }
+
+
+
+
+
+
+
 
 
     @FXML

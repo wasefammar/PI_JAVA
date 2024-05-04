@@ -127,56 +127,12 @@ public class Home implements Initializable {
 
        SessionUser.getInstance(u.getEmail(), u.getNom(), u.getPrenom(), u.getAdresse(), u.getTelephone(), u.getId());
 
-       SessionUser user = SessionUser.getUser();
 
-       if (user != null) {
-           nomU.setText(user.getNom());
-           prenomU.setText(user.getPrenom());
-           phoneU.setText(user.getTelphone());
-           mailU.setText(user.getAdresseEmail());
-           AdressU.setText(user.getAdress());
-
-
-
-
-
-
-           /*
-           String email = user.getAdresseEmail().toLowerCase();
-           String hash = sha256Hex(email);
-           String gravatarURL = "https://gravatar.com/avatar/" + hash;
-           Image image = new Image(gravatarURL);
-           avatarImage.setImage(image);
-*/
-         /*
-           String prenom = user.getNom(); // Remplacez ceci par le prénom de l'utilisateur
-           String imageUrl = "https://ui-avatars.com/api/?name= "+ prenom;
-
-
-
-           // Chargement de l'image depuis l'URL
-           Image image = new Image(imageUrl);
-           avatarImage.setImage(image);
-
-
-
-
-
-           if (avatarImage != null) {
-               avatarImage.setImage(image);
-           } else {
-               System.out.println("Avatar Image View is null. Check if it's properly initialized in the FXML.");
-           }
-
-
-        */
-
-
-       } else {
-           System.out.println("No logged-in user found.");
-       }
-
-
+           nomU.setText(u.getNom());
+           prenomU.setText(u.getPrenom());
+           phoneU.setText(u.getTelephone());
+           mailU.setText(u.getEmail());
+           AdressU.setText(u.getAdresse());
 
 
 
@@ -201,6 +157,11 @@ public class Home implements Initializable {
     public void LogOut(ActionEvent actionEvent) {
         try {
 
+            SessionUser user = SessionUser.getUser();
+            System.out.println(user.toString());
+            SessionUser.resetSession();
+
+            System.out.println(user.toString());
 
             // Close the current stage (Home stage)
             Node source = (Node) actionEvent.getSource();

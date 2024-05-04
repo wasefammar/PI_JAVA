@@ -19,7 +19,7 @@
          </effect>
          <children>
             <TextField fx:id="codeTF" layoutX="93.0" layoutY="80.0" prefHeight="41.0" prefWidth="209.0" promptText="Entre your code" style="-fx-border-color: #3b5d50;" />
-            <Button fx:id="backBT" layoutX="71.0" layoutY="144.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="128.0" text="return" />
+            <Button layoutX="71.0" layoutY="144.0" mnemonicParsing="false" onAction="#backSignup" prefHeight="35.0" prefWidth="128.0" text="back" />
             <Button fx:id="confirmBT" layoutX="223.0" layoutY="144.0" mnemonicParsing="false" onAction="#confirmCode" prefHeight="35.0" text="Confim" />
             <Label layoutX="93.0" layoutY="36.0" prefHeight="29.0" prefWidth="180.0" text="Please Enter Your code:">
                <font>

@@ -141,4 +141,17 @@ public class Personne {
 
                 '}';
     }
+
+
+    public String getNomComplet() {
+        return nom + " " + prenom;
+    }
+
+
+
+
+
+
+
+
 }

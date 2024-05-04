@@ -125,5 +125,35 @@ public class VerifCode {
 
 
 
+    @FXML
+    void backSignup(ActionEvent event) throws IOException {
+        try {
+
+            Node source = (Node) event.getSource();
+            Stage currentStage = (Stage) source.getScene().getWindow();
+            currentStage.close();
+            // Load the Adduser.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/useradd.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage for the Adduser interface
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+
+
+            // Show the Adduser stage
+            stage.show();
+        } catch (IOException e) {
+            // Handle any potential IOException
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+
+
+
 
 }
