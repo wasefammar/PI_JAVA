@@ -8,8 +8,7 @@ public class Categorie {
         // Default constructor
     }
 
-    public Categorie(Integer id, String nomCategorie, String type) {
-        this.id = id;
+    public Categorie( String nomCategorie, String type) {
         this.nomCategorie = nomCategorie;
         this.type = type;
     }

@@ -5,15 +5,58 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.sql.SQLException;
+
+import org.example.models.Categorie;
+import org.example.services.GestionService;
+import org.example.services.ServiceCategorie;
+import org.example.services.ServiceCommentaire;
 
 public class CategorieController {
     @FXML
+    private TextField NomCat;
+    @FXML
+    private ChoiceBox<String> choicefx;
+    @FXML
+    private Button AddBtn;
+
+    public HBox idBACK;
+    GestionService gs= new GestionService();
+    ServiceCommentaire sc=new ServiceCommentaire();
+
+
+
+
+    private ServiceCategorie serviceCategorie = new ServiceCategorie();
+
+    @FXML
+    public void AddCategorie(ActionEvent event) {
+        String nomCategorie = NomCat.getText();
+        String type = choicefx.getValue();
+
+        if (nomCategorie != null && !nomCategorie.isEmpty() && type != null) {
+            Categorie categorie = new Categorie(nomCategorie, type);
+            try {
+                serviceCategorie.ajouter(categorie);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
     private void Retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CategorieFX.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -23,4 +66,7 @@ public class CategorieController {
             e.printStackTrace();
         }
     }
+
+
+
 }

@@ -1,4 +1,4 @@
-package org.example.services;
+/*package org.example.services;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -167,3 +167,4 @@ public class PdfService {
     }
 
 }
+*/

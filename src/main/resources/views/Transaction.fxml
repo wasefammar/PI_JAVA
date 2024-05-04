@@ -7,22 +7,22 @@
 
     <!-- EchangeProduit Section -->
     <VBox layoutX="20.0" layoutY="20.0" spacing="10.0">
-        <Label text="EchangeProduit Transactions" />
-        <TableView fx:id="echangeProduitTableView" prefWidth="760.0" prefHeight="250.0">
+        <Label text=" Transactions Receieved " />
+        <TableView fx:id="serviceOutTableView" prefWidth="760.0" prefHeight="250.0">
             <columns>
                 <TableColumn text="ID" prefWidth="50">
                     <cellValueFactory>
                         <PropertyValueFactory property="id" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Produit In" prefWidth="150">
+                <TableColumn fx:id="serviceInColumn2" text="serviceIn" prefWidth="150">
                     <cellValueFactory>
-                        <PropertyValueFactory property="produitIn" />
+                        <PropertyValueFactory property="serviceIn" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Produit Out" prefWidth="150">
+                <TableColumn fx:id="serviceOutColumn2" text="serviceOut" prefWidth="150">
                     <cellValueFactory>
-                        <PropertyValueFactory property="produitOut" />
+                        <PropertyValueFactory property="serviceOut" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn text="Date Echange" prefWidth="200">
@@ -43,20 +43,20 @@
 
     <!-- EchangeService Section -->
     <VBox layoutX="20.0" layoutY="300.0" spacing="10.0">
-        <Label text="EchangeService Transactions" />
-        <TableView fx:id="echangeServiceTableView" prefWidth="760.0" prefHeight="250.0">
+        <Label text=" Transactions Made" />
+        <TableView fx:id="serviceInTableView" prefWidth="760.0" prefHeight="250.0">
             <columns>
                 <TableColumn text="ID" prefWidth="50">
                     <cellValueFactory>
                         <PropertyValueFactory property="id" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Service In" prefWidth="150">
+                <TableColumn fx:id="serviceInColumn1" text="serviceIn" prefWidth="150">
                     <cellValueFactory>
                         <PropertyValueFactory property="serviceIn" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Service Out" prefWidth="150">
+                <TableColumn fx:id="serviceOutColumn1" text="serviceOut" prefWidth="150">
                     <cellValueFactory>
                         <PropertyValueFactory property="serviceOut" />
                     </cellValueFactory>

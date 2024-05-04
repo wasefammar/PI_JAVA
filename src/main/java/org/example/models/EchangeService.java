@@ -64,4 +64,8 @@ public class EchangeService {
                 ", valide=" + valide +
                 '}';
     }
+
+    public String getServiceName() {
+        return serviceIn.getTitreService();
+    }
 }
