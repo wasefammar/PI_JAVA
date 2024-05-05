@@ -29,21 +29,21 @@ public class DashboardController {
     }
 
     public void service(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader  = FXMLLoader.load(getClass().getResource("/afficher_reclamation1.fxml"));
-        AnchorPane anchorPane = loader.load();
-        users_btn.getScene().setRoot(anchorPane);
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/ServicesAdmin.fxml"));
+        Parent root = loader.load();
+        users_btn.getScene().setRoot(root);
     }
 
     public void product(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader  = FXMLLoader.load(getClass().getResource("/afficher_reclamation1.fxml"));
-        AnchorPane anchorPane = loader.load();
-        users_btn.getScene().setRoot(anchorPane);
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/ProduitsAdmin.fxml"));
+        Parent root = loader.load();
+        users_btn.getScene().setRoot(root);
     }
 
     public void transaction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader  = FXMLLoader.load(getClass().getResource("/afficher_reclamation1.fxml"));
-        AnchorPane anchorPane = loader.load();
-        users_btn.getScene().setRoot(anchorPane);
+        Parent root = loader.load();
+        users_btn.getScene().setRoot(root);
     }
 
     public void events(ActionEvent actionEvent) throws IOException {

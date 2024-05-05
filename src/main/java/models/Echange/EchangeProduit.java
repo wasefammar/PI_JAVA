@@ -3,14 +3,19 @@ import models.Produit.Produit;
 
 import java.time.LocalDateTime;
 public class EchangeProduit {
-    private static int nextId = 1;
     private int id;
     private Produit produitIn;
     private Produit produitOut;
     private LocalDateTime dateEchange;
     private Boolean valide;
     public EchangeProduit(Produit produitIn, Produit produitOut, LocalDateTime dateEchange, Boolean valide) {
-        this.id = nextId++;
+        this.produitIn = produitIn;
+        this.produitOut = produitOut;
+        this.dateEchange = dateEchange;
+        this.valide = valide;
+    }
+    public EchangeProduit(int id,Produit produitIn, Produit produitOut, LocalDateTime dateEchange, Boolean valide) {
+        this.id=id;
         this.produitIn = produitIn;
         this.produitOut = produitOut;
         this.dateEchange = dateEchange;
@@ -62,6 +67,9 @@ public class EchangeProduit {
                 ", dateEchange=" + dateEchange +
                 ", valide=" + valide +
                 '}';
+    }
+    public String getProduitName() {
+        return produitIn.getTitreProduit();
     }
 }
 

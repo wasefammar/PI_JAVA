@@ -1,8 +1,11 @@
 package services.EchangeServices;
 
 import models.Echange.EchangeProduit;
+import models.Echange.EchangeService;
 import models.Produit.Produit;
 
+import models.Services.Service;
+import services.GestionServices.GestionService;
 import services.ServicesProduit.GProduit;
 import utils.DatabaseConnexion;
 
@@ -98,12 +101,56 @@ public class ServiceEchangeProduit {
     }
 
     public void validateExchange(EchangeProduit exchange) throws SQLException {
-        String sql = "UPDATE echange_produit SET valide = true WHERE id = ?";
+        String sql = "UPDATE echange_produit SET valide = "+1+"  WHERE id = ?";
         try (PreparedStatement ps = cnx.prepareStatement(sql)) {
             ps.setInt(1, exchange.getId());
             ps.executeUpdate();
-            exchange.setValide(true); // Update the local instance as well
         }
+    }
+    public List<EchangeProduit> getExchangeByProduitsIn(List<Produit> produits) throws SQLException {
+        List<EchangeProduit> echangeProduits = new ArrayList<>();
+        for (Produit produit : produits) {
+            String sql = "SELECT * FROM echange_produit WHERE produit_in_id = ?";
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setInt(1, produit.getId());
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id= rs.getInt("id");
+                System.out.println(id);
+                int produitInId = rs.getInt("produit_in_id");
+                int produitOutId = rs.getInt("produit_out_id");
+                LocalDateTime dateEchange = rs.getTimestamp("date_echange").toLocalDateTime();
+                Boolean valide = rs.getBoolean("valide");
+                Produit produitIn = new GProduit().getProduitById(produitInId);
+                Produit produitOut = new GProduit().getProduitById(produitOutId);
+                EchangeProduit echangeProduit = new EchangeProduit(id, produitIn, produitOut, dateEchange, valide);
+                echangeProduits.add(echangeProduit);
+            }
+        }
+        return echangeProduits;
+    }
+    public List<EchangeProduit> getExchangeByProduitsOut(List<Produit> produits) throws SQLException {
+        List<EchangeProduit> echangeProduits = new ArrayList<>();
+        for (Produit produit : produits) {
+            String sql = "SELECT * FROM echange_produit WHERE produit_out_id = ?";
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setInt(1, produit.getId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id= rs.getInt("id");
+                int produitInId = rs.getInt("produit_in_id");
+                int produitOutId = rs.getInt("produit_out_id");
+                LocalDateTime dateEchange = rs.getTimestamp("date_echange").toLocalDateTime();
+                Boolean valide = rs.getBoolean("valide");
+                Produit produitIn = new GProduit().getProduitById(produitInId);
+                Produit produitOut = new GProduit().getProduitById(produitOutId);
+                EchangeProduit echangeProduit = new EchangeProduit(id, produitIn, produitOut, dateEchange, valide);
+                echangeProduits.add(echangeProduit);
+            }
+        }
+        return echangeProduits;
     }
 
 

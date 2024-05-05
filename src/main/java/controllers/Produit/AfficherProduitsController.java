@@ -1,6 +1,8 @@
 package controllers.Produit;
 
 
+import controllers.Echange.EchangeProduitController;
+import controllers.Echange.EchangeServiceController;
 import controllers.User.SessionTempo;
 import controllers.User.SessionUser;
 import javafx.collections.FXCollections;
@@ -1466,4 +1468,11 @@ public class AfficherProduitsController implements Initializable {
     }
 
 
+    public void exchange(ActionEvent actionEvent) throws SQLException, IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/EchangeProduit.fxml"));
+        Parent root = loader.load();
+        EchangeProduitController echangeServiceController = loader.getController();
+        echangeServiceController.setData(Integer.parseInt(idProduit.getText()));
+        idDelete.getScene().setRoot(root);
+    }
 }

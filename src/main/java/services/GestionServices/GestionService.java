@@ -81,7 +81,7 @@ public class GestionService implements IService<Service>{
     //l'affichage des services pour l'utilisateur
     public List<Service> Afficher() throws SQLException {
         List<Service> services = new ArrayList<>();
-        String sql= "SELECT * FROM service";
+        String sql= "SELECT * FROM service where valid="+1;
         Statement st= cnx.createStatement();
         ResultSet rs = st.executeQuery(sql);
 
@@ -350,6 +350,17 @@ public class GestionService implements IService<Service>{
             services.add(service);
         }
         return services;
+    }
+
+    public String getUserEmail(Service service) throws SQLException {
+        String sql = "SELECT * FROM utilisateur WHERE id=?";
+        PreparedStatement pst = cnx.prepareStatement(sql);
+        pst.setInt(1, service.getIdUtilisateur());
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()){
+            return rs.getString("email");
+        }
+        return  null;
     }
 
 

@@ -178,7 +178,7 @@
                               <String fx:value="hover-button;hover" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="idExchange" mnemonicParsing="false" prefHeight="16.0" prefWidth="235.0" style="-fx-background-color: #008CBA;" stylesheets="@style/style.css" text="Exchange Product" textFill="WHITE">
+                        <Button fx:id="idExchange" mnemonicParsing="false" onAction="#exchange" prefHeight="16.0" prefWidth="235.0" style="-fx-background-color: #008CBA;" stylesheets="@style/style.css" text="Exchange Product" textFill="WHITE">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="search-button" />

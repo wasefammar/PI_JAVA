@@ -122,7 +122,6 @@ public class ServiceFX implements Initializable {
                       System.out.println("Service added successfully");
                       //sending SMS to the admin
                       SendSMS.sendSMS();
-                      //SendEmail.sendEmail("wassefammar17@gmail.com","A new service is waiting for approval","A new service titled "+service.getTitreService()+" posted By "+gs.getUserById(service.getIdUtilisateur()));
                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
                       Parent root = loader.load();
                       IdDescription.getScene().setRoot(root);

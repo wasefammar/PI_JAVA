@@ -84,7 +84,6 @@ public class Transaction {
 
     public void validateTransaction(ActionEvent actionEvent) throws SQLException {
         EchangeService echangeService = serviceOutTableView.getSelectionModel().getSelectedItem();
-        System.out.println(echangeService.getServiceIn().getTitreService());
         serviceEchangeService.validateExchange(echangeService);
         serviceOutTableView.getItems().clear();
         populateServiceOutTable();
@@ -92,16 +91,16 @@ public class Transaction {
     }
 
     public void cancelTransaction(ActionEvent actionEvent) throws SQLException {
-        EchangeService echangeService = serviceOutTableView.getSelectionModel().getSelectedItem();
-        serviceEchangeService.deleteExchange(echangeService);
-        serviceOutTableView.getItems().clear();
-        populateServiceOutTable();
-    }
-
-    public void rejectTransaction(ActionEvent actionEvent) throws SQLException {
         EchangeService echangeService = serviceInTableView.getSelectionModel().getSelectedItem();
         serviceEchangeService.deleteExchange(echangeService);
         serviceInTableView.getItems().clear();
+        populateServiceInTable();
+    }
+
+    public void rejectTransaction(ActionEvent actionEvent) throws SQLException {
+        EchangeService echangeService = serviceOutTableView.getSelectionModel().getSelectedItem();
+        serviceEchangeService.deleteExchange(echangeService);
+        serviceOutTableView.getItems().clear();
         populateServiceOutTable();
     }
 }

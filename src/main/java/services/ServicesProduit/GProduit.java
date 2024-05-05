@@ -1,5 +1,7 @@
 package services.ServicesProduit;
 import models.Produit.Produit;
+import models.Services.Service;
+import models.User.Personne;
 import utils.DatabaseConnexion;
 
 
@@ -289,5 +291,80 @@ public class GProduit implements iProduit<Produit> {
             produits.add(produit);
         }
         return produits;
+    }
+
+    public List<Produit> getProduitByUserId(int utilisateur_id) throws SQLException {
+        List<Produit> produits = new ArrayList<>();
+        String sql = "SELECT * FROM produit WHERE utilisateur_id = ?";
+        PreparedStatement pst = cnx.prepareStatement(sql);
+        pst.setInt(1, utilisateur_id);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            Produit produit = new Produit();
+            produit.setId(rs.getInt("id"));
+            produit.setIdCategorie(rs.getInt("categorie_id"));
+            produit.setIdUtilisateur(rs.getInt("utilisateur_id"));
+            produit.setTitreProduit(rs.getString("titre_produit"));
+            produit.setDescriptionProduit(rs.getString("description_produit"));
+            produit.setVille(rs.getString("ville"));
+            produit.setPhoto(rs.getString("photo"));
+            produit.setChoixEchange(rs.getInt("choix_echange"));
+            produit.setEtat(rs.getString("etat"));
+            produit.setPrix(rs.getDouble("prix"));
+            produits.add(produit);
+        }
+        return produits;
+    }
+
+    public Personne getIdUtilisateurByEmail(String adresse_mail) throws SQLException {
+        Personne utilisateur = null;
+        PreparedStatement pstmt = null;
+        try {
+            String query = "SELECT * FROM utilisateur WHERE email = ?";
+            pstmt = cnx.prepareStatement(query);
+            pstmt.setString(1, adresse_mail);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                utilisateur = new Personne();
+                utilisateur.setId(rs.getInt("id"));
+                //utilisateur.setAdresse("email");
+                utilisateur.setEmail("email");
+                utilisateur.setNom("nom");
+                utilisateur.setPrenom("prenom");
+
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        } finally {
+            if (pstmt != null) {
+                pstmt.close();
+            }
+        }
+
+        return utilisateur;
+    }
+
+    public Produit getProduitByName(String nom) throws SQLException {
+        String sql= "SELECT * FROM produit where titre_produit LIKE '%"+nom+"%'";
+        Statement st= cnx.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        if(rs.next()){
+            Produit produit= new Produit();
+            produit.setId(rs.getInt("id"));
+            produit.setIdCategorie(rs.getInt("categorie_id"));
+            produit.setIdUtilisateur(rs.getInt("utilisateur_id"));
+            produit.setTitreProduit(rs.getString("titre_produit"));
+            produit.setDescriptionProduit(rs.getString("description_produit"));
+            produit.setVille(rs.getString("ville"));
+            produit.setPhoto(rs.getString("photo"));
+            produit.setChoixEchange(rs.getInt("choix_echange"));
+            produit.setEtat(rs.getString("etat"));
+            produit.setPrix(rs.getDouble("prix"));
+            return produit;
+        }
+
+        return  null;
     }
 }
