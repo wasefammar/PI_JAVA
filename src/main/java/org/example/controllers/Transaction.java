@@ -38,7 +38,8 @@ public class Transaction {
     // Populate the TableView with EchangeService records where ServiceIn belongs to the current user
     private void populateServiceInTable() throws SQLException {
         // Fetch EchangeService records where ServiceIn belongs to the current user
-        /*SessionUser user = SessionUser.getUser();
+        /*
+        SessionUser user = SessionUser.getUser();
         int sessionUserId = user.getId();
         GestionService userService = new GestionService();
         List<Service> services = userService.getServiceByUserId(sessionUserId);

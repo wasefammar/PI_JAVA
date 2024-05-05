@@ -23,8 +23,8 @@
         <ChoiceBox fx:id="choicefx" layoutX="604.0" layoutY="334.0" opacity="0.6" prefHeight="31.0" prefWidth="187.0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:id="service">Service</String>
-                    <String fx:id="product">Product</String>
+                    <String fx:id="service">service</String>
+                    <String fx:id="product">product</String>
                 </FXCollections>
             </items>
         </ChoiceBox>

@@ -50,20 +50,39 @@ public class ServiceCategorie implements IService<Categorie>{
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()){
             Categorie Categorie = new Categorie();
-            Categorie.setNomCategorie(rs.getString("nomCategorie"));
+            Categorie.setNomCategorie(rs.getString("nom_categorie"));
             Categorie.setType(rs.getString("type"));
             Categories.add(Categorie);
         }
         return Categories;
     }
 
-    public ArrayList<Categorie> sortBy(String nom_column, String Asc_Dsc) {
+    public ArrayList<Categorie> SortByName( String Asc_Dsc) {
         List<Categorie> ListeCategTriee = new ArrayList<>();
         try {
-            // Utilisez des requêtes préparées pour éviter les attaques SQL par injection
-            String req = "SELECT * FROM categorie ORDER BY ? " + Asc_Dsc;
+            String orderDirection = Asc_Dsc.equalsIgnoreCase("Asc") ? "ASC" : "DESC";
+            String req = "SELECT * FROM categorie ORDER BY nom_categorie " + orderDirection;
             PreparedStatement preparedStatement = cnx.prepareStatement(req);
-            preparedStatement.setString(1, nom_column);
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) {
+                Categorie c = new Categorie();
+                c.setId(res.getInt(1));
+                c.setNomCategorie(res.getString(2));
+                c.setType(res.getString(3));
+                ListeCategTriee.add(c);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return new ArrayList<>(ListeCategTriee);
+    }
+
+    public ArrayList<Categorie> SortByType( String Asc_Dsc) {
+        List<Categorie> ListeCategTriee = new ArrayList<>();
+        try {
+            String orderDirection = Asc_Dsc.equalsIgnoreCase("Asc") ? "ASC" : "DESC";
+            String req = "SELECT * FROM categorie ORDER BY type " + orderDirection;
+            PreparedStatement preparedStatement = cnx.prepareStatement(req);
             ResultSet res = preparedStatement.executeQuery();
             while (res.next()) {
                 Categorie c = new Categorie();

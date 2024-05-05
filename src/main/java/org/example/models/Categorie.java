@@ -38,11 +38,7 @@ public class Categorie {
     }
 
     public void setType(String type) {
-        if (type != null && (type.equals("service") || type.equals("product"))) {
             this.type = type;
-        } else {
-            throw new IllegalArgumentException("Invalid category type: " + type);
-        }
     }
 
     @Override

@@ -6,35 +6,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
-
 import org.example.models.Categorie;
-import org.example.services.GestionService;
 import org.example.services.ServiceCategorie;
-import org.example.services.ServiceCommentaire;
 
 public class CategorieController {
-    public Button AddBtn;
-    public TextField NomCat;
+    @FXML
+    private TextField NomCat;
     @FXML
     private ChoiceBox<String> choicefx;
-
     private ServiceCategorie serviceCategorie = new ServiceCategorie();
 
-
     @FXML
-    void initialize() {
+    public void initialize() {
+
     }
 
-    @FXML
-    public void AddCategorie(ActionEvent event) {
+    public void AddCategorie() {
         String nomCategorie = NomCat.getText();
         String type = choicefx.getValue();
 
@@ -44,7 +34,8 @@ public class CategorieController {
                 serviceCategorie.ajouter(categorie);
 
             } catch (SQLException e) {
-                e.printStackTrace();
+                // Replace with a more robust logging mechanism
+                System.out.println("An error occurred while adding a category: " + e.getMessage());
             }
         }
     }
@@ -59,7 +50,8 @@ public class CategorieController {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            // Replace with a more robust logging mechanism
+            System.out.println("An error occurred while loading the CategorieFX view: " + e.getMessage());
         }
     }
 }
