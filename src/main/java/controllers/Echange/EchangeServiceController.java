@@ -25,7 +25,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class EchangeServiceController implements Initializable {
+public class EchangeServiceController {
+    public Label idServiceIn;
+    public Label idTitreService;
     @FXML
     private TextField serviceInField;
     @FXML
@@ -36,25 +38,46 @@ public class EchangeServiceController implements Initializable {
     private Button saveButton;
     @FXML
     private Button cancelButton;
-    private ServiceEchangeService serviceEchangeService;
-    private GestionService serviceService;
+    private ServiceEchangeService serviceEchangeService=new ServiceEchangeService();;
+    private GestionService serviceService = new GestionService(); ;
     private List<Service> userServices;
 
-    @Override
+    public void setData(int idService) throws SQLException {
+        idServiceIn.setText(""+idService);
+        serviceInField.setText(serviceService.getServiceById(Integer.parseInt(idServiceIn.getText())).getTitreService());
+        try {
+              userServices = serviceService.getServiceByUserId(serviceService.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
+           // userServices = serviceService.getServiceByUserId(3);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        for (Service service: userServices) {
+
+            serviceOutComboBox.getItems().add(service.getTitreService());
+
+        }
+        // Populate the serviceInComboBox with the selected service from the Service page
+        //Service selectedService = (Service) getServiceFromServicePage(); // Implement this method
+        //serviceInField.setText(selectedService.getTitreService());
+    }
+
+/*    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         serviceEchangeService = new ServiceEchangeService();
         serviceService = new GestionService();
         try {
-            userServices = serviceService.getServiceByUserId(serviceService.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
+          //  userServices = serviceService.getServiceByUserId(serviceService.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
+            userServices = serviceService.getServiceByUserId(3);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         for (Service service: userServices) {
             MenuItem menuItem = new MenuItem(service.getTitreService());
-            serviceOutComboBox.getItems().add(menuItem);
-            MenuItem menuItem1 = idCategories.getItems().get(idCategories.getItems().size() - 1);
-            menuItem1.addEventHandler(ActionEvent.ACTION, e->{
-                filtreByCategory(cat);
+            serviceOutComboBox.getItems().add(menuItem.getText());
+            menuItem.addEventHandler(ActionEvent.ACTION, e->{
+               serviceOutComboBox.setPromptText(menuItem.getText());
             });
 
         }
@@ -62,18 +85,23 @@ public class EchangeServiceController implements Initializable {
         Service selectedService = (Service) getServiceFromServicePage(); // Implement this method
         serviceInField.setText(selectedService.getTitreService());
         // Populate the serviceOutComboBox with the user's own services
-        serviceOutComboBox.getItems().addAll(userServices);
-    }
+    }*/
 
     @FXML
-    private void handleSaveExchange() {
-        Service serviceIn = (Service) getServiceFromServicePage(); // Implement this method
-        Service serviceOut = serviceOutComboBox.getSelectionModel().getSelectedItem();
+    private void handleSaveExchange() throws SQLException {
+        Service serviceIn = serviceService.getServiceById(Integer.parseInt(idServiceIn.getText()));
+        System.out.println(idTitreService.getText());
+        Service serviceOut = serviceService.getServiceByName(serviceOutComboBox.getValue());
         LocalDateTime dateExchange = LocalDateTime.of(dateExchangePicker.getValue(), LocalDateTime.now().toLocalTime());
         try {
-            EchangeService exchange = serviceEchangeService.createExchange(serviceIn, serviceOut, dateExchange, true);
+
+            EchangeService exchange = serviceEchangeService.createExchange(serviceIn, serviceOut, dateExchange, false);
             // Display a success message or navigate to a different view
             System.out.println("Exchange created successfully!");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Transaction.fxml"));
+            Parent root = loader.load();
+            idServiceIn.getScene().setRoot(root);
+
         } catch (SQLException e) {
             System.err.println("Error creating exchange: " + e.getMessage());
         } catch (Exception e) {
@@ -91,7 +119,7 @@ public class EchangeServiceController implements Initializable {
     @FXML
     private void Retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowService.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

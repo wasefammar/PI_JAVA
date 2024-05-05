@@ -135,11 +135,16 @@
                     <children>
                         <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="300.0">
                             <children>
-                                <Label text="Service In" textFill="#212b35">
-                                    <font>
-                                        <Font name="Calibri" size="18.0" />
-                                    </font>
-                                </Label>
+                        <HBox spacing="20.0">
+                           <children>
+                                      <Label text="Service In" textFill="#212b35">
+                                          <font>
+                                              <Font name="Calibri" size="18.0" />
+                                          </font>
+                                      </Label>
+                              <Label fx:id="idServiceIn" text="Label" visible="false" />
+                           </children>
+                        </HBox>
                                 <TextField fx:id="serviceInField" editable="false" prefWidth="250.0" promptText="Service In" style="-fx-background-color: WHITE;">
                                     <VBox.margin>
                                         <Insets top="2.0" />
@@ -149,11 +154,16 @@
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="300.0">
                             <children>
-                                <Label text="Service Out" textFill="#212b35">
-                                    <font>
-                                        <Font name="Calibri" size="18.0" />
-                                    </font>
-                                </Label>
+                        <HBox>
+                           <children>
+                                      <Label text="Service Out" textFill="#212b35">
+                                          <font>
+                                              <Font name="Calibri" size="18.0" />
+                                          </font>
+                                      </Label>
+                              <Label fx:id="idTitreService" text="Label" visible="false" />
+                           </children>
+                        </HBox>
                                 <ComboBox fx:id="serviceOutComboBox" prefWidth="250.0" promptText="Select Service" style="-fx-background-color: WHITE;">
                                     <VBox.margin>
                                         <Insets top="2.0" />

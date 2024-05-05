@@ -20,6 +20,14 @@ public class EchangeService {
         this.valide = valide;
     }
 
+    public EchangeService(int id, Service serviceIn, Service serviceOut, LocalDateTime dateEchange, Boolean valide) {
+        this.id=id;
+        this.serviceIn = serviceIn;
+        this.serviceOut = serviceOut;
+        this.dateEchange = dateEchange;
+        this.valide = valide;
+    }
+
     public int getId() {
         return id;
     }

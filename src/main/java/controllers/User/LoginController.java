@@ -129,7 +129,7 @@ public class LoginController {
                         fxmlFile = "/dash_admin.fxml";
                         break;
 
-                    case "[\"ROLE_USER\"]":
+                    case "{\"roles\": \"User\"}":
                         fxmlFile = "/Services.fxml";
                         break;
                     default:

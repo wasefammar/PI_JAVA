@@ -97,12 +97,10 @@ public class ServiceEchangeService {
     }
 
     public void validateExchange(EchangeService exchange) throws SQLException {
-        String sql = "UPDATE echange_service SET valide = true WHERE id = ?";
-        try (PreparedStatement ps = cnx.prepareStatement(sql)) {
-            ps.setInt(1, exchange.getId());
-            ps.executeUpdate();
-            exchange.setValide(true); // Update the local instance as well
-        }
+        String sql = "UPDATE echange_service SET valide="+1+" WHERE id=?";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setInt(1, exchange.getId());
+        ps.executeUpdate();
     }
 
     private Service getService(int id) {
@@ -119,13 +117,15 @@ public class ServiceEchangeService {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                int id= rs.getInt("id");
+                System.out.println(id);
                 int serviceInId = rs.getInt("service_in_id");
                 int serviceOutId = rs.getInt("service_out_id");
                 LocalDateTime dateEchange = rs.getTimestamp("date_echange").toLocalDateTime();
                 Boolean valide = rs.getBoolean("valide");
                 Service serviceIn = new GestionService().getServiceById(serviceInId);
                 Service serviceOut = new GestionService().getServiceById(serviceOutId);
-                EchangeService echangeService = new EchangeService(serviceIn, serviceOut, dateEchange, valide);
+                EchangeService echangeService = new EchangeService(id, serviceIn, serviceOut, dateEchange, valide);
                 echangeServices.add(echangeService);
             }
         }
@@ -139,13 +139,14 @@ public class ServiceEchangeService {
             ps.setInt(1, service.getId());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                int id= rs.getInt("id");
                 int serviceInId = rs.getInt("service_in_id");
                 int serviceOutId = rs.getInt("service_out_id");
                 LocalDateTime dateEchange = rs.getTimestamp("date_echange").toLocalDateTime();
                 Boolean valide = rs.getBoolean("valide");
                 Service serviceIn = new GestionService().getServiceById(serviceInId);
                 Service serviceOut = new GestionService().getServiceById(serviceOutId);
-                EchangeService echangeService = new EchangeService(serviceIn, serviceOut, dateEchange, valide);
+                EchangeService echangeService = new EchangeService(id, serviceIn, serviceOut, dateEchange, valide);
                 echangeServices.add(echangeService);
             }
         }

@@ -254,6 +254,27 @@ public class GestionService implements IService<Service>{
             return  0;
     }
 
+    public Service getServiceByName(String nom) throws SQLException {
+        String sql= "SELECT * FROM service where titre_service LIKE '%"+nom+"%'";
+        Statement st= cnx.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        if(rs.next()){
+            Service service = new Service();
+            service.setId(rs.getInt("id"));
+            service.setIdCategorie(rs.getInt("categorie_id"));
+            service.setIdUtilisateur(rs.getInt("utilisateur_id"));
+            service.setTitreService(rs.getString("titre_service"));
+            service.setDescriptionService(rs.getString("description_service"));
+            service.setVille(rs.getString("ville"));
+            service.setPhoto(rs.getString("photo"));
+            service.setChoixEchange(rs.getInt("choix_echange"));
+            service.setValid(rs.getInt("valid"));
+            return service;
+        }
+
+        return  null;
+    }
+
     public String getCategoryById(int id) throws SQLException {
         String sql= "SELECT nom_categorie FROM categorie where id="+id;
         Statement st= cnx.createStatement();
@@ -330,6 +351,8 @@ public class GestionService implements IService<Service>{
         }
         return services;
     }
+
+
 
 
 

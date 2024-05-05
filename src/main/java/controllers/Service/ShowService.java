@@ -1,5 +1,6 @@
 package controllers.Service;
 
+import controllers.Echange.EchangeServiceController;
 import controllers.User.SessionUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -151,7 +152,12 @@ public class ShowService implements Initializable {
         });
     }
 
-    public void exchangeService(ActionEvent event) {
+    public void exchangeService(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/EchangeService.fxml"));
+        Parent root = loader.load();
+        EchangeServiceController echangeServiceController = loader.getController();
+        echangeServiceController.setData(Integer.parseInt(idServiceId.getText()));
+        idDelete.getScene().setRoot(root);
     }
 
     public void addComment(ActionEvent event) {

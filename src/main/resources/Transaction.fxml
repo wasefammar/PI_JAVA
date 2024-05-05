@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Transaction">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="645.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Echange.Transaction">
 
     <!-- EchangeProduit Section -->
     <VBox layoutX="20.0" layoutY="20.0" spacing="10.0">
-        <Label text=" Transactions Receieved " />
-        <TableView fx:id="serviceOutTableView" prefWidth="760.0" prefHeight="250.0">
+      <HBox>
+         <children>
+              <Label text=" Transactions Receieved " />
+            <HBox alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="626.0" spacing="20.0">
+               <children>
+                  <Button fx:id="idValidate" mnemonicParsing="false" onAction="#validateTransaction" text="Validate Transaction" />
+                  <Button fx:id="idRejectTransaction" mnemonicParsing="false" onAction="#rejectTransaction" text="Reject Transaction" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+        <TableView fx:id="serviceOutTableView" prefHeight="241.0" prefWidth="760.0">
             <columns>
-                <TableColumn text="ID" prefWidth="50">
+                <TableColumn fx:id="id1" prefWidth="50" text="ID">
                     <cellValueFactory>
                         <PropertyValueFactory property="id" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="serviceInColumn2" text="serviceIn" prefWidth="150">
+                <TableColumn fx:id="serviceInColumn2" prefWidth="150" text="serviceIn">
                     <cellValueFactory>
                         <PropertyValueFactory property="serviceIn" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="serviceOutColumn2" text="serviceOut" prefWidth="150">
+                <TableColumn fx:id="serviceOutColumn2" prefWidth="150" text="serviceOut">
                     <cellValueFactory>
                         <PropertyValueFactory property="serviceOut" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Date Echange" prefWidth="200">
+                <TableColumn prefWidth="200" text="Date Echange">
                     <cellValueFactory>
                         <PropertyValueFactory property="dateEchange" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Valide" prefWidth="100">
+                <TableColumn prefWidth="100" text="Valide">
                     <cellValueFactory>
                         <PropertyValueFactory property="valide" />
                     </cellValueFactory>
@@ -43,30 +60,39 @@
 
     <!-- EchangeService Section -->
     <VBox layoutX="20.0" layoutY="300.0" spacing="10.0">
-        <Label text=" Transactions Made" />
-        <TableView fx:id="serviceInTableView" prefWidth="760.0" prefHeight="250.0">
+      <HBox>
+         <children>
+              <Label text=" Transactions Made" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="654.0" spacing="20.0">
+               <children>
+                  <Button fx:id="idWithdraw" mnemonicParsing="false" onAction="#cancelTransaction" text="Cancel Transaction" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+        <TableView fx:id="serviceInTableView" prefHeight="250.0" prefWidth="760.0">
             <columns>
-                <TableColumn text="ID" prefWidth="50">
+                <TableColumn fx:id="id2" prefWidth="50" text="ID">
                     <cellValueFactory>
                         <PropertyValueFactory property="id" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="serviceInColumn1" text="serviceIn" prefWidth="150">
+                <TableColumn fx:id="serviceInColumn1" prefWidth="150" text="serviceIn">
                     <cellValueFactory>
                         <PropertyValueFactory property="serviceIn" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="serviceOutColumn1" text="serviceOut" prefWidth="150">
+                <TableColumn fx:id="serviceOutColumn1" prefWidth="150" text="serviceOut">
                     <cellValueFactory>
                         <PropertyValueFactory property="serviceOut" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Date Echange" prefWidth="200">
+                <TableColumn prefWidth="200" text="Date Echange">
                     <cellValueFactory>
                         <PropertyValueFactory property="dateEchange" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Valide" prefWidth="100">
+                <TableColumn prefWidth="100" text="Valide">
                     <cellValueFactory>
                         <PropertyValueFactory property="valide" />
                     </cellValueFactory>
@@ -74,6 +100,9 @@
                 <!-- Add buttons for actions here -->
             </columns>
         </TableView>
+      <padding>
+         <Insets top="30.0" />
+      </padding>
     </VBox>
 
 </AnchorPane>
