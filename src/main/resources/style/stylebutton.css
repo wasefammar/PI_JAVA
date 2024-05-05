@@ -1,6 +1,6 @@
 .hover-button {
     -fx-background-color: #3b5d50; /* Couleur de fond normale */
-    -fx-text-fill: white; /* Couleur du texte */
+    /*-fx-text-fill: white; !* Couleur du texte *!*/
     -fx-background-radius: 100;
     -fx-border-radius:100;
     -fx-cursor: hand;

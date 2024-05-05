@@ -45,7 +45,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="335.0">
                            <children>
-                              <Label fx:id="titre1" alignment="CENTER" prefHeight="60.0" prefWidth="218.0" text="Casque Audio" textAlignment="CENTER" textFill="#3b5d50">
+                              <Label fx:id="titre1" alignment="CENTER" prefHeight="69.0" prefWidth="331.0" text="Casque Audio" textAlignment="CENTER" textFill="#3b5d50">
                                  <font>
                                     <Font name="Cambria" size="36.0" />
                                  </font>
@@ -208,24 +208,27 @@
                                     <Image url="@style/405016714_420402227003283_7339055550875056215_n.png" />
                                  </image>
                               </ImageView>
-                              <HBox alignment="CENTER" layoutX="182.0" layoutY="28.0" prefHeight="65.0" prefWidth="445.0" stylesheets="@style/style.css">
+                              <HBox alignment="CENTER" layoutX="182.0" layoutY="20.0" prefHeight="73.0" prefWidth="445.0" stylesheets="@style/style.css">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                                  <children>
                                     <TextField fx:id="idSearchField" alignment="CENTER" prefHeight="40.0" prefWidth="251.0" promptText="Type here to search" styleClass="transparent" stylesheets="@style/style.css">
                                        <HBox.margin>
-                                          <Insets left="20.0" />
+                                          <Insets left="80.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font name="Cambria" size="18.0" />
                                        </font>
                                     </TextField>
-                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="99.0" stylesheets="@style/stylebutton.css" text="Search" textFill="WHITE">
-                                       <styleClass>
-                                          <String fx:value="hover-button" />
-                                          <String fx:value="hover-button:hover" />
-                                       </styleClass></Button>
+                                    <ImageView fitHeight="57.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="30.0" top="5.0" />
+                                       </HBox.margin>
+                                       <image>
+                                          <Image url="@style/OIP%20(1).jpg" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                                  <styleClass>
                                     <String fx:value="search-box" />
@@ -260,19 +263,19 @@
                      <children>
                         <Pane prefHeight="100.0" prefWidth="883.0">
                            <children>
-                              <Button layoutX="727.0" layoutY="14.0" mnemonicParsing="false" onAction="#addform" prefHeight="29.0" prefWidth="142.0" stylesheets="@style/stylebutton.css" text="Add Your Product" textFill="WHITE">
+                              <Button layoutX="727.0" layoutY="1.0" mnemonicParsing="false" onAction="#addform" prefHeight="36.0" prefWidth="142.0" stylesheets="@style/stylebutton.css" text="Add Your Product" textFill="WHITE">
                                  <styleClass>
                                     <String fx:value="hover-button" />
                                     <String fx:value="hover" />
                                     <String fx:value="hover-button.hover" />
                                  </styleClass></Button>
-                              <MenuButton fx:id="idCategories" layoutY="14.0" mnemonicParsing="false" prefHeight="2.0" prefWidth="149.0" stylesheets="@style/stylebutton.css" text="FilterByCategory">
+                              <MenuButton fx:id="idCategories" layoutX="2.0" layoutY="1.0" mnemonicParsing="false" prefHeight="2.0" prefWidth="149.0" stylesheets="@style/stylebutton.css" text="FilterByCategory" textFill="WHITE">
                                  <styleClass>
                                     <String fx:value="hover-button" />
                                     <String fx:value="hover-button:hover" />
                                  </styleClass>
                               </MenuButton>
-                              <MenuButton fx:id="idFilterByPrice" layoutX="282.0" layoutY="55.0" mnemonicParsing="false" stylesheets="@style/stylebutton.css" text="FilterByPrice">
+                              <MenuButton fx:id="idFilterByPrice" layoutX="161.0" layoutY="57.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="140.0" stylesheets="@style/stylebutton.css" text="FilterByPrice" textFill="WHITE">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="All" />
                                     <MenuItem mnemonicParsing="false" text="0-100 DT" />
@@ -286,7 +289,7 @@
                                     <String fx:value="hover-button:hover" />
                                  </styleClass>
                               </MenuButton>
-                              <MenuButton fx:id="idFilterByState1" layoutX="98.0" layoutY="55.0" mnemonicParsing="false" stylesheets="@style/stylebutton.css" text="FilterByState">
+                              <MenuButton fx:id="idFilterByState1" layoutX="5.0" layoutY="55.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" stylesheets="@style/stylebutton.css" text="FilterByState" textFill="WHITE">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="All" />
                                     <MenuItem mnemonicParsing="false" text="New" />
@@ -298,7 +301,7 @@
                                     <String fx:value="hover-button:hover" />
                                  </styleClass>
                               </MenuButton>
-                              <MenuButton fx:id="idOrderByPrice" layoutX="338.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" stylesheets="@style/stylebutton.css" text="OrderByPrice">
+                              <MenuButton fx:id="idOrderByPrice" layoutX="159.0" layoutY="1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="144.0" stylesheets="@style/stylebutton.css" text="OrderByPrice" textFill="WHITE">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="All" />
                                     <MenuItem mnemonicParsing="false" text="ASC" />
@@ -309,7 +312,7 @@
                                     <String fx:value="hover-button:hover" />
                                  </styleClass>
                               </MenuButton>
-                              <MenuButton fx:id="idFilterByExchange" layoutX="159.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="157.0" stylesheets="@style/stylebutton.css" text="FilterByExchange">
+                              <MenuButton fx:id="idFilterByExchange" layoutX="315.0" layoutY="1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="157.0" stylesheets="@style/stylebutton.css" text="FilterByExchange" textFill="WHITE">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="Both" />
                                     <MenuItem mnemonicParsing="false" text="Exchangeable" />
@@ -320,7 +323,7 @@
                                     <String fx:value="hover-button:hover" />
                                  </styleClass>
                               </MenuButton>
-                              <MenuButton fx:id="idcurrency" contentDisplay="CENTER" layoutX="557.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" stylesheets="@style/stylebutton.css" text="currency">
+                              <MenuButton fx:id="idcurrency" contentDisplay="CENTER" layoutX="317.0" layoutY="55.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="153.0" stylesheets="@style/stylebutton.css" text="currency" textFill="WHITE">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="DT" />
                                     <MenuItem mnemonicParsing="false" text="Dollar $" />

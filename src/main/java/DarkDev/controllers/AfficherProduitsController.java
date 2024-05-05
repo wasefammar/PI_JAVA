@@ -6,6 +6,8 @@ import DarkDev.services.GProduit;
 import DarkDev.services.G_ligneCommande;
 import DarkDev.test.MainFX;
 import DarkDev.test.MyListener;
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -22,7 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
+
+
+import javax.management.Notification;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -201,7 +207,7 @@ public class AfficherProduitsController implements Initializable {
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
 
-            //searchFilter();
+            searchFilter();
 
 
         } catch (IOException e) {
@@ -331,6 +337,8 @@ public class AfficherProduitsController implements Initializable {
             LigneCommande lc = new LigneCommande(1,Integer.parseInt(idProduit.getText()));
             if(glc.tester(lc.getIdProduit())){
                 glc.ajouter(lc);
+/*               TrayNotificationAlert.notif("Devis Item", "Your Product is Added successfully.",
+                        NotificationType.SUCCESS, AnimationType.SLIDE, Duration.millis(3500));*/
 
             }else{
                 Alert alert = new Alert(Alert.AlertType.WARNING);
