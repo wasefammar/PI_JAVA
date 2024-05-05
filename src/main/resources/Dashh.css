@@ -1,0 +1,65 @@
+.selected-border{
+
+    -fx-background-color: #fff;
+    -fx-border-width: 0 3 0 0;
+}
+
+.selected:hover{
+
+    -fx-background-color: green;
+}
+
+
+.button{
+
+    -fx-font-size: 10px;
+    -fx-background-color: #3b5d50;
+    -fx-text-fill:
+            white;
+    -fx-border-color:
+            white;
+    -fx-border-width: 2px;
+    -fx-pref-width: 120px;
+    -fx-background-radius: 30;
+}
+
+.button:hover{
+
+    -fx-background-color: white;
+    -fx-text-fill:
+            #3b5d50;
+    -fx-border-color:
+            #3b5d50;
+}
+
+
+
+.list-cell {
+    -fx-background-color: #ffe5e7; /* Babypink background color */
+    -fx-text-fill: #3b5d50;; /* Dark purple text color */
+    -fx-padding: 5px; /* Padding around each cell */
+    -fx-border-color: #3b5d50;; /* Dark purple border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 5px; /* Rounded corners for border */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0); /* Add a subtle shadow effect */
+}
+
+.list-cell:hover {
+    -fx-background-color: #eed5f4; /* Light purple background color on hover */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); /* Increase the shadow effect on hover */
+}
+
+/* Apply additional CSS rules as needed */
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0); /* Increase the shadow effect on selection */
+}
+
+.list-cell .text {
+    -webkit-background-clip:text;
+    color:#3b5d50;;
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}

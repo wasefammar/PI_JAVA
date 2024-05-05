@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCommentaire">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Service.AddCommentaire">
    <children>
       <Text fx:id="tidText" layoutX="245.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a comment" />
       <Label fx:id="idDescLabel" layoutX="113.0" layoutY="108.0" text="Description:" />

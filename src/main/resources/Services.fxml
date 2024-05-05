@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1290.0" style="-fx-background-color: #F4F4FC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Services">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1290.0" style="-fx-background-color: #F4F4FC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Service.Services">
    <left>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="175.0" spacing="10.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
@@ -38,7 +38,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+            <HBox fx:id="idProducts" alignment="CENTER_LEFT" onMouseClicked="#moveToProducts" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -75,7 +75,7 @@
                   <Insets left="7.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+            <HBox fx:id="idComplaints" alignment="CENTER" onMouseClicked="#moveToComplaints" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
