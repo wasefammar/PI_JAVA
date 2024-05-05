@@ -38,7 +38,7 @@ public class Transaction {
     // Populate the TableView with EchangeService records where ServiceIn belongs to the current user
     private void populateServiceInTable() throws SQLException {
         // Fetch EchangeService records where ServiceIn belongs to the current user
-        /*
+
         SessionUser user = SessionUser.getUser();
         int sessionUserId = user.getId();
         GestionService userService = new GestionService();
@@ -49,12 +49,12 @@ public class Transaction {
         serviceInTableView.getItems().addAll(echangeServices);
         serviceInColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServiceName()));
         serviceOutColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServiceName()));
-    */
+
     }
 
     private void populateServiceOutTable() throws SQLException {
         // Fetch EchangeService records where ServiceIn belongs to the current user
-        /*SessionUser user = SessionUser.getUser();
+        SessionUser user = SessionUser.getUser();
         int sessionUserId = user.getId();
         GestionService userService = new GestionService();
         List<Service> services = userService.getServiceByUserId(sessionUserId);
@@ -64,7 +64,7 @@ public class Transaction {
         serviceOutTableView.getItems().addAll(echangeServices);
         serviceInColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServiceName()));
         serviceOutColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServiceName()));
-    */
+
     }
 
 }
