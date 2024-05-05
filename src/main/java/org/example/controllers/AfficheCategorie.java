@@ -91,7 +91,7 @@ public class AfficheCategorie {
     @FXML
     private void handleAdd(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/AddCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/AjouterCategorie.fxml"));
             Parent root = loader.load();
             // Set any controller properties or methods here if needed
             categoryTable.getScene().setRoot(root);
@@ -128,7 +128,7 @@ public class AfficheCategorie {
             stage.show();
         } catch (IOException e) {
             // Replace with a more robust logging mechanism
-            System.out.println("An error occurred while loading the AjouterCategorie view: " + e.getMessage());
+            System.out.println("An error occurred while loading the AllServices view: " + e.getMessage());
         }
     }
 }
