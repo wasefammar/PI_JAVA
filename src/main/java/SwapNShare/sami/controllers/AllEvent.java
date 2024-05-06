@@ -2,6 +2,9 @@ package SwapNShare.sami.controllers;
 
 import SwapNShare.sami.models.Event;
 import SwapNShare.sami.services.EventService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +16,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class AllEvent implements Initializable {
 
@@ -34,6 +41,8 @@ public class AllEvent implements Initializable {
 
     @FXML
     private TextField idSearchField;
+
+    EventService es = new EventService();
 
     private final EventService eventService = new EventService();
 
@@ -61,7 +70,14 @@ public class AllEvent implements Initializable {
                 eventsGrid.add(pane, column++, row);
                 GridPane.setMargin(pane, new Insets(20));
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            searchFilter();
+            System.out.println("typing");
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -99,6 +115,62 @@ public class AllEvent implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+    }
+
+    private void searchFilter() throws SQLException {
+        List<Event> list = es.getAll();
+
+
+        ObservableList<Event> observableList = FXCollections.observableList(list);
+        FilteredList<Event> filteredList= new FilteredList<>(observableList, e->true);
+        idSearchField.setOnKeyReleased(e->{
+
+            int columns=3, row=0;
+            idSearchField.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredList.setPredicate((Predicate<? super Event >) cust->{
+                    if(newValue==null){
+                        return true;
+                    }else if(cust.getTitre_evenement().toLowerCase().contains(newValue.toLowerCase())){
+                        return true;
+                    }
+                    return false;
+                });
+            });
+
+
+            System.out.println(filteredList);
+            List<Event> filtered= new ArrayList<>();
+            for (Event event : filteredList) {
+                filtered.add(event);
+            }
+            System.out.println(filtered);
+            eventsGrid.getChildren().clear();
+
+            for (int i=0; i<filtered.size(); i++){
+                System.out.println("n5dm");
+                FXMLLoader fxmlLoader= new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/EventD.fxml"));
+                try {
+                    Pane pane = fxmlLoader.load();
+                    EventD eventD= fxmlLoader.getController();
+                    eventD.setData(filtered.get(i));
+                    System.out.println("wsolt");
+                    if(columns == 3)
+                    {
+                        columns = 0;
+                        row++;
+                    }
+                    eventsGrid.add(pane, ++columns, row);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+            }
+
+            //ok let's check it
+        });
+
     }
 
     public void initializeEventData(Event eventClicked) {
