@@ -13,34 +13,34 @@
     <children>
         <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="300.0" spacing="5.0">
             <children>
-                <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="44.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
 
                 </ImageView>
                 <Label fx:id="idUsername" prefHeight="18.0" prefWidth="294.0" text="Wassef Ammar">
                     <font>
-                        <Font name="Calibri" size="14.0" />
+                        <Font name="Calibri Bold Italic" size="21.0" />
                     </font>
                     <HBox.margin>
                         <Insets right="5.0" />
                     </HBox.margin>
                 </Label>
-            <Label fx:id="idComplaint" text="Label" visible="false" />
-                <Button fx:id="idDelete" mnemonicParsing="false" onAction="#Delete" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: red; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Delete" textFill="WHITE">
+                <Label fx:id="idComplaint" text="Label" visible="false" />
+                <Button fx:id="idDelete" mnemonicParsing="false" onAction="#Delete" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: red; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Delete" textFill="WHITE">
                     <font>
                         <Font name="Calibri" size="12.0" />
                     </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets left="100.0" />
-               </HBox.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="100.0" />
+                    </HBox.margin>
                 </Button>
-            <Button fx:id="idRespond" layoutX="374.0" layoutY="24.0" mnemonicParsing="false" onAction="#respond" prefHeight="22.0" prefWidth="78.0" style="-fx-background-color: green; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Treat" textFill="WHITE">
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font>
-            </Button>
+                <Button fx:id="idRespond" layoutX="374.0" layoutY="24.0" mnemonicParsing="false" onAction="#respond" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: green; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Treat" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri" size="12.0" />
+                    </font>
+                </Button>
             </children>
             <VBox.margin>
                 <Insets />
@@ -52,37 +52,37 @@
         <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="385.0" spacing="10.0">
             <children>
                 <Label prefHeight="18.0" prefWidth="65.0" text="Reason:">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font></Label>
-            <Label fx:id="reasonTitre" prefHeight="18.0" prefWidth="124.0" text="Label" />
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <Label fx:id="reasonTitre" prefHeight="18.0" prefWidth="124.0" text="Label" textFill="#298ccf" />
                 <Label prefHeight="18.0" prefWidth="58.0" text="Email:">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font></Label>
-            <Label fx:id="idEmail" prefHeight="18.0" prefWidth="130.0" text="Label" />
-            <Label prefHeight="18.0" prefWidth="62.0" text="Phone">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="idPhone" prefHeight="18.0" prefWidth="85.0" text="Label" />
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <Label fx:id="idEmail" prefHeight="18.0" prefWidth="130.0" text="Label" textFill="#298ccf" />
+                <Label prefHeight="18.0" prefWidth="62.0" text="Phone">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="idPhone" prefHeight="18.0" prefWidth="85.0" text="Label" textFill="#298ccf" />
                 <Label prefHeight="18.0" prefWidth="69.0" text="Urgence:">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font></Label>
-                <Label fx:id="idUrgence" prefHeight="18.0" prefWidth="68.0" text="Label" />
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <Label fx:id="idUrgence" prefHeight="18.0" prefWidth="68.0" text="Label" textFill="#298ccf" />
                 <Label prefHeight="18.0" prefWidth="60.0" text="Status:">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font></Label>
-                <Label fx:id="idStatus" prefHeight="18.0" prefWidth="74.0" text="Label" />
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <Label fx:id="idStatus" prefHeight="18.0" prefWidth="74.0" text="Label" textFill="#298ccf" />
             </children>
             <VBox.margin>
                 <Insets top="5.0" />
@@ -99,9 +99,9 @@
             <VBox.margin>
                 <Insets left="500.0" />
             </VBox.margin>
-         <font>
-            <Font size="16.0" />
-         </font>
+            <font>
+                <Font name="System Bold Italic" size="16.0" />
+            </font>
         </Label>
     </children>
     <padding>

@@ -25,14 +25,14 @@
          <font>
             <Font name="Arial Narrow Bold" size="18.0" />
          </font></Label>
-      <ComboBox fx:id="reason_combo" layoutX="259.0" layoutY="143.0" prefWidth="150.0" promptText="Choose a reason" styleClass="nice-combo-box" />
-      <ComboBox fx:id="urgency_combo" layoutX="586.0" layoutY="143.0" prefWidth="150.0" promptText="Choose a level" styleClass="nice-combo-box" />
-      <TextArea fx:id="description_id" layoutX="259.0" layoutY="216.0" prefHeight="114.0" prefWidth="477.0" promptText="Please explain more ..." />
+      <ComboBox fx:id="reason_combo" layoutX="259.0" layoutY="143.0" prefHeight="42.0" prefWidth="172.0" promptText="Choose a reason" styleClass="nice-combo-box" />
+      <ComboBox fx:id="urgency_combo" layoutX="586.0" layoutY="143.0" prefHeight="42.0" prefWidth="160.0" promptText="Choose a level" styleClass="nice-combo-box" />
+      <TextArea fx:id="description_id" layoutX="259.0" layoutY="216.0" prefHeight="114.0" prefWidth="489.0" promptText="Please explain more ..." />
       <ButtonBar layoutX="398.0" layoutY="383.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancelRec" prefHeight="35.0" prefWidth="60.0" style="-fx-background-color: red; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Cancel" textFill="WHITE" />
+         <buttons>
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancelRec" prefHeight="35.0" prefWidth="60.0" style="-fx-background-color: red; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Cancel" textFill="WHITE" />
             <Button fx:id="btnSend" layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#ajouter_reclamation1" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #3b5d50; -fx-background-radius: 50; -fx-border-radius: 50; -fx-cursor: pointer;" text="Send" textFill="WHITE" />
-        </buttons>
+         </buttons>
       </ButtonBar>
       <Text fx:id="required_reason_id" fill="#e72828" layoutX="259.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Field" visible="false" wrappingWidth="118.93670654296875" />
       <Text fx:id="required_level_id" fill="#ef4040" layoutX="586.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Field" visible="false" wrappingWidth="133.336669921875" />
@@ -50,7 +50,7 @@
                </font>
             </Label>
          </children></Pane>
-      
+
    </children>
    <styleClass>
       <String fx:value="backgroundColor" />

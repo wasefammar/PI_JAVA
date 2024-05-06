@@ -12,6 +12,7 @@ import models.Reclamation.Reclamation;
 import models.Reclamation.Reponse;
 import services.*;
 import services.ServicesReclamation.BadWordsFilter;
+import services.ServicesReclamation.SendMailrec;
 import services.ServicesReclamation.ServiceReclamation;
 import services.ServicesReclamation.ServiceReponse;
 
@@ -73,7 +74,7 @@ public class Response {
 
                     sr.ajouter_Reponse(response);
                     //List<Personne> personne = pr.listerPersonne();
-                    //SendMailrec.SendMailrec("ines.jendoubi@esprit.tn","Your response has been sent successfully","A new response to a   "+response.getTitre_r());
+                    SendMailrec.sendEmail("ines.jendoubi@esprit.tn","Your response has been sent successfully","A new response to a   "+response.getTitre_r());
                     System.out.println("Complaint added successfully");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
                     Parent root = loader.load();
