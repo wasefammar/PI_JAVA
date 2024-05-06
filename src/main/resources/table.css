@@ -1,0 +1,30 @@
+.table-view {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0), /* Outer shadow */
+    inset dropshadow(three-pass-box, rgba(255,255,255,0.3), 10, 0, 0, 0);
+}
+
+.table-column .label {
+    -fx-font-size: 14px; /* Font size for column headers */
+    -fx-font-weight: bold; /* Bold font weight */
+    -fx-text-fill: #111111; /* Dark color for text */
+    -fx-font-family: 'Rubik';
+    -fx-padding: 8px; /* Add padding for better spacing */
+    -fx-alignment: center; /* Center alignment for header text */
+}
+
+.table-cell {
+    -fx-font-size: 14px; /* Font size for cell content */
+    -fx-text-fill: #111111; /* Dark gray text color */
+    -fx-font-family: 'Rubik';
+    -fx-padding: 8px; /* Add padding for better spacing */
+    -fx-alignment: center; /* Center alignment for cell content */
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #eaeaea; /* Lighter gray background color on hover */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #7dc27e; /* Lighter blue color for selected item */
+    -fx-text-fill: #111111; /* Dark text color for selected item */
+}

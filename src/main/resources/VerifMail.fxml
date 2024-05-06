@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="389.0" prefWidth="525.0" stylesheets="@register.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User.VerifEmail">
+   <children>
+      <HBox layoutX="-3.0" prefHeight="92.0" prefWidth="560.0" style="-fx-background-color: #3b5d50;">
+         <children>
+            <Label prefHeight="59.0" prefWidth="254.0" text="SwapNshare" textFill="WHITE">
+               <padding>
+                  <Insets left="10.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label prefHeight="71.0" prefWidth="372.0" text="Reset Password " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="130.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="90.0" layoutY="124.0" prefHeight="238.0" prefWidth="370.0" style="-fx-background-color: FAEBEF;">
+         <children>
+            <TextField fx:id="EmailTX" layoutX="41.0" layoutY="102.0" prefHeight="35.0" prefWidth="254.0" promptText="PLease Entre your Email" style="-fx-border-color: #3b5d50;" />
+            <Label layoutX="34.0" layoutY="39.0" prefHeight="35.0" prefWidth="211.0" text="Please Entre Your mail: ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="34.0" layoutY="166.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="129.0" text="Back" />
+            <Button layoutX="185.0" layoutY="166.0" mnemonicParsing="false" onAction="#VerfiMail" prefHeight="35.0" text="confirm Email" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>
