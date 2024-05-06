@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="809.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Produit.AfficherProduitsController">
+   <children>
+      <BorderPane prefHeight="809.0" prefWidth="1315.0" stylesheets="@style/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox alignment="TOP_RIGHT" prefHeight="809.0" prefWidth="431.0" styleClass="right-bar" stylesheets="@style/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="86.0" prefWidth="432.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="72.0" prefWidth="254.0" text="SwapNShare" textFill="#3b5d50">
+                           <font>
+                              <Font name="Cambria Bold" size="40.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="10.0" top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox fx:id="ChosenFruitCtard" alignment="CENTER" prefHeight="678.0" prefWidth="332.0" stylesheets="@style/style.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="335.0">
+                           <children>
+                              <Label fx:id="titre1" alignment="CENTER" prefHeight="60.0" prefWidth="218.0" text="Casque Audio" textAlignment="CENTER" textFill="#3b5d50">
+                                 <font>
+                                    <Font name="Cambria" size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="30.0" />
+                           </padding>
+                        </HBox>
+                        <ImageView fx:id="image1" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@style/img.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="price1" text="110 DT" textFill="#3b5d50">
+                           <font>
+                              <Font name="Cambria" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label textFill="#3b5d50">
+                           <font>
+                              <Font name="Cambria" size="24.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="description1" fill="#3b5d50" strokeType="OUTSIDE" strokeWidth="0.0" text="desceiption de produit" textAlignment="CENTER" wrappingWidth="266.6708984375">
+                           <VBox.margin>
+                              <Insets bottom="10.0" right="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Cambria" size="16.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="335.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="289.0">
+                                 <children>
+                                    <Pane prefHeight="60.0" prefWidth="217.0">
+                                       <children>
+                                          <Label layoutX="-15.0" layoutY="17.0" text="Category :" textFill="#3b5d50">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Text fx:id="category1" fill="#3b5d50" layoutX="79.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="vape" wrappingWidth="94.6708984375">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="60.0" prefWidth="159.0">
+                                       <children>
+                                          <Label layoutY="19.0" text="Exchange :" textFill="#3b5d50">
+                                             <font>
+                                                <Font name="Cambria" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="exchange1" layoutX="90.0" layoutY="21.0" text="Yes" textFill="#3b5d50">
+                                             <font>
+                                                <Font name="Cambria" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="332.0">
+                           <children>
+                              <Pane prefHeight="26.0" prefWidth="159.0">
+                                 <children>
+                                    <Label layoutX="7.0" prefHeight="27.0" prefWidth="82.0" text="City         :" textFill="#3b5d50">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="city1" layoutX="98.0" layoutY="4.0" text="Gabes" textFill="#3b5d50">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="14.0" layoutY="-12.0" prefHeight="52.0" prefWidth="92.0" text="       State : " textAlignment="CENTER" textFill="#3b5d50">
+                                       <font>
+                                          <Font name="Cambria" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="state1" contentDisplay="CENTER" layoutX="99.0" layoutY="4.0" prefHeight="21.0" prefWidth="88.0" text="New" textAlignment="CENTER" textFill="#3b5d50">
+                                       <font>
+                                          <Font name="Cambria" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Pane prefHeight="42.0" prefWidth="332.0">
+                           <children>
+                              <Button fx:id="idUpdate" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#updateform" prefHeight="40.0" prefWidth="99.0" stylesheets="@style/stylebutton.css" text="Update" textFill="#3b5d50">
+                                 <styleClass>
+                                    <String fx:value="hover-button-update" />
+                                    <String fx:value="hover-button-update:hover" />
+                                 </styleClass></Button>
+                              <Button fx:id="idDelete" layoutX="223.0" layoutY="1.0" mnemonicParsing="false" onAction="#deleteproduct" prefHeight="40.0" prefWidth="99.0" styleClass="hover-button-delete" stylesheets="@style/stylebutton.css" text="Delete" textFill="WHITE" />
+                              <Label fx:id="idProduit" layoutX="146.0" layoutY="12.0" text="Label" visible="false" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
+                        <Button fx:id="idAddToCart" mnemonicParsing="false" onAction="#addtocart" prefHeight="31.0" prefWidth="235.0" stylesheets="@style/stylebutton.css" text="Add to Cart" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="-5.0" top="10.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="hover-button" />
+                              <String fx:value="hover-button;hover" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="idExchange" mnemonicParsing="false" onAction="#exchange" prefHeight="16.0" prefWidth="235.0" style="-fx-background-color: #008CBA;" stylesheets="@style/style.css" text="Exchange Product" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="add-btn" />
+                              <String fx:value="search-button" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="6.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="chosen-product-card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </VBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="804.0" prefWidth="883.0" styleClass="Middle-vbox" stylesheets="@style/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="107.0" prefWidth="883.0">
+                     <children>
+                        <Pane prefHeight="107.0" prefWidth="139.0">
+                           <children>
+                              <ImageView fitHeight="97.0" fitWidth="148.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" y="10.0">
+                                 <image>
+                                    <Image url="@style/405016714_420402227003283_7339055550875056215_n.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER" layoutX="182.0" layoutY="28.0" prefHeight="65.0" prefWidth="445.0" stylesheets="@style/style.css">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <children>
+                                    <TextField fx:id="idSearchField" alignment="CENTER" prefHeight="40.0" prefWidth="251.0" promptText="Type here to search" styleClass="transparent" stylesheets="@style/style.css">
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Cambria" size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="99.0" stylesheets="@style/stylebutton.css" text="Search" textFill="WHITE">
+                                       <styleClass>
+                                          <String fx:value="hover-button" />
+                                          <String fx:value="hover-button:hover" />
+                                       </styleClass></Button>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="search-box" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Pane>
+                        <Pane prefHeight="108.0" prefWidth="212.0" styleClass="free-My-card" stylesheets="@style/style.css">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="550.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label layoutX="20.0" layoutY="26.0" onMouseClicked="#cartform" prefHeight="35.0" prefWidth="90.0" text="My Cart" textFill="#3b5d50">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="52.0" fitWidth="58.0" layoutX="119.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@style/cart-24-128.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="100.0" prefWidth="883.0">
+                           <children>
+                              <Button layoutX="727.0" layoutY="14.0" mnemonicParsing="false" onAction="#addform" prefHeight="29.0" prefWidth="142.0" stylesheets="@style/stylebutton.css" text="Add Your Product" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover" />
+                                    <String fx:value="hover-button.hover" />
+                                 </styleClass></Button>
+                              <MenuButton fx:id="idCategories" layoutY="14.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="119.0" stylesheets="@style/stylebutton.css" text="FilterByCategory" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </MenuButton>
+                              <MenuButton fx:id="idFilterByPrice" layoutX="126.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" stylesheets="@style/stylebutton.css" text="FilterByPrice" textFill="WHITE">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="All" />
+                                    <MenuItem mnemonicParsing="false" text="0-100 DT" />
+                                    <MenuItem mnemonicParsing="false" text="100-200 DT" />
+                                    <MenuItem mnemonicParsing="false" text="200-300 DT" />
+                                    <MenuItem mnemonicParsing="false" text="300-400 DT" />
+                                    <MenuItem mnemonicParsing="false" text="&gt;400 DT" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </MenuButton>
+                              <MenuButton fx:id="idFilterByState1" layoutX="2.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" stylesheets="@style/stylebutton.css" text="FilterByState" textFill="WHITE">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="All" />
+                                    <MenuItem mnemonicParsing="false" text="New" />
+                                    <MenuItem mnemonicParsing="false" text="Hardly_Used" />
+                                    <MenuItem mnemonicParsing="false" text="Used" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </MenuButton>
+                              <MenuButton fx:id="idOrderByPrice" layoutX="124.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" stylesheets="@style/stylebutton.css" text="OrderByPrice" textFill="WHITE">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="All" />
+                                    <MenuItem mnemonicParsing="false" text="ASC" />
+                                    <MenuItem mnemonicParsing="false" text="DESC" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </MenuButton>
+                              <MenuButton fx:id="idFilterByExchange" layoutX="237.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" stylesheets="@style/stylebutton.css" text="FilterByExchange" textFill="WHITE">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Both" />
+                                    <MenuItem mnemonicParsing="false" text="Exchangeable" />
+                                    <MenuItem mnemonicParsing="false" text="Non exchangeable" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </MenuButton>
+                              <MenuButton fx:id="idcurrency" contentDisplay="CENTER" layoutX="237.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" stylesheets="@style/stylebutton.css" text="currency" textFill="WHITE">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="DT" />
+                                    <MenuItem mnemonicParsing="false" text="Dollar $" />
+                                    <MenuItem mnemonicParsing="false" text="Euro €" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </MenuButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Pane>
+                     </children></HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@style/style.css" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="602.0" prefWidth="787.0" style="-fx-background-color: #ffffff;">
+                           <content>
+                              <GridPane fx:id="grid" alignment="CENTER" hgap="10.0" prefHeight="0.0" prefWidth="0.0" vgap="10.0">
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

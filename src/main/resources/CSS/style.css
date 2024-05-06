@@ -1,0 +1,64 @@
+.nice-combo-box {
+    -fx-background-color: #FAEBEF; /* Set background color */
+    -fx-background-radius: 20; /* Set background radius to make edges rounder */
+    -fx-border-color: transparent; /* Remove border color */
+    -fx-padding: 5; /* Add padding */
+    -fx-font-size: 14px; /* Set font size */
+}
+.nice-combo-box:hover {
+    -fx-background-color: #0b3d2f; /* Change background color on hover */
+}
+
+.side_bar {
+    -fx-background-color: #0b3d2f; /* Set background color */
+    -fx-background-radius: 50; /* Set background radius to make edges rounder */
+    /*fx-border-color: black; /* Remove border color */
+    -fx-border-radius: 50;
+    -fx-border-style: none;
+    -fx-border-width: 2px 2px 2px 2px;
+}
+
+.inner_side {
+    -fx-background-color: #0d5633; /* Set background color */
+    -fx-background-radius: 50; /* Set background radius to make edges rounder */
+    /*-fx-border-color: #303551; /* Remove border color */
+    -fx-border-radius: 50;
+    -fx-border-style: none;
+    -fx-border-width: 2px 2px 2px 2px;
+}
+
+.inner_side2 {
+    -fx-background-color: #0d5e37; /* Set background color */
+    -fx-background-radius: 50; /* Set background radius to make edges rounder */
+
+    -fx-border-radius: 50;
+    -fx-border-style: none;
+    -fx-border-width: 2px 2px 2px 2px;
+}
+
+.btn_home {
+    -fx-background-color: white; /* Set background color */
+    -fx-background-radius: 50; /* Set background radius to make edges rounder */
+    -fx-border-color: #303551;
+    -fx-border-radius: 50;
+    -fx-border-style: none;
+    -fx-border-width: 2px 2px 2px 2px;
+}
+
+.pane_1 {
+    -fx-background-color: #FAEBEF; /* Set background color */
+    -fx-background-radius: 20; /* Set background radius to make edges rounder */
+    -fx-border-color: #303551;
+    -fx-border-radius: 20;
+    -fx-border-style: none;
+    -fx-border-width: 2px 2px 2px 2px;
+}
+.progress {
+
+    -fx-background-radius: 20; /* Set background radius to make edges rounder */
+
+    -fx-border-radius: 50;
+
+    -fx-border-width: 2px 2px 2px 2px;
+}
+

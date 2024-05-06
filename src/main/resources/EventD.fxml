@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="EventSc" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#switchToEvent" prefHeight="200.0" prefWidth="300.0" style="-fx-background-radius: 20;" styleClass="shadow" stylesheets="@values/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SwapNShare.sami.controllers.EventD">
+    <children>
+        <ImageView fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 20;" />
+        <HBox prefHeight="200.0" prefWidth="300.0" style="-fx-background-radius: 20;" styleClass="gradient" stylesheets="@values/styles.css">
+            <children>
+                <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="110.0">
+                    <children>
+                        <Label fx:id="E_Namelbl" alignment="CENTER" prefHeight="30.0" prefWidth="105.0" text="nameE" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <padding>
+                        <Insets bottom="20.0" />
+                    </padding>
+                </VBox>
+                <Pane prefHeight="200.0" prefWidth="62.0" />
+                <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="110.0">
+                    <children>
+                        <Label fx:id="E_Timelbl" text="??:??" textFill="WHITE">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="E_Datelbl" text="??/??/????" textFill="WHITE">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+
+</Pane>
