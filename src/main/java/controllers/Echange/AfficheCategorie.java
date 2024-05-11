@@ -100,7 +100,7 @@ public class AfficheCategorie {
     @FXML
     private void handleAdd(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/AjouterCategorie.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCategorie.fxml"));
             Parent root = loader.load();
             // Set any controller properties or methods here if needed
             categoryTable.getScene().setRoot(root);
@@ -129,7 +129,7 @@ public class AfficheCategorie {
     @FXML
     private void Retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/AllServices.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AllServices.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -142,7 +142,7 @@ public class AfficheCategorie {
     }
 
     public void users(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader  = FXMLLoader.load(getClass().getResource("/afficher_reclamation1.fxml"));
+        FXMLLoader loader  = FXMLLoader.load(getClass().getResource("/dash_admin.fxml"));
         AnchorPane anchorPane = loader.load();
         users_btn.getScene().setRoot(anchorPane);
     }
@@ -166,7 +166,7 @@ public class AfficheCategorie {
     }
 
     public void events(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader  = FXMLLoader.load(getClass().getResource("/afficher_reclamation1.fxml"));
+        FXMLLoader loader  = FXMLLoader.load(getClass().getResource("/CategorieFX.fxml"));
         AnchorPane anchorPane = loader.load();
         users_btn.getScene().setRoot(anchorPane);
     }
