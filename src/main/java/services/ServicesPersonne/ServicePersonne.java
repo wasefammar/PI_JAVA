@@ -346,6 +346,13 @@ public class ServicePersonne implements IService<Personne, SessionTempo> {
         ps.executeUpdate();
     }
 
+    public void createPanier(int idUtilisateur) throws SQLException {
+        String sql = "INSERT INTO panier (utilisateur_id) values(?)";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setInt(1,  idUtilisateur);
+        ps.executeUpdate();
+    }
+
 
 
 

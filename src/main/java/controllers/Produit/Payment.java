@@ -7,14 +7,18 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Account;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
+import controllers.User.SessionUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import models.Produit.LigneCommande;
+import services.GestionServices.GestionService;
 import services.ServicesProduit.EmailSender;
 import services.ServicesProduit.G_ligneCommande;
 import services.ServicesProduit.GeneratePDF;
@@ -32,6 +36,7 @@ public class Payment {
     public Label total;
 
     G_ligneCommande glc = new G_ligneCommande();
+    GestionService gs = new GestionService();
 
     public static void main(String[] args) {
 // Set your secret key here
@@ -62,10 +67,10 @@ public class Payment {
                 System.out.println(total.getText().split("\\s+")[0]);
                 PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
                         .setAmount((long) (Double.parseDouble(total.getText().split("\\s+")[0])*32))// Amount in cents (e.g., $10.00)
-                        //.setReceiptEmail("fouratchawech50@gmail.com")
                         .setCurrency("usd")
 
                         .build();
+                System.out.println(params);
 
                 PaymentIntent intent = null;
                 try {
@@ -78,14 +83,20 @@ public class Payment {
                     } else if (currency.equals("Euro")) {
                         imprimerPDF("Euro €");
                     }
-                    EmailSender.sendEmail("fouratchawech50@gmail.com","Payement successful","Thanks for trusting us ","C:\\Users\\rachi\\OneDrive\\Desktop\\Commande.pdf" );
+                    EmailSender.sendEmail(SessionUser.getUser().getAdresseEmail(),"Payement successful","Thanks for trusting us ","C:\\Users\\AGENT17\\Desktop\\Commande.pdf" );
                     List<LigneCommande> lcs= glc.Afficher();
+                    int idPanier = glc.getPanierByIdUtilisateur(gs.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
                     for (LigneCommande lc : lcs){
-                        glc.supprimer(lc.getIdProduit());
+                        glc.supprimer(lc.getIdProduit(), idPanier);
                     }
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
                     Parent root = loader.load();
-                    total.getScene().setRoot(root);
+                    Stage stage = (Stage) total.getScene().getWindow(); // Obtenir la scène actuelle
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Page ");
+                    stage.centerOnScreen();
+                    stage.show();
+                    //total.getScene().setRoot(root);
                     System.out.println("Payment successful. PaymentIntent ID: " + intent.getId());
                 } catch (StripeException e) {
                     System.out.println("Payment failed. Error: " + e.getMessage());
@@ -116,7 +127,12 @@ public class Payment {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
             Parent root = loader.load();
-            total.getScene().setRoot(root);
+            Stage stage = (Stage) total.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
+            //total.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -128,7 +144,7 @@ public class Payment {
 
         try {
             GeneratePDF generatePDF = new GeneratePDF();
-            generatePDF.generateCommandePDF("C:\\Users\\rachi\\OneDrive\\Desktop\\Commande.pdf", "DT");
+            generatePDF.generateCommandePDF("C:\\Users\\AGENT17\\Desktop\\Commande.pdf", "DT");
         } catch (FileNotFoundException | MalformedURLException | SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -141,7 +157,7 @@ public class Payment {
 
         try {
             GeneratePDF generatePDF = new GeneratePDF();
-            generatePDF.generateCommandePDF("C:\\Users\\rachi\\OneDrive\\Desktop\\Commande.pdf", currency);
+            generatePDF.generateCommandePDF("C:\\Users\\AGENT17\\Desktop\\Commande.pdf", currency);
         } catch (FileNotFoundException | MalformedURLException | SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {

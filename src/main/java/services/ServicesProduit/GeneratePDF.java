@@ -12,6 +12,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.*;
+import controllers.User.SessionUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableCell;
@@ -29,6 +30,7 @@ import org.apache.pdfbox.pdmodel.font.PDMMType1Font;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import services.GestionServices.GestionService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,12 +43,14 @@ import java.util.List;
 public class GeneratePDF {
     GProduit gp = new GProduit();
     G_ligneCommande glc = new G_ligneCommande();
+    GestionService gs = new GestionService();
 
 
 
     public void generateCommandePDF(String path, String currency) throws IOException, SQLException {
 
-        List<Produit> produitList = glc.ListeProduits();
+        int idPanier = glc.getPanierByIdUtilisateur(gs.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
+        List<Produit> produitList = glc.ListeProduits(idPanier);
         double sum = produitList.stream().mapToDouble(e->e.getPrix()).sum();
         String somme = "";
 

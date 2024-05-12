@@ -15,12 +15,14 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import models.Produit.LigneCommande;
 import models.Produit.Produit;
 import services.GestionServices.GestionService;
@@ -211,7 +213,7 @@ public class AfficherProduitsController implements Initializable {
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
 
-            //searchFilter();
+            searchFilter();
 
 
         } catch (IOException e) {
@@ -281,7 +283,11 @@ public class AfficherProduitsController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProduit.fxml"));
             Parent root = loader.load();
-            titre1.getScene().setRoot(root);
+            Stage stage = (Stage) idProduit.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -297,7 +303,11 @@ public class AfficherProduitsController implements Initializable {
             Parent root = loader.load();
             UpdateProduitController updateProduit = loader.getController();
             updateProduit.setFields(produit1);
-            titre1.getScene().setRoot(root);
+            Stage stage = (Stage) titre1.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         } catch (SQLException e) {
@@ -313,7 +323,11 @@ public class AfficherProduitsController implements Initializable {
             Parent root = loader.load();
             PanierController panierController = loader.getController();
             panierController.setFields(idcurrency.getText());
-            titre1.getScene().setRoot(root);
+            Stage stage = (Stage) titre1.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -350,15 +364,20 @@ public class AfficherProduitsController implements Initializable {
     void addtocart(ActionEvent event) {
 
         try {
-            LigneCommande lc = new LigneCommande(1,Integer.parseInt(idProduit.getText()));
+            int panierId = glc.getPanierByIdUtilisateur(gs.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
+            LigneCommande lc = new LigneCommande(panierId,Integer.parseInt(idProduit.getText()));
             if(glc.tester(lc.getIdProduit())){
                 glc.ajouter(lc);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Product added to cart");
+                alert.setHeaderText("Product added to cart successfully");
+
+                alert.showAndWait();
 
             }else{
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Duplicate");
                 alert.setHeaderText("This product already exist in your cart");
-
                 alert.showAndWait();
             }
 
@@ -1473,6 +1492,21 @@ public class AfficherProduitsController implements Initializable {
         Parent root = loader.load();
         EchangeProduitController echangeServiceController = loader.getController();
         echangeServiceController.setData(Integer.parseInt(idProduit.getText()));
-        idDelete.getScene().setRoot(root);
+        Stage stage = (Stage) idProduit.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void retour(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idDelete.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+       // idDelete.getScene().setRoot(root);
     }
 }

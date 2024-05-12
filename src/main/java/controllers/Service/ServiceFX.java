@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -124,7 +125,11 @@ public class ServiceFX implements Initializable {
                       SendSMS.sendSMS();
                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
                       Parent root = loader.load();
-                      IdDescription.getScene().setRoot(root);
+                      Stage stage = (Stage) IdDescription.getScene().getWindow(); // Obtenir la scène actuelle
+                      stage.setScene(new Scene(root));
+                      stage.setTitle("Page ");
+                      stage.centerOnScreen();
+                      stage.show();
                   }
               }
 
@@ -171,7 +176,11 @@ public class ServiceFX implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            idTitre.getScene().setRoot(root);
+            Stage stage = (Stage) IdDescription.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -192,7 +201,11 @@ public class ServiceFX implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            idTitre.getScene().setRoot(root);
+            Stage stage = (Stage) IdDescription.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

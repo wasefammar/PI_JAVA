@@ -7,8 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,8 +28,7 @@ import java.security.*;
 public class Home implements Initializable {
 
 
-
-
+    public Button idReturn;
     @FXML
     private Label mailU;
 
@@ -217,13 +218,10 @@ public class Home implements Initializable {
             // Load the login.fxml file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
             Parent root = loader.load();
-
-            // Create a new stage for the login interface
-            Stage stage = new Stage();
+            Stage stage = (Stage) idReturn.getScene().getWindow(); // Obtenir la scène actuelle
             stage.setScene(new Scene(root));
-            stage.setTitle("Login");
-
-            // Show the login stage
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -261,9 +259,13 @@ public class Home implements Initializable {
     }
 
 
-
-
-
-
-
+    public void Return(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idReturn.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
 }

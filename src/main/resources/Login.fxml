@@ -69,7 +69,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button fx:id="LoginFT" layoutX="136.0" layoutY="201.0" mnemonicParsing="false" onAction="#LogInAction" prefHeight="25.0" prefWidth="92.0" text="Button" />
+            <Button fx:id="LoginFT" layoutX="136.0" layoutY="201.0" mnemonicParsing="false" onAction="#LogInAction" prefHeight="25.0" prefWidth="92.0" text="Login" />
             <Hyperlink layoutX="131.0" layoutY="227.0" onAction="#pwdOublier" prefHeight="23.0" prefWidth="148.0" text="  Mot de passe oublié ? " />
             <PasswordField fx:id="passwordFT" layoutX="81.0" layoutY="149.0" prefHeight="25.0" prefWidth="232.0" />
          </children>

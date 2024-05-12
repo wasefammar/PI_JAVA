@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,7 +50,11 @@ public class UpdateService implements Initializable {
             Parent root = loader.load();
             ShowService showService = loader.getController();
             showService.setFields(service);
-            idTitre.getScene().setRoot(root);
+            Stage stage = (Stage) idID.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         } catch (SQLException e) {
@@ -153,7 +158,11 @@ public class UpdateService implements Initializable {
                     Parent root = loader.load();
                     ShowService singleService= loader.getController();
                     singleService.setFields(service);
-                    IdDescription.getScene().setRoot(root);
+                        Stage stage = (Stage) idRequiredDesc.getScene().getWindow(); // Obtenir la scène actuelle
+                        stage.setScene(new Scene(root));
+                        stage.setTitle("Page ");
+                        stage.centerOnScreen();
+                        stage.show();
                     }
                 }
             }
@@ -207,7 +216,11 @@ public class UpdateService implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            idTitre.getScene().setRoot(root);
+            Stage stage = (Stage) idRequiredDesc.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

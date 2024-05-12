@@ -1,6 +1,7 @@
 package controllers.Echange;
 
 import com.mysql.cj.protocol.ServerSessionStateController;
+import controllers.Service.ShowService;
 import controllers.User.SessionUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +29,7 @@ import java.util.ResourceBundle;
 public class EchangeServiceController {
     public Label idServiceIn;
     public Label idTitreService;
+    public Button idReturn;
     @FXML
     private TextField serviceInField;
     @FXML
@@ -100,7 +102,11 @@ public class EchangeServiceController {
             System.out.println("Exchange created successfully!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Transaction.fxml"));
             Parent root = loader.load();
-            idServiceIn.getScene().setRoot(root);
+            Stage stage = (Stage) idServiceIn.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
 
         } catch (SQLException e) {
             System.err.println("Error creating exchange: " + e.getMessage());
@@ -117,13 +123,14 @@ public class EchangeServiceController {
     }
 
     @FXML
-    private void Retour(ActionEvent event) {
+    private void Retour(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowService.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            Stage stage = (Stage) idServiceIn.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -140,5 +147,65 @@ public class EchangeServiceController {
     }
 
     public void back(MouseEvent mouseEvent) {
+    }
+
+
+
+    public void moveToProducts(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idServiceIn.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();// Obtenir la scène actuelle
+
+    }
+
+    public void moveToEvents(MouseEvent mouseEvent) {
+
+    }
+
+    public void moveToComplaints(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamation.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idServiceIn.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void moveToLogout(MouseEvent mouseEvent) throws IOException {
+        SessionUser user = SessionUser.getUser();
+        System.out.println(user.toString());
+        SessionUser.resetSession();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/Login.fxml"));
+        Parent box = fxmlLoader.load();
+        Stage stage = (Stage) idServiceIn.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(box));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void Retour1(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowService.fxml"));
+            Parent root = loader.load();
+            ShowService controller = loader.getController();
+            controller.setFields(serviceService.getServiceById(Integer.parseInt(idServiceIn.getText())));
+            Stage stage = (Stage) idServiceIn.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

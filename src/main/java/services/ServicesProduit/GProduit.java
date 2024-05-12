@@ -367,4 +367,6 @@ public class GProduit implements iProduit<Produit> {
 
         return  null;
     }
+
+
 }

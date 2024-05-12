@@ -155,6 +155,7 @@ public class LoginController {
                 Stage stage = (Stage) LoginFT.getScene().getWindow(); // Obtenir la scène actuelle
                 stage.setScene(new Scene(root));
                 stage.setTitle("Page " + role);
+                stage.centerOnScreen();
                 stage.show();
             } catch (IOException e){
 

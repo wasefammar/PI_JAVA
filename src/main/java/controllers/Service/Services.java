@@ -1,6 +1,7 @@
 package controllers.Service;
 
 import controllers.User.SessionTempo;
+import controllers.User.SessionUser;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,12 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import models.Services.Service;
 import services.GestionServices.GestionService;
 
@@ -31,6 +34,8 @@ public class Services implements Initializable {
     public ScrollPane idScrollPane;
     public VBox idVbox;
     public HBox idProducts;
+    public Label Name;
+    public HBox idTransactions;
     GestionService gs = new GestionService();
     public TextField idSearchField;
 
@@ -45,6 +50,7 @@ public class Services implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Name.setText(SessionUser.getUser().getNom()+" "+SessionUser.getUser().getPrenom());
         List<Service> list = new ArrayList<>();
         Pagination pagination = new Pagination();
         //int columns =3, row = 0;
@@ -411,7 +417,12 @@ public class Services implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
             Parent root = loader.load();
-            idScrollPane.getScene().setRoot(root);
+            Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
+           // idScrollPane.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -422,9 +433,77 @@ public class Services implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherReclamation.fxml"));
             Parent root = loader.load();
-            idScrollPane.getScene().setRoot(root);
+            Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public void Retour(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void moveToEvents(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void moveToLogout(MouseEvent mouseEvent) throws IOException {
+        SessionUser.resetSession();
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void profil(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+        //idScrollPane.getScene().setRoot(root);
+    }
+
+    public void profile(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+        //idScrollPane.getScene().setRoot(root);
+    }
+
+    public void moveToTransactions(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Transaction.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idScrollPane.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+        //idScrollPane.getScene().setRoot(root);
     }
 }

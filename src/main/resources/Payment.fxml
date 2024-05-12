@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="809.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DarkDev.controllers.Payment">
+<AnchorPane prefHeight="809.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Produit.Payment">
    <children>
       <VBox alignment="CENTER" layoutY="-1.0" prefHeight="809.0" prefWidth="1315.0" styleClass="free-My-card" stylesheets="@style/style.css">
          <children>

@@ -22,15 +22,16 @@
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="1040.0" stylesheets="@style/stylebutton.css">
                     <children>
-                        <Label prefHeight="35.0" prefWidth="190.0" text="My Complaints" textFill="#3b5d50">
+                  <Button fx:id="idAddReclamation1" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="103.0" styleClass="add-btn" stylesheets="@style/style.css" text="Done" textFill="WHITE" />
+                        <Label prefHeight="35.0" prefWidth="214.0" text="My Complaints" textFill="#3b5d50">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="450.0" right="300.0" />
+                                <Insets left="450.0" right="200.0" />
                             </HBox.margin>
                         </Label>
-                        <Button fx:id="idAddReclamation" mnemonicParsing="false" onAction="#addReclamation" prefHeight="26.0" prefWidth="103.0" styleClass="add-btn" stylesheets="@style/style.css" text="Add Complaint" textFill="WHITE">
+                        <Button fx:id="idAddReclamation" mnemonicParsing="false" onAction="#addReclamation" prefHeight="26.0" prefWidth="171.0" styleClass="add-btn" stylesheets="@style/style.css" text="Add Complaint" textFill="WHITE">
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin></Button>
@@ -38,9 +39,9 @@
                 </HBox>
                 <Pane layoutX="252.0" layoutY="82.0" prefHeight="98.0" prefWidth="1040.0" style="-fx-background-color: #3b5d50;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                 <HBox alignment="CENTER" layoutX="766.0" layoutY="14.0" style="-fx-background-color: #3b5d50;" />
-                <ScrollPane layoutX="5.0" layoutY="94.0" prefHeight="709.0" prefWidth="1290.0" style="-fx-background-color: #FAEBEF;" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="94.0">
+                <ScrollPane layoutX="5.0" layoutY="94.0" prefHeight="628.0" prefWidth="987.0" style="-fx-background-color: #FAEBEF;" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="94.0">
                     <content>
-                        <VBox fx:id="idComplaints" alignment="TOP_CENTER" prefHeight="624.0" prefWidth="1288.0" spacing="20.0" style="-fx-background-color: #FAEBEF;">
+                        <VBox fx:id="idComplaints" alignment="TOP_CENTER" prefHeight="624.0" prefWidth="1176.0" spacing="20.0" style="-fx-background-color: #FAEBEF;">
                             <padding>
                                 <Insets bottom="20.0" left="20.0" right="40.0" top="20.0" />
                             </padding>

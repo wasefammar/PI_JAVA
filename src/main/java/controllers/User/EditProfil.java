@@ -197,12 +197,10 @@ public class EditProfil {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
             Parent root = loader.load();
 
-            // Create a new stage for the Adduser interface
-            Stage stage = new Stage();
+            Stage stage = (Stage) AdressInp.getScene().getWindow(); // Obtenir la scène actuelle
             stage.setScene(new Scene(root));
-
-
-            // Show the Adduser stage
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             // Handle any potential IOException

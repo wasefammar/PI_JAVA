@@ -21,7 +21,7 @@
    <left>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="175.0" spacing="10.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #F4F4FC; -fx-background-radius: 50 0 0 50;">
+            <HBox fx:id="idRertour" alignment="CENTER_LEFT" onMouseClicked="#Retour" prefHeight="55.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #F4F4FC; -fx-background-radius: 50 0 0 50;">
                <children>
                   <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,11 +38,11 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox fx:id="idProducts" alignment="CENTER_LEFT" onMouseClicked="#moveToProducts" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+            <HBox fx:id="idProduits" alignment="CENTER_LEFT" onMouseClicked="#moveToProducts" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/icons8-cart-50.png" />
+                        <Image url="@img/icons8-cart-50%20(1).png" />
                      </image>
                   </ImageView>
                   <Label text="Products" textFill="#5a5a5a">
@@ -55,7 +55,21 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+            <HBox fx:id="idTransactions" alignment="CENTER" onMouseClicked="#moveToTransactions" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-transaction-25.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Transactions" textFill="#5a5a5a">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="idEvents" alignment="CENTER_LEFT" onMouseClicked="#moveToEvents" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,7 +102,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+            <HBox fx:id="idLogout" alignment="CENTER_LEFT" onMouseClicked="#moveToLogout" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -153,18 +167,18 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <HBox alignment="CENTER_RIGHT">
+                  <HBox fx:id="idProfile" alignment="CENTER_RIGHT" onMouseClicked="#profile">
                      <children>
                         <Button mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);">
                            <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#profil" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@img/3135715.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label text="Wassef Ammar">
+                        <Label fx:id="Name" text="Wassef Ammar">
                            <font>
                               <Font name="Calibri Bold" size="15.0" />
                            </font>

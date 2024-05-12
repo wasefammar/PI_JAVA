@@ -42,8 +42,8 @@ public class ServiceEchangeService {
 
         while (rs.next()) {
             int id = rs.getInt("id");
-            int serviceInId = rs.getInt("service_in");
-            int serviceOutId = rs.getInt("service_out");
+            int serviceInId = rs.getInt("service_in_id");
+            int serviceOutId = rs.getInt("service_out_id");
             LocalDateTime dateEchange = rs.getTimestamp("date_echange").toLocalDateTime();
             Boolean valide = rs.getBoolean("valide");
             Service serviceIn = new GestionService().getServiceById(serviceInId);

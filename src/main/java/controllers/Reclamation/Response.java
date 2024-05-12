@@ -3,14 +3,17 @@ package controllers.Reclamation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
+import javafx.stage.Stage;
 import models.Reclamation.Reclamation;
 import models.Reclamation.Reponse;
 import services.*;
+import services.GestionServices.GestionService;
 import services.ServicesReclamation.BadWordsFilter;
 import services.ServicesReclamation.SendMailrec;
 import services.ServicesReclamation.ServiceReclamation;
@@ -24,10 +27,10 @@ import java.util.List;
 public class Response {
 
     public Label idcomplaint;
+    GestionService gs = new GestionService();
     String[] badWordsArray = {"5ra", "le", "non","fuck","putin","yezi","edara","esprit","asshole"};
 
     BadWordsFilter filter=new BadWordsFilter(badWordsArray);
-    //ServicePersonne pr = new ServicePersonne();
     ServiceReponse sr= new ServiceReponse();
     ServiceReclamation serviceReclamation = new ServiceReclamation();
     public Button btnSend;
@@ -38,7 +41,11 @@ public class Response {
     public void cancelRec(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
         Parent root = loader.load();
-        description_id.getScene().setRoot(root);
+        Stage stage = (Stage) description_id.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
     public void setData(Reclamation reclamation){
@@ -74,11 +81,16 @@ public class Response {
 
                     sr.ajouter_Reponse(response);
                     //List<Personne> personne = pr.listerPersonne();
-                    SendMailrec.sendEmail("ines.jendoubi@esprit.tn","Your response has been sent successfully","A new response to a   "+response.getTitre_r());
+
+                    SendMailrec.sendEmail(serviceReclamation.getUserById(reclamation.getUtilisateur_id()).getEmail(),"Your response has been sent successfully","A new response to a   "+response.getTitre_r());
                     System.out.println("Complaint added successfully");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
                     Parent root = loader.load();
-                    description_id.getScene().setRoot(root);
+                    Stage stage = (Stage) description_id.getScene().getWindow(); // Obtenir la scène actuelle
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Page ");
+                    stage.centerOnScreen();
+                    stage.show();
                 }
 
             }
@@ -89,4 +101,6 @@ public class Response {
         }
 
     }
+
+
 }

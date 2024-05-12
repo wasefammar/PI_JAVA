@@ -86,6 +86,37 @@ public class ServiceReclamation implements IReclamation<Reclamation> {
 
     }
 
+    public ArrayList<Reclamation> listerReclamation(int idUtilisateur) {
+        ArrayList<Reclamation> myList = new ArrayList<>();
+        try {
+
+            String requete3 = "Select * FROM reclamation where utilisateur_id="+idUtilisateur;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(requete3);
+            while (rs.next()) {
+                Reclamation rec = new Reclamation();
+
+                rec.setId(rs.getInt(1));
+                rec.setUtilisateur_id(rs.getInt("utilisateur_id"));
+                rec.setTitre_r(rs.getString("titre_r"));
+                rec.setDescription_r(rs.getString("description_r"));
+                rec.setDate(rs.getDate("date"));
+                rec.setStatus(rs.getString("status"));
+                rec.setUrgence(rs.getString("urgence"));
+
+                myList.add(rec);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+        System.out.println("Affichage executé");
+        return myList;
+
+
+    }
+
     public ArrayList<Reclamation> listerReclamation() {
         ArrayList<Reclamation> myList = new ArrayList<>();
         try {

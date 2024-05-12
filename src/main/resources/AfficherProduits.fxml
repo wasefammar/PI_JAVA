@@ -28,14 +28,28 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="86.0" prefWidth="432.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="72.0" prefWidth="254.0" text="SwapNShare" textFill="#3b5d50">
-                           <font>
-                              <Font name="Cambria Bold" size="40.0" />
-                           </font>
+                        <HBox />
+                        <VBox prefHeight="75.0" prefWidth="312.0">
                            <HBox.margin>
                               <Insets bottom="10.0" right="10.0" top="20.0" />
                            </HBox.margin>
-                        </Label>
+                           <children>
+                              <Button fx:id="idBack" mnemonicParsing="false" onMouseClicked="#retour" prefHeight="40.0" prefWidth="70.0" stylesheets="@style/stylebutton.css" text="Back" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="hover-button" />
+                                    <String fx:value="hover-button:hover" />
+                                 </styleClass>
+                              </Button>
+                              <Label alignment="CENTER" prefHeight="72.0" prefWidth="254.0" text="SwapNShare" textFill="#3b5d50">
+                                 <font>
+                                    <Font name="Cambria Bold" size="40.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                   <VBox fx:id="ChosenFruitCtard" alignment="CENTER" prefHeight="678.0" prefWidth="332.0" stylesheets="@style/style.css">

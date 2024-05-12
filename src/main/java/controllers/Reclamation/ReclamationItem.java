@@ -14,10 +14,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Reclamation.Reclamation;
 import models.Reclamation.Reponse;
+import services.GestionServices.GestionService;
 import services.ServicesReclamation.ServiceReclamation;
 import services.ServicesReclamation.ServiceReponse;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ReclamationItem {
     public Label idUsername;
@@ -33,8 +35,10 @@ public class ReclamationItem {
     public Button idRespond;
 
     ServiceReclamation rs = new ServiceReclamation();
+    GestionService gs = new GestionService();
     ServiceReponse rp = new ServiceReponse();
-    public void setData(Reclamation reclamation){
+    public void setData(Reclamation reclamation) throws SQLException {
+        idUsername.setText(gs.getUserById(reclamation.getUtilisateur_id()));
         reasonTitre.setText(reclamation.getTitre_r());
         idUrgence.setText(reclamation.getUrgence());
         idDate.setText(reclamation.getDate().toString());

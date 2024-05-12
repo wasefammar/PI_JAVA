@@ -36,7 +36,7 @@
                         <Insets left="10.0" />
                     </VBox.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                <HBox fx:id="idProduits" alignment="CENTER_LEFT" onMouseClicked="#moveToProducts" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -53,7 +53,7 @@
                         <Insets left="10.0" />
                     </VBox.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                <HBox fx:id="idEvents" alignment="CENTER_LEFT" onMouseClicked="#moveToEvents" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -73,7 +73,7 @@
                         <Insets left="7.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                <HBox fx:id="idComplaints" alignment="CENTER" onMouseClicked="#moveToComplaints" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -86,7 +86,7 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
+                <HBox fx:id="idLogout" alignment="CENTER_LEFT" onMouseClicked="#moveToLogout" prefHeight="55.0" prefWidth="200.0" spacing="10.0">
                     <children>
                         <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -114,7 +114,7 @@
             <children>
                 <HBox fx:id="idBACK" alignment="CENTER_LEFT" onMouseClicked="#back1" prefHeight="54.0" prefWidth="107.0">
                     <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);">
+                        <Button fx:id="idReturn" mnemonicParsing="false" onAction="#Retour1" style="-fx-background-color: rgba(0,0,0,0);">
                             <graphic>
                                 <ImageView fx:id="idBack" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
                                     <image>

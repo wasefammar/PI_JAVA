@@ -23,16 +23,17 @@ public class G_ligneCommande implements iLigneCommande <LigneCommande> {
         st.executeUpdate(sql);
 
     }
-
     @Override
-    public void supprimer(int id) throws SQLException {
+    public void supprimer(int idLc, int idPanier) throws SQLException {
 
-        String sql= "DELETE FROM ligne_commande where produit_id = ? AND panier_id="+1;
+        String sql= "DELETE FROM ligne_commande where produit_id = ? AND panier_id= ?";
         PreparedStatement ps= cnx.prepareStatement(sql);
-        ps.setInt(1, id);
+        ps.setInt(1, idLc);
+        ps.setInt(2,idPanier);
         ps.executeUpdate();
 
     }
+
 
     //l'affichage des produits pour l'utilisateur
     public List<LigneCommande> Afficher() throws SQLException {
@@ -53,9 +54,9 @@ public class G_ligneCommande implements iLigneCommande <LigneCommande> {
     }
 
 
-    public  List<Produit> ListeProduits() throws SQLException {
+    public  List<Produit> ListeProduits(int panierId) throws SQLException {
         List<Produit> produits = new ArrayList<>();
-        String sql= "SELECT * FROM produit where id IN(SELECT produit_id FROM ligne_commande WHERE panier_id="+1+")";
+        String sql= "SELECT * FROM produit where id IN(SELECT produit_id FROM ligne_commande WHERE panier_id="+panierId+")";
         Statement st = cnx.createStatement();
         ResultSet rs = st.executeQuery(sql);
 
@@ -95,6 +96,17 @@ public class G_ligneCommande implements iLigneCommande <LigneCommande> {
         return lcs.isEmpty();
     }
 
+
+    public int getPanierByIdUtilisateur(int id) throws SQLException {
+        String sql= "SELECT id FROM panier where utilisateur_id="+id;
+        Statement st= cnx.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        if(rs.next()){
+            return rs.getInt("id");
+        }
+
+        return  0;
+    }
 
 
 }

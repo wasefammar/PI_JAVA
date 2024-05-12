@@ -1,6 +1,7 @@
 package controllers.Echange;
 
 import com.mysql.cj.protocol.ServerSessionStateController;
+import controllers.Service.ShowService;
 import controllers.User.SessionUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,35 +58,9 @@ public class EchangeProduitController {
             produitOutComboBox.getItems().add(produit.getTitreProduit());
 
         }
-        // Populate the serviceInComboBox with the selected service from the Service page
-        //Service selectedService = (Service) getServiceFromServicePage(); // Implement this method
-        //serviceInField.setText(selectedService.getTitreService());
+
     }
 
-/*    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        serviceEchangeService = new ServiceEchangeService();
-        serviceService = new GestionService();
-        try {
-          //  userServices = serviceService.getServiceByUserId(serviceService.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
-            userServices = serviceService.getServiceByUserId(3);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        for (Service service: userServices) {
-            MenuItem menuItem = new MenuItem(service.getTitreService());
-            serviceOutComboBox.getItems().add(menuItem.getText());
-            menuItem.addEventHandler(ActionEvent.ACTION, e->{
-               serviceOutComboBox.setPromptText(menuItem.getText());
-            });
-
-        }
-        // Populate the serviceInComboBox with the selected service from the Service page
-        Service selectedService = (Service) getServiceFromServicePage(); // Implement this method
-        serviceInField.setText(selectedService.getTitreService());
-        // Populate the serviceOutComboBox with the user's own services
-    }*/
 
     @FXML
     private void handleSaveExchange() throws SQLException {
@@ -100,7 +75,11 @@ public class EchangeProduitController {
             System.out.println("Exchange created successfully!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Transaction2.fxml"));
             Parent root = loader.load();
-            idProduitIn.getScene().setRoot(root);
+            Stage stage = (Stage) idProduitIn.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
 
         } catch (SQLException e) {
             System.err.println("Error creating exchange: " + e.getMessage());
@@ -117,28 +96,85 @@ public class EchangeProduitController {
     }
 
     @FXML
-    private void Retour(ActionEvent event) {
+    private void Retour(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowService.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            Stage stage = (Stage) idProduitIn.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private Object getServiceFromServicePage() {
-        // Implement this method to retrieve the selected service from the Service page
-        // This will depend on how you have implemented the Service page
-        return null;
+    public void Retour1(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) idProduitIn.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void back1(MouseEvent mouseEvent) {
     }
 
     public void back(MouseEvent mouseEvent) {
+    }
+
+
+
+
+
+
+
+
+    public void moveToProducts(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idProduitIn.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();// Obtenir la scène actuelle
+
+    }
+
+    public void moveToEvents(MouseEvent mouseEvent) {
+
+    }
+
+    public void moveToComplaints(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamation.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idProduitIn.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void moveToLogout(MouseEvent mouseEvent) throws IOException {
+        SessionUser user = SessionUser.getUser();
+        System.out.println(user.toString());
+        SessionUser.resetSession();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/Login.fxml"));
+        Parent box = fxmlLoader.load();
+        Stage stage = (Stage) idProduitIn.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(box));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 }

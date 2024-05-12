@@ -2,6 +2,7 @@ package controllers.Service;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -9,7 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import models.Echange.EchangeService;
 import models.Services.Service;
+import services.EchangeServices.ServiceEchangeService;
 import services.GestionServices.GestionService;
 import utils.EmailSender;
 import utils.SendEmail;
@@ -17,6 +21,7 @@ import utils.SendEmail;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ServiceAdminItem {
     public Label idProduitID;
@@ -26,6 +31,7 @@ public class ServiceAdminItem {
     public ImageView idDelete;
     public ImageView idValidate;
     GestionService gestionService = new GestionService();
+    ServiceEchangeService serviceEchangeService = new ServiceEchangeService();
 
     public void setData(Service service){
         idProduitID.setText(""+service.getId());
@@ -50,11 +56,20 @@ public class ServiceAdminItem {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 try {
+                    List<EchangeService> list= serviceEchangeService.getAllExchanges();
+                    list = list.stream().filter(e->e.getServiceIn().getId()==service.getId()|| e.getServiceOut().getId()==service.getId()).toList();
+                    for (EchangeService e: list) {
+                        serviceEchangeService.deleteExchange(e);
+                    }
                     gestionService.supprimer(Integer.parseInt(idProduitID.getText()));
                     SendEmail.sendEmail(gestionService.getUserEmail(service),"Your service has been deleted","Apparently you didn't respect our rules or you published misleading content ");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ServicesAdmin.fxml"));
                     Parent root = loader.load();
-                    titrelc.getScene().setRoot(root);
+                    Stage stage = (Stage) titrelc.getScene().getWindow(); // Obtenir la scène actuelle
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Page ");
+                    stage.centerOnScreen();
+                    stage.show();
 
                 } catch (SQLException e) {
                     System.err.println(e.getMessage());

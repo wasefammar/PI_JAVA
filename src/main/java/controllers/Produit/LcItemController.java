@@ -22,6 +22,7 @@ import java.sql.SQLException;
 public class LcItemController {
 
     G_ligneCommande glc= new G_ligneCommande();
+    GestionService gs = new GestionService();
     public ImageView imagelc;
     public Text titrelc;
     public Label pricelc;
@@ -40,10 +41,16 @@ public class LcItemController {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 try {
-                    glc.supprimer(Integer.parseInt(idProduitID.getText()));
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Panier.fxml"));
-                    Parent root = loader.load();
-                    titrelc.getScene().setRoot(root);
+
+                   int panierId= glc.getPanierByIdUtilisateur(gs.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
+                   if (panierId!=0){
+                       glc.supprimer(Integer.parseInt(idProduitID.getText()), panierId);
+                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Panier.fxml"));
+                       Parent root = loader.load();
+                       titrelc.getScene().setRoot(root);
+                   }
+
+
 
                 } catch (SQLException e) {
                     System.err.println(e.getMessage());

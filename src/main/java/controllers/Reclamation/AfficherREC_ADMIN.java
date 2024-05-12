@@ -1,11 +1,13 @@
 package controllers.Reclamation;
 
+import controllers.User.SessionUser;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Reclamation.Reclamation;
@@ -233,47 +235,110 @@ public class AfficherREC_ADMIN implements Initializable {
             String title = "Congratulations sir";
             String message = "You've successfully created your first Tray Notification";
 
-            /*TrayNotification tray = new TrayNotification();
-            tray.setTitle(title);
-            tray.setMessage(message);
-            tray.setNotificationType(NotificationType.SUCCESS);
-            tray.setAnimationType(AnimationType.SLIDE);
-            tray.showAndWait();*/
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/statReclamation.fxml"));
             Parent root = loader.load();
-            // Access the controller of the new interface
-            StatReclamation statistique = loader.getController();
-            // Pass any necessary data to the new interface
-            Stage stage = new Stage();
-
+            Stage stage = (Stage) idStatus.getScene().getWindow(); // Obtenir la scène actuelle
             stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
             stage.show();
-            // Close the current window
-            idStatus.getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception as needed
         }
 
     }
 
-    public void product(ActionEvent actionEvent) {
+    public void users(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/Dashuser.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
-    public void service(ActionEvent actionEvent) {
+    public void service(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/ServicesAdmin.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+       // idComplaints.getScene().setRoot(root);
     }
 
-    public void users(ActionEvent actionEvent) {
+    public void product(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/ProduitsAdmin.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
-    public void transaction(ActionEvent actionEvent) {
+    public void transaction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/AfficheEchangeService.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
-    public void events(ActionEvent actionEvent) {
+    public void events(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
-    public void complaints(ActionEvent actionEvent) {
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        SessionUser.resetSession();
+        System.out.println(SessionUser.getUser());
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
-    public void logout(ActionEvent actionEvent) {
+    public void complaint(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void returnToCategories(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/CategorieFX.fxml"));        Parent anchorPane = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void returnToHome(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/dash_admin.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) idComplaints.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 }

@@ -4,8 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import models.Reclamation.Reponse;
 
 import java.io.IOException;
@@ -31,6 +33,10 @@ public class ReponseClient {
 
     public void back(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/afficherReclamation.fxml"));
-        id_reponse_descrip.getScene().setRoot(root);
+        Stage stage = (Stage) id_reponse_descrip.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 }

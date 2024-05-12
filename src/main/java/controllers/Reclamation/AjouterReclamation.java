@@ -140,7 +140,12 @@ public void initialize(URL url, ResourceBundle rb) {
                         System.out.println("Complaint added successfully");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherReclamation.fxml"));
                         Parent root = loader.load();
-                        description_id.getScene().setRoot(root);
+                        Stage stage = (Stage) description_id.getScene().getWindow(); // Obtenir la scène actuelle
+                        stage.setScene(new Scene(root));
+                        stage.setTitle("Page ");
+                        stage.centerOnScreen();
+                        stage.show();
+                       // description_id.getScene().setRoot(root);
                     }
 
                 }

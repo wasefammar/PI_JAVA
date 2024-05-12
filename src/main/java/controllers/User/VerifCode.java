@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import services.GestionServices.GestionService;
 import services.ServicesPersonne.ServicePersonne;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ public class VerifCode {
 
 
     private final ServicePersonne serviceuser  = new ServicePersonne();
+    GestionService gs= new GestionService();
 
     private boolean validateCode(String inputCode) {
         // Check if the input code matches the verification code
@@ -62,6 +64,7 @@ public class VerifCode {
                 // Appeler la méthode du service pour créer l'utilisateur
                 serviceuser.ajoutUser(user);
                 serviceuser.addUtilisateur(user);
+                serviceuser.createPanier(gs.getIdUtilisateurByEmail(user.getAdresseEmail()).getId());
                 System.out.println("Compte créé avec succès !");
 
                 System.out.println( user.toString());

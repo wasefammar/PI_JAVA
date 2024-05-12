@@ -1,6 +1,7 @@
 package controllers.Reclamation;
 
 import controllers.User.SessionTempo;
+import controllers.User.SessionUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Reclamation.Reclamation;
+import services.GestionServices.GestionService;
 import services.ServicesReclamation.ServiceReclamation;
 
 
@@ -65,6 +67,7 @@ public class AfficherReclamation implements Initializable {
     @FXML
     private TableColumn<Reclamation, String> urgency_col;
     ServiceReclamation rs = new ServiceReclamation();
+    GestionService gs= new GestionService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,7 +78,7 @@ public class AfficherReclamation implements Initializable {
             ServiceReclamation serviceReclamation = new ServiceReclamation();
 
             int size = serviceReclamation.listerReclamation().size();
-            List<Reclamation> evenements = serviceReclamation.listerReclamation();
+            List<Reclamation> evenements = serviceReclamation.listerReclamation(gs.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
             System.out.println("oui1");
             for (Reclamation evenement : evenements) {
                 int id = 0;
@@ -88,27 +91,10 @@ public class AfficherReclamation implements Initializable {
                 System.out.println("oui2");
                 idComplaints.getChildren().add(box);
 
-                /*carte.setTitre_rLabel(evenement.getTitre_r());
-                carte.setDescription_rLabel(evenement.getDescription_r());
-                carte.setStatusLabel(evenement.getStatus());
-                carte.setUrgenceLabel(evenement.getUrgence());*/
-
-                /*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String dateString = dateFormat.format(evenement.getDate());
-                carte.setDateLabel(dateString);*/
                 System.out.println("oui");
                 System.out.println("java version: "+System.getProperty("java.version"));
                 System.out.println("javafx.version: " + System.getProperty("javafx.version"));
-               /* for ( Reclamation evenement2 : serviceReclamation.listerReclamation())
-                {
-                    if (evenement2.getTitre_r().equalsIgnoreCase(evenement.getTitre_r())){
-                        id = evenement.getId();
 
-                    }
-                }
-                carte.setAvg(String.valueOf(serviceRatingE.getAverageRating(id)));
-
-                */
             }
 
         } catch (IOException e) {
@@ -126,20 +112,15 @@ public class AfficherReclamation implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouter_reclamation.fxml"));
             Parent root = loader.load();
 
-            // Access the controller of the new interface
-            AjouterReclamation ajouter_reclamation1 = loader.getController();
-
-            // Pass any necessary data to the new interface
-
-
-            Stage stage = new Stage();
+            Stage stage = (Stage) complaintsTable.getScene().getWindow(); // Obtenir la scène actuelle
             stage.setScene(new Scene(root));
-
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
             stage.show();
-            complaintsTable.getScene().setRoot(root);
+           // complaintsTable.getScene().setRoot(root);
 
             // Close the current window
-            btnSend.getScene().getWindow().hide();
+            //btnSend.getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception as needed
         }
@@ -176,14 +157,12 @@ public class AfficherReclamation implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherReclamation.fxml"));
             Parent root = loader.load();
-            // Access the controller of the new interface
-            AfficherReclamation ajouterReservation = loader.getController();
-            // Pass any necessary data to the new interface
-            Stage stage = new Stage();
+            Stage stage = (Stage) button.getScene().getWindow(); // Obtenir la scène actuelle
             stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
             stage.show();
-            // Close the current window
-            button.getScene().getWindow().hide();
+            //button.getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception as needed
         }
@@ -212,6 +191,20 @@ public class AfficherReclamation implements Initializable {
     public void addReclamation(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouter_reclamation.fxml"));
         Parent root = loader.load();
-        idAddReclamation.getScene().setRoot(root);
+        Stage stage = (Stage) idAddReclamation.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void back(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idAddReclamation.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 }

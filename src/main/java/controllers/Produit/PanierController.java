@@ -5,16 +5,20 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
+import controllers.User.SessionUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import models.Produit.Produit;
+import services.GestionServices.GestionService;
 import services.ServicesProduit.G_ligneCommande;
 
 import java.awt.*;
@@ -31,6 +35,7 @@ public class PanierController{
     public Label total;
     public Label idShipping;
     G_ligneCommande glc = new G_ligneCommande();
+    GestionService gs = new GestionService();
     public Button back;
     public Button payerb;
     public Label somme;
@@ -45,7 +50,8 @@ public class PanierController{
                     "-fx-font-weight: bold;" +          // Making the font bold\n" +
                     "-fx-padding: 300px 0 0 220px;");
             idlignec.getChildren().add(empty);
-            List<Produit> produits = glc.ListeProduits();
+            int idPanier = glc.getPanierByIdUtilisateur(gs.getIdUtilisateurByEmail(SessionUser.getUser().getAdresseEmail()).getId());
+            List<Produit> produits = glc.ListeProduits(idPanier);
             if (!produits.isEmpty()) {
                 double total1 = 0;
 
@@ -96,7 +102,12 @@ public class PanierController{
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
             Parent root = loader.load();
-            total.getScene().setRoot(root);
+            Stage stage = (Stage) total.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
+            //total.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -124,7 +135,12 @@ public class PanierController{
                 } else if (currency.equals("Euro")) {
                     payment.setFields(total.getText(), currency+" €");
                 }
-                total.getScene().setRoot(root);
+                Stage stage = (Stage) total.getScene().getWindow(); // Obtenir la scène actuelle
+                stage.setScene(new Scene(root));
+                stage.setTitle("Page ");
+                stage.centerOnScreen();
+                stage.show();
+                //total.getScene().setRoot(root);
             }
 
 

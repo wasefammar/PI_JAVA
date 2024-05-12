@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -87,7 +88,11 @@ public class UpdateProduitController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
             Parent root = loader.load();
-            title.getScene().setRoot(root);
+            Stage stage = (Stage) reqcategory.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -194,7 +199,11 @@ public class UpdateProduitController implements Initializable {
                     gp.modifier(produit);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
                     Parent root = loader.load();
-                    reqcategory.getScene().setRoot(root);
+                    Stage stage = (Stage) reqcategory.getScene().getWindow(); // Obtenir la scène actuelle
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Page ");
+                    stage.centerOnScreen();
+                    stage.show();
                 }
 
 

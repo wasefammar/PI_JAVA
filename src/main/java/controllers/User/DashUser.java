@@ -5,11 +5,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import models.User.Personne;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -183,7 +188,96 @@ public class DashUser {
     }
 
 
+    public void users(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/Dashuser.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
 
+    public void service(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/ServicesAdmin.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void product(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/ProduitsAdmin.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void transaction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/AfficheEchangeService.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void events(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        SessionUser.resetSession();
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void complaint(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void returnToCategories(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/CategorieFX.fxml"));        Parent anchorPane = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void returnToHome(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader  = new FXMLLoader(getClass().getResource("/dash_admin.fxml"));
+        Parent anchorPane = loader.load();
+        Stage stage = (Stage) userListview.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
 
 
 

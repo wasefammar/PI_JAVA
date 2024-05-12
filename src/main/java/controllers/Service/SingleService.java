@@ -2,11 +2,13 @@ package controllers.Service;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import models.Services.Service;
 import services.GestionServices.GestionService;
 
@@ -43,7 +45,11 @@ public class SingleService {
             Parent root = loader.load();
             ShowService showService = loader.getController();
             showService.setFields(gs.getServiceById(Integer.parseInt(idServiceID.getText())));
-            idServiceID.getScene().setRoot(root);
+            Stage stage = (Stage) idServiceID.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         } catch (SQLException e) {

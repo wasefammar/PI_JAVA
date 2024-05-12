@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import javafx.stage.Stage;
 import models.Services.Commentaire;
 import models.Services.Service;
 import services.GestionServices.GestionService;
@@ -34,6 +36,7 @@ public class ShowService implements Initializable {
     public HBox idBACK;
     public ImageView idImage;
     public HBox idRertour;
+    public Label idUsername;
     GestionService gs= new GestionService();
     ServiceCommentaire sc=new ServiceCommentaire();
     public ImageView idBack;
@@ -61,6 +64,7 @@ public class ShowService implements Initializable {
 
 
     public void setFields(Service service) throws SQLException {
+        idUsername.setText(SessionUser.getUser().getNom()+" "+SessionUser.getUser().getPrenom());
         idServiceId.setText(""+service.getId());
         idTitle.setText(service.getTitreService());
         idDescription.setText(service.getDescriptionService());
@@ -103,7 +107,11 @@ public class ShowService implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            idServiceUsername.getScene().setRoot(root);
+            Stage stage = (Stage) idServiceId.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -118,7 +126,11 @@ public class ShowService implements Initializable {
                 Parent root = loader.load();
                 UpdateService upadateService = loader.getController();
                 upadateService.setFields(service);
-                idCommentDescription.getScene().setRoot(root);
+            Stage stage = (Stage) idCommentDescription.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
 
 
         } catch (SQLException e) {
@@ -141,7 +153,11 @@ public class ShowService implements Initializable {
                     gs.supprimer(Integer.parseInt(idServiceId.getText()));
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
                     Parent root = loader.load();
-                    idDelete.getScene().setRoot(root);
+                    Stage stage = (Stage) idServiceId.getScene().getWindow(); // Obtenir la scène actuelle
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Page ");
+                    stage.centerOnScreen();
+                    stage.show();
 
                 } catch (SQLException e) {
                     System.err.println(e.getMessage());
@@ -157,7 +173,11 @@ public class ShowService implements Initializable {
         Parent root = loader.load();
         EchangeServiceController echangeServiceController = loader.getController();
         echangeServiceController.setData(Integer.parseInt(idServiceId.getText()));
-        idDelete.getScene().setRoot(root);
+        Stage stage = (Stage) idDelete.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
     public void addComment(ActionEvent event) {
@@ -177,7 +197,11 @@ public class ShowService implements Initializable {
                     Parent root = loader.load();
                     ShowService showService = loader.getController();
                     showService.setFields(service);
-                    idCommentDescription.getScene().setRoot(root);
+                    Stage stage = (Stage) idServiceId.getScene().getWindow(); // Obtenir la scène actuelle
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Page ");
+                    stage.centerOnScreen();
+                    stage.show();
                 }
 
         } catch (SQLException e) {
@@ -191,7 +215,11 @@ public class ShowService implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            idBACK.getScene().setRoot(root);
+            Stage stage = (Stage) idBACK.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -201,9 +229,51 @@ public class ShowService implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Services.fxml"));
             Parent root = loader.load();
-            idBACK.getScene().setRoot(root);
+            Stage stage = (Stage) idBACK.getScene().getWindow(); // Obtenir la scène actuelle
+            stage.setScene(new Scene(root));
+            stage.setTitle("Page ");
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public void moveToProducts(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idBack.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void moveToEvents(MouseEvent mouseEvent) {
+
+    }
+
+    public void moveToComplaints(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamation.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) idBack.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void moveToLogout(MouseEvent mouseEvent) throws IOException {
+        SessionUser user = SessionUser.getUser();
+        System.out.println(user.toString());
+        SessionUser.resetSession();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/Login.fxml"));
+        Parent box = fxmlLoader.load();
+        Stage stage = (Stage) idBack.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(box));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 }

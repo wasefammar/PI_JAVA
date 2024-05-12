@@ -6,10 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
+import javafx.stage.Stage;
 import services.ServicesReclamation.ServiceReclamation;
 
 import java.io.IOException;
@@ -38,9 +40,13 @@ public class StatReclamation {
     }
 
     public void back(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficher_reclamation1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dash_admin.fxml"));
         Parent root = loader.load();
-        piechart.getScene().setRoot(root);
+        Stage stage = (Stage) piechart.getScene().getWindow(); // Obtenir la scène actuelle
+        stage.setScene(new Scene(root));
+        stage.setTitle("Page ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
     /*public void back(ActionEvent actionEvent) throws IOException {
