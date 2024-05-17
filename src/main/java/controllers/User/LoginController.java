@@ -81,14 +81,14 @@ public class LoginController {
         }
 
         // Authentifier l'utilisateur
-        boolean authenticated =  serviceuser.connecter(adresse_mail, doHashing(mot_passe));
+        boolean authenticated =  serviceuser.connecter(adresse_mail, mot_passe);
 
-        System.out.println(doHashing(mot_passe));
+        System.out.println(mot_passe);
         System.out.println(adresse_mail);
         //System.out.println(authenticated);
 
 
-        boolean VerifPassword = serviceuser.VerifPwd(doHashing(mot_passe));
+        boolean VerifPassword = serviceuser.VerifPwd(mot_passe);
 
 
 
@@ -127,6 +127,9 @@ public class LoginController {
                 switch (role) {
                     case "[\"ROLE_ADMIN\"]":
                         fxmlFile = "/dash_admin.fxml";
+                        break;
+                    case "[\"ROLE_USER\"]":
+                        fxmlFile = "/Services.fxml";
                         break;
 
                     case "{\"roles\": \"User\"}":

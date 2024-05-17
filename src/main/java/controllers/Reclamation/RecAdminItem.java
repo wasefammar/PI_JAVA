@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Reclamation.Reclamation;
 import models.User.Personne;
+import services.GestionServices.GestionService;
 import services.ServicesReclamation.ServiceReclamation;
 
 
@@ -33,6 +34,7 @@ public class RecAdminItem {
     public Label idDate;
 
     ServiceReclamation rs = new ServiceReclamation();
+    GestionService gs = new GestionService();
    /* public void setData(Reclamation reclamation){
         reasonTitre.setText(reclamation.getTitre_r());
         idUrgence.setText(reclamation.getUrgence());

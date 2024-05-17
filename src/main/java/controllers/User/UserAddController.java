@@ -234,7 +234,7 @@ public class UserAddController  {
                 );*/
 
                 //Ajout de l'utilisateur dans une ssesion tempo
-               SessionTempo.getInstance(email.getText(), lastNmafield.getText(), firstnamefield.getText(),adressfield.getText(),phonenumber.getText(), doHashing(password.getText()));
+               SessionTempo.getInstance(email.getText(), lastNmafield.getText(), firstnamefield.getText(),adressfield.getText(),phonenumber.getText(), password.getText());
 
 
 

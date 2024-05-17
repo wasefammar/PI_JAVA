@@ -330,17 +330,21 @@ public class ServicePersonne implements IService<Personne, SessionTempo> {
 
 
     public  void addUtilisateur(SessionTempo personne) throws SQLException {
-        String sql = "INSERT INTO utilisateur (nom,prenom,adresse,telephone, email) values(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO utilisateur (nom,prenom,adresse,telephone, email,mot_de_passe,score,gender,roles) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         PreparedStatement ps = cnx.prepareStatement(sql);
 
         ps.setString(1,  personne.getNom());
-        //String roleuser = "{\"roles\": \"User\"}";
+        //String roleuser = "\"roles\": \"User\"]";
         ps.setString(2, personne.getPrenom());
         ps.setString(3, personne.getAdress());
         ps.setString(4, personne.getTelphone());
         ps.setString(5, personne.getAdresseEmail());
+        ps.setString(6, personne.getPassword());
+        ps.setInt(7, 12);
+        ps.setString(8, "femme");
+        ps.setString(9, "[\"ROLE_USER\"]");
 
 
         ps.executeUpdate();

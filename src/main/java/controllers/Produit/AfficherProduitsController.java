@@ -263,7 +263,7 @@ public class AfficherProduitsController implements Initializable {
             exchange1.setText(produit.getChoixEchange() == 0 ? "No":"Yes");
             city1.setText(produit.getVille());
             state1.setText(produit.getEtat());
-            File imageFile= new File(produit.getPhoto());
+            File imageFile= new File("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\produits\\"+produit.getPhoto());;
             image1.setImage(new Image(imageFile.toURI().toString()));
         }
         else {

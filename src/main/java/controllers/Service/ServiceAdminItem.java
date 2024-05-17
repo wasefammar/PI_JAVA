@@ -12,14 +12,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Echange.EchangeService;
+import models.Services.Commentaire;
 import models.Services.Service;
 import services.EchangeServices.ServiceEchangeService;
 import services.GestionServices.GestionService;
+import services.GestionServices.ServiceCommentaire;
 import utils.EmailSender;
 import utils.SendEmail;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -32,11 +37,12 @@ public class ServiceAdminItem {
     public ImageView idValidate;
     GestionService gestionService = new GestionService();
     ServiceEchangeService serviceEchangeService = new ServiceEchangeService();
+    ServiceCommentaire serviceCommentaire= new ServiceCommentaire();
 
     public void setData(Service service){
         idProduitID.setText(""+service.getId());
         titrelc.setText(service.getTitreService());
-        File imageFile= new File(service.getPhoto());
+        File imageFile= new File("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\services\\"+service.getPhoto());
         imagelc.setImage(new Image(imageFile.toURI().toString()));
         if(service.isValid()==1){
             idValidate.setVisible(false);
@@ -57,6 +63,11 @@ public class ServiceAdminItem {
             if (response == ButtonType.OK) {
                 try {
                     List<EchangeService> list= serviceEchangeService.getAllExchanges();
+                    List<Commentaire> commentaireList = serviceCommentaire.recuperer(service.getId());
+                    for (Commentaire cmt: commentaireList) {
+                        serviceCommentaire.supprimer(cmt.getId());
+
+                    }
                     list = list.stream().filter(e->e.getServiceIn().getId()==service.getId()|| e.getServiceOut().getId()==service.getId()).toList();
                     for (EchangeService e: list) {
                         serviceEchangeService.deleteExchange(e);

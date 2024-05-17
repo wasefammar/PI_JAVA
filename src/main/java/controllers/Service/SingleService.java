@@ -34,7 +34,7 @@ public class SingleService {
       idCategory.setText(gs.getCategoryById(service.getIdCategorie()));
       idCity.setText(service.getVille());
 
-        File imageFile= new File(service.getPhoto());
+        File imageFile= new File("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\services\\"+service.getPhoto());
         idPhoto.setImage(new Image(imageFile.toURI().toString()));
 
     }

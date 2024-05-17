@@ -20,6 +20,9 @@ import utils.SendSMS;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -43,6 +46,7 @@ public class ServiceFX implements Initializable {
     public Text idRequiredAddress;
     public ImageView idUpload;
 
+    File imageFile= null;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         load();
@@ -118,6 +122,9 @@ public class ServiceFX implements Initializable {
 
                   }
                   else {
+                      Path sourcePath = Paths.get(imageFile.toURI());
+                      Path destinationPath= Paths.get("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\services\\"+photo);
+                      Files.copy(sourcePath, destinationPath);
 
                       gs.ajouter(service);
                       System.out.println("Service added successfully");
@@ -191,8 +198,9 @@ public class ServiceFX implements Initializable {
         FileChooser fileChooser = new FileChooser();
         File file= fileChooser.showOpenDialog(new Stage());
         if(file != null){
-            IdPhoto.setText(file.getAbsolutePath().toString());
-            File imageFile= new File(IdPhoto.getText());
+
+            IdPhoto.setText(file.getName());
+            imageFile= new File(file.getAbsolutePath());
             idUpload.setImage(new Image(imageFile.toURI().toString()));
         }
     }

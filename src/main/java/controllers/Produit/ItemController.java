@@ -50,7 +50,7 @@ public class ItemController {
 
 
 
-        File imageFile= new File(produit.getPhoto());
+        File imageFile= new File("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\produits\\"+produit.getPhoto());
         imagepr.setImage(new Image(imageFile.toURI().toString()));
 
     }

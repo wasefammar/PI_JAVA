@@ -113,7 +113,7 @@ public class GeneratePDF {
             float column2Width = page.getMediaBox().getWidth() - MARGIN - COLUMN1_WIDTH - MARGIN;
             for (Produit item : produitObervableListe) {
                 // Image
-                PDImageXObject image = PDImageXObject.createFromFile(item.getPhoto(), document);
+                PDImageXObject image = PDImageXObject.createFromFile("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\produits\\"+item.getPhoto(), document);
 
                 // Draw the image at specified position
                 contentStream.drawImage(image, 20, currentY-40, 90, 68);

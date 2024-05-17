@@ -18,6 +18,9 @@ import services.GestionServices.GestionService;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -42,6 +45,7 @@ public class UpdateService implements Initializable {
     public ImageView idUpload;
     public Label idID;
 
+    File imageFile= null;
 
     public void back(ActionEvent event) {
         try {
@@ -89,7 +93,7 @@ public class UpdateService implements Initializable {
         this.idCategory.setValue(gs.getCategoryById(service.getIdCategorie()));
         this.idCategory.setPromptText(gs.getCategoryById(service.getIdCategorie()));
         this.idID.setText(""+service.getId());
-        File imageFile= new File(service.getPhoto());
+        File imageFile= new File("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\services\\"+service.getPhoto());
         idUpload.setImage(new Image(imageFile.toURI().toString()));
 
     }
@@ -152,6 +156,9 @@ public class UpdateService implements Initializable {
 
                     }
                     else {
+                        Path sourcePath = Paths.get(imageFile.toURI());
+                        Path destinationPath= Paths.get("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\services\\"+photo);
+                        Files.copy(sourcePath, destinationPath);
                     gs.modifier(service);
                     System.out.println("Service updated successfully");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowService.fxml"));
@@ -206,8 +213,8 @@ public class UpdateService implements Initializable {
         FileChooser fileChooser = new FileChooser();
         File file= fileChooser.showOpenDialog(new Stage());
         if(file != null){
-            IdPhoto.setText(file.getAbsolutePath().toString());
-            File imageFile= new File(IdPhoto.getText());
+            IdPhoto.setText(file.getName());
+            imageFile= new File(file.getAbsolutePath());
             idUpload.setImage(new Image(imageFile.toURI().toString()));
         }
     }

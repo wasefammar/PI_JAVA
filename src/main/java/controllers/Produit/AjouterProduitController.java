@@ -14,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Path;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.Produit.Produit;
@@ -25,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
@@ -82,8 +82,12 @@ public class AjouterProduitController implements Initializable {
     @FXML
     private Label reqimage;
 
+
     @FXML
     private Label idPhoto;
+
+    File imageFile= null;
+
     GestionService gs= new GestionService();
 
     public void addproduct(ActionEvent actionEvent) {
@@ -162,6 +166,9 @@ public class AjouterProduitController implements Initializable {
                     }
                     System.out.println(produit);
                     if(test==false){
+                        Path sourcePath = Paths.get(imageFile.toURI());
+                        Path destinationPath= Paths.get("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\produits\\"+image);
+                        Files.copy(sourcePath, destinationPath);
                         gp.ajouter(produit);
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
                         Parent root = loader.load();
@@ -257,8 +264,9 @@ public class AjouterProduitController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         File file= fileChooser.showOpenDialog(new Stage());
         if(file != null){
-            idPhoto.setText(file.getAbsolutePath());
-            File imageFile= new File(idPhoto.getText());
+            idPhoto.setText(file.getName());
+            System.out.println(idPhoto.getText());
+            imageFile= new File(file.getAbsolutePath());
             idImage.setImage(new Image(imageFile.toURI().toString()));
         }
     }

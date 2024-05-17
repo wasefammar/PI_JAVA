@@ -83,7 +83,7 @@ public class ShowService implements Initializable {
         }
 
 
-        File imageFile= new File(service.getPhoto());
+        File imageFile= new File("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\services\\"+service.getPhoto());
         idImage.setImage(new Image(imageFile.toURI().toString()));
         try {
             List<Commentaire> list = sc.recuperer(service.getId());

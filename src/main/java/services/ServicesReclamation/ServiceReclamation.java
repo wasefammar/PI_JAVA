@@ -164,7 +164,7 @@ public class ServiceReclamation implements IReclamation<Reclamation> {
                 rec.setNom(rs.getString("nom"));
                 rec.setPrenom(rs.getString("prenom"));
                 rec.setTelephone(rs.getString("telephone"));
-                rec.setRole(rs.getString("role"));
+                rec.setRole(rs.getString("roles"));
 
                 return rec;
 

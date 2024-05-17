@@ -21,6 +21,9 @@ import services.ServicesProduit.GProduit;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -81,6 +84,7 @@ public class UpdateProduitController implements Initializable {
     @FXML
     private Label idPhoto;
 
+    File imageFile= null;
 
 
     @FXML
@@ -130,7 +134,7 @@ public class UpdateProduitController implements Initializable {
         this.state.setValue(produit.getEtat());
         this.price.setText(String.valueOf(produit.getPrix()));
         this.idID.setText("" + produit.getId());
-        File imageFile= new File(produit.getPhoto());
+        File imageFile= new File("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\produits\\"+produit.getPhoto());;
         image.setImage(new Image(imageFile.toURI().toString()));
 
     }
@@ -195,6 +199,10 @@ public class UpdateProduitController implements Initializable {
                     int idP= Integer.parseInt(this.idID.getText());
                     Produit produit = new Produit(idP,id, 2, exchange, price, title,
                             description, image, city, state);
+
+                    Path sourcePath = Paths.get(imageFile.toURI());
+                    Path destinationPath= Paths.get("F:\\ESPRIT\\pidev-main (2)\\pidev-main\\public\\uploads\\produits\\"+image);
+                    Files.copy(sourcePath, destinationPath);
 
                     gp.modifier(produit);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProduits.fxml"));
@@ -264,8 +272,8 @@ public class UpdateProduitController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         File file= fileChooser.showOpenDialog(new Stage());
         if(file != null){
-            idPhoto.setText(file.getAbsolutePath().toString());
-            File imageFile= new File(idPhoto.getText());
+            idPhoto.setText(file.getName());
+            imageFile= new File(file.getAbsolutePath());;
             image.setImage(new Image(imageFile.toURI().toString()));
         }
     }
